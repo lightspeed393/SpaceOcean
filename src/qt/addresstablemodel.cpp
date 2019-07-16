@@ -215,7 +215,7 @@ QVariant AddressTableModel::data(const QModelIndex &index, int role) const
         {
             {
                 LOCK(wallet->cs_wallet);
-                CKomodoAddress address = DecodeDestination(rec->address.toStdString());
+                CBitcoinAddress address = DecodeDestination(rec->address.toStdString());
 
                 bool isValid = address.IsValid();
 
@@ -406,7 +406,7 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex &par
 void AddressTableModel::updateEntry(const QString &address,
         const QString &label, bool isMine, const QString &purpose, int status)
 {
-    // Update address book model from Pirate Core
+    // Update address book model from Komodo core
     priv->updateEntry(address, label, isMine, purpose, status);
 }
 

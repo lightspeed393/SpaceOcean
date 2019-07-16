@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/komodo-config.h"
+#include "config/bitcoin-config.h"
 #endif
 
 #include "sendcoinsentry.h"
@@ -11,8 +11,6 @@
 
 #include "addressbookpage.h"
 #include "addresstablemodel.h"
-#include "zaddressbookpage.h"
-#include "zaddresstablemodel.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 #include "platformstyle.h"
@@ -76,8 +74,8 @@ void SendCoinsEntry::on_addressBookButton_clicked()
 {
     if(!model)
         return;
-    ZAddressBookPage dlg(platformStyle, ZAddressBookPage::ForSelection, ZAddressBookPage::SendingTab, this);
-    dlg.setModel(model->getZAddressTableModel());
+    AddressBookPage dlg(platformStyle, AddressBookPage::ForSelection, AddressBookPage::SendingTab, this);
+    dlg.setModel(model->getAddressTableModel());
     if(dlg.exec())
     {
         ui->payTo->setText(dlg.getReturnValue());

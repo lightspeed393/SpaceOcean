@@ -189,7 +189,7 @@ bool parseKomodoURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!KomodoUnits::parse(KomodoUnits::ARRR, i->second, &rv.amount))
+                if(!KomodoUnits::parse(KomodoUnits::KMD, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -228,7 +228,7 @@ QString formatKomodoURI(const SendCoinsRecipient &info)
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(KomodoUnits::format(KomodoUnits::ARRR, info.amount, false, KomodoUnits::separatorNever));
+        ret += QString("?amount=%1").arg(KomodoUnits::format(KomodoUnits::KMD, info.amount, false, KomodoUnits::separatorNever));
         paramCount++;
     }
 
@@ -780,6 +780,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 #elif defined(Q_OS_MAC)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+/*
 // based on: https://github.com/Mozketo/LaunchAtLoginController/blob/master/LaunchAtLoginController.m
 
 #include <CoreFoundation/CoreFoundation.h>
@@ -809,7 +810,6 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 #else
         LSSharedFileListItemResolve(item, resolutionFlags, &currentItemURL, nullptr);
 #endif
-
         if(currentItemURL) {
             if (CFEqual(currentItemURL, findUrl)) {
                 // found
@@ -863,6 +863,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 }
 #pragma GCC diagnostic pop
 #else
+*/
 
 bool GetStartOnSystemStartup() { return false; }
 bool SetStartOnSystemStartup(bool fAutoStart) { return false; }
@@ -936,7 +937,11 @@ QString formatServicesStr(quint64 mask)
 
 QString formatPingTime(double dPingTime)
 {
+    #if !defined(Q_OS_MAC)
     return (dPingTime == std::numeric_limits<int64_t>::max()/1e6 || dPingTime == 0) ? QObject::tr("N/A") : QString(QObject::tr("%1 ms")).arg(QString::number((int)(dPingTime * 1000), 10));
+    #else
+    return (dPingTime == ((int64_t)0x7FFFFFFFFFFFFFFF)/1e6 || dPingTime == 0) ? QObject::tr("N/A") : QString(QObject::tr("%1 ms")).arg(QString::number((int)(dPingTime * 1000), 10));
+    #endif
 }
 
 QString formatTimeOffset(int64_t nTimeOffset)

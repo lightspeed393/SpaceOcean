@@ -1,7 +1,6 @@
 *.tar.gz
 *.deb
 *.exe
-PIRATE_777
 src/bitcoin
 src/zcashd
 src/zcash-cli
@@ -101,7 +100,10 @@ coverage_percent.txt
 linux-coverage-build
 linux-build
 win32-build
-
+qa/pull-tester/run-bitcoind-for-test.sh
+qa/pull-tester/tests-config.sh
+qa/pull-tester/cache/*
+qa/pull-tester/test.*/*
 
 !src/leveldb*/Makefile
 
@@ -123,12 +125,9 @@ komodo-qt
 komodo-qt_test            
 src/qt/gen*
 
+src/config/komodo-config.h
 src/config/komodo-config.h.in
 src/komodod
 src/qt/komodo-qt
 
-src/qt/locale/*.qm
-PIRATE_7776
-
-PirateWallet
 

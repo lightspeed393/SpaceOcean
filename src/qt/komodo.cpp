@@ -3,10 +3,10 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/komodo-config.h"
+#include "config/bitcoin-config.h"
 #endif
 
-#include "PirateOceanGUI.h"
+#include "komodooceangui.h"
 #include "komodo_defs.h"
 
 #define KOMODO_ASSETCHAIN_MAXLEN 65
@@ -59,7 +59,9 @@ void komodo_passport_iteration();
 #include <QThread>
 #include <QTimer>
 #include <QTranslator>
+#ifdef ENABLE_BIP70
 #include <QSslConfiguration>
+#endif
 
 #if defined(QT_STATICPLUGIN)
 #include <QtPlugin>
@@ -101,7 +103,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("pirate-core", psz).toStdString();
+    return QCoreApplication::translate("komodo-core", psz).toStdString();
 }
 
 static QString GetLangTerritory()
@@ -179,7 +181,7 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 }
 #endif
 
-/** Class encapsulating Pirate Core startup and shutdown.
+/** Class encapsulating Komodo Core startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
 class KomodoCore: public QObject
@@ -238,7 +240,7 @@ public:
     /// Get process return value
     int getReturnValue() const { return returnValue; }
 
-    /// Get window identifier of QMainWindow (PirateOceanGUI)
+    /// Get window identifier of QMainWindow (KomodoOceanGUI)
     WId getMainWinId() const;
 
 public Q_SLOTS:
@@ -257,7 +259,7 @@ private:
     QThread *coreThread;
     OptionsModel *optionsModel;
     ClientModel *clientModel;
-    PirateOceanGUI *window;
+    KomodoOceanGUI *window;
     QTimer *pollShutdownTimer;
 #ifdef ENABLE_WALLET
     PaymentServer* paymentServer;
@@ -373,7 +375,7 @@ KomodoApplication::KomodoApplication(int &argc, char **argv):
     // This must be done inside the KomodoApplication constructor, or after it, because
     // PlatformStyle::instantiate requires a QApplication
     std::string platformName;
-    platformName = GetArg("-uiplatform", PirateOceanGUI::DEFAULT_UIPLATFORM);
+    platformName = GetArg("-uiplatform", KomodoOceanGUI::DEFAULT_UIPLATFORM);
     platformStyle = PlatformStyle::instantiate(QString::fromStdString(platformName));
     if (!platformStyle) // Fall back to "other" if specified name not found
         platformStyle = PlatformStyle::instantiate("other");
@@ -421,7 +423,7 @@ void KomodoApplication::createOptionsModel(bool resetSettings)
 
 void KomodoApplication::createWindow(const NetworkStyle *networkStyle)
 {
-    window = new PirateOceanGUI(platformStyle, networkStyle, 0);
+    window = new KomodoOceanGUI(platformStyle, networkStyle, 0);
 
     pollShutdownTimer = new QTimer(window);
     connect(pollShutdownTimer, SIGNAL(timeout()), window, SLOT(detectShutdown()));
@@ -524,8 +526,8 @@ void KomodoApplication::initializeResult(bool success)
         {
             walletModel = new WalletModel(platformStyle, vpwallets[0], optionsModel);
 
-            window->addWallet(PirateOceanGUI::DEFAULT_WALLET, walletModel);
-            window->setCurrentWallet(PirateOceanGUI::DEFAULT_WALLET);
+            window->addWallet(KomodoOceanGUI::DEFAULT_WALLET, walletModel);
+            window->setCurrentWallet(KomodoOceanGUI::DEFAULT_WALLET);
             
             #ifdef ENABLE_BIP70
             connect(walletModel, SIGNAL(coinsSent(CWallet*,SendCoinsRecipient,QByteArray)),
@@ -570,7 +572,7 @@ void KomodoApplication::shutdownResult()
 
 void KomodoApplication::handleRunawayException(const QString &message)
 {
-    QMessageBox::critical(0, "Runaway exception", PirateOceanGUI::tr("A fatal error occurred. Komodo can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", KomodoOceanGUI::tr("A fatal error occurred. Komodo can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(EXIT_FAILURE);
 }
 
@@ -617,9 +619,11 @@ int main(int argc, char *argv[])
 #if QT_VERSION >= 0x050500
     // Because of the POODLE attack it is recommended to disable SSLv3 (https://disablessl3.com/),
     // so set SSL protocols to TLS1.0+.
+    #ifdef ENABLE_BIP70
     QSslConfiguration sslconf = QSslConfiguration::defaultConfiguration();
     sslconf.setProtocol(QSsl::TlsV1_0OrLater);
     QSslConfiguration::setDefaultConfiguration(sslconf);
+    #endif
 #endif
 
     // Register meta types used for QMetaObject::invokeMethod

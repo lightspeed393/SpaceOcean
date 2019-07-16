@@ -2,6 +2,21 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+/******************************************************************************
+ * Copyright © 2014-2019 The SuperNET Developers.                             *
+ *                                                                            *
+ * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
+ * the top-level directory of this distribution for the individual copyright  *
+ * holder information and the developer policies on copyright and licensing.  *
+ *                                                                            *
+ * Unless otherwise agreed in a custom licensing agreement, no part of the    *
+ * SuperNET software, including this file may be copied, modified, propagated *
+ * or distributed except according to the terms contained in the LICENSE file *
+ *                                                                            *
+ * Removal or modification of this copyright notice is prohibited.            *
+ *                                                                            *
+ ******************************************************************************/
+
 #include "base58.h"
 
 #include <hash.h>
@@ -204,13 +219,13 @@ int CBase58Data::CompareTo(const CBase58Data& b58) const
 
 namespace
 {
-class CKomodoAddressVisitor : public boost::static_visitor<bool>
+class CBitcoinAddressVisitor : public boost::static_visitor<bool>
 {
 private:
-    CKomodoAddress* addr;
+    CBitcoinAddress* addr;
 
 public:
-    CKomodoAddressVisitor(CKomodoAddress* addrIn) : addr(addrIn) {}
+    CBitcoinAddressVisitor(CBitcoinAddress* addrIn) : addr(addrIn) {}
 
     bool operator()(const CKeyID& id) const { return addr->Set(id); }
     bool operator()(const CPubKey& key) const { return addr->Set(key); }
@@ -220,36 +235,36 @@ public:
 
 } // anon namespace
 
-bool CKomodoAddress::Set(const CKeyID& id)
+bool CBitcoinAddress::Set(const CKeyID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS), &id, 20);
     return true;
 }
 
-bool CKomodoAddress::Set(const CPubKey& key)
+bool CBitcoinAddress::Set(const CPubKey& key)
 {
     CKeyID id = key.GetID();
     SetData(Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS), &id, 20);
     return true;
 }
 
-bool CKomodoAddress::Set(const CScriptID& id)
+bool CBitcoinAddress::Set(const CScriptID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS), &id, 20);
     return true;
 }
 
-bool CKomodoAddress::Set(const CTxDestination& dest)
+bool CBitcoinAddress::Set(const CTxDestination& dest)
 {
-    return boost::apply_visitor(CKomodoAddressVisitor(this), dest);
+    return boost::apply_visitor(CBitcoinAddressVisitor(this), dest);
 }
 
-bool CKomodoAddress::IsValid() const
+bool CBitcoinAddress::IsValid() const
 {
     return IsValid(Params());
 }
 
-bool CKomodoAddress::IsValid(const CChainParams& params) const
+bool CBitcoinAddress::IsValid(const CChainParams& params) const
 {
     bool fCorrectSize = vchData.size() == 20;
     bool fKnownVersion = vchVersion == params.Base58Prefix(CChainParams::PUBKEY_ADDRESS) ||
@@ -257,17 +272,17 @@ bool CKomodoAddress::IsValid(const CChainParams& params) const
     return fCorrectSize && fKnownVersion;
 }
 
-bool CKomodoAddress::SetString(const char* pszAddress)
+bool CBitcoinAddress::SetString(const char* pszAddress)
 {
     return CBase58Data::SetString(pszAddress, 1);//2);
 }
 
-bool CKomodoAddress::SetString(const std::string& strAddress)
+bool CBitcoinAddress::SetString(const std::string& strAddress)
 {
     return SetString(strAddress.c_str());
 }
 
-CTxDestination CKomodoAddress::Get() const
+CTxDestination CBitcoinAddress::Get() const
 {
     if (!IsValid())
         return CNoDestination();
@@ -281,13 +296,13 @@ CTxDestination CKomodoAddress::Get() const
         return CNoDestination();
 }
 
-bool CKomodoAddress::GetIndexKey(uint160& hashBytes, int& type) const
+bool CBitcoinAddress::GetIndexKey(uint160& hashBytes, int& type, bool ccflag) const
 {
     if (!IsValid()) {
         return false;
     } else if (vchVersion == Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS)) {
         memcpy(&hashBytes, &vchData[0], 20);
-        type = 1;
+        ccflag ? type = 3 : type = 1;
         return true;
     } else if (vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS)) {
         memcpy(&hashBytes, &vchData[0], 20);
@@ -298,7 +313,7 @@ bool CKomodoAddress::GetIndexKey(uint160& hashBytes, int& type) const
     return false;
 }
 
-bool CKomodoAddress::GetKeyID(CKeyID& keyID) const
+bool CBitcoinAddress::GetKeyID(CKeyID& keyID) const
 {
     if (!IsValid() || vchVersion != Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS))
         return false;
@@ -308,7 +323,7 @@ bool CKomodoAddress::GetKeyID(CKeyID& keyID) const
     return true;
 }
 
-bool CKomodoAddress::GetKeyID_NoCheck(CKeyID& keyID) const
+bool CBitcoinAddress::GetKeyID_NoCheck(CKeyID& keyID) const
 {
     uint160 id;
     memcpy(&id, &vchData[0], 20);
@@ -316,12 +331,90 @@ bool CKomodoAddress::GetKeyID_NoCheck(CKeyID& keyID) const
     return true;
 }
 
-bool CKomodoAddress::IsScript() const
+bool CBitcoinAddress::IsScript() const
 {
     return IsValid() && vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS);
 }
 
-void CKomodoSecret::SetKey(const CKey& vchSecret)
+bool CCustomBitcoinAddress::Set(const CKeyID& id)
+{
+    SetData(base58Prefixes[0], &id, 20);
+    return true;
+}
+
+bool CCustomBitcoinAddress::Set(const CPubKey& key)
+{
+    CKeyID id = key.GetID();
+    SetData(base58Prefixes[0], &id, 20);
+    return true;
+}
+
+bool CCustomBitcoinAddress::Set(const CScriptID& id)
+{
+    SetData(base58Prefixes[1], &id, 20);
+    return true;
+}
+
+bool CCustomBitcoinAddress::Set(const CTxDestination& dest)
+{
+    return boost::apply_visitor(CBitcoinAddressVisitor(this), dest);
+}
+
+bool CCustomBitcoinAddress::IsValid() const
+{
+    bool fCorrectSize = vchData.size() == 20;
+    bool fKnownVersion = vchVersion == base58Prefixes[0] ||
+                         vchVersion == base58Prefixes[1];
+    return fCorrectSize && fKnownVersion;
+}
+
+bool CCustomBitcoinAddress::GetKeyID(CKeyID& keyID) const
+{
+    if (!IsValid() || vchVersion != base58Prefixes[0])
+        return false;
+    uint160 id;
+    memcpy(&id, &vchData[0], 20);
+    keyID = CKeyID(id);
+    return true;
+}
+
+CTxDestination CCustomBitcoinAddress::Get() const
+{
+    if (!IsValid())
+        return CNoDestination();
+    uint160 id;
+    memcpy(&id, &vchData[0], 20);
+    if (vchVersion == base58Prefixes[0])
+        return CKeyID(id);
+    else if (vchVersion == base58Prefixes[1])
+        return CScriptID(id);
+    else
+        return CNoDestination();
+}
+
+bool CCustomBitcoinAddress::GetIndexKey(uint160& hashBytes, int& type, bool ccflag) const
+{
+    if (!IsValid()) {
+        return false;
+    } else if (vchVersion == base58Prefixes[0]) {
+        memcpy(&hashBytes, &vchData[0], 20);
+        ccflag ? type = 3 : type = 1;
+        return true;
+    } else if (vchVersion == base58Prefixes[1]) {
+        memcpy(&hashBytes, &vchData[0], 20);
+        type = 2;
+        return true;
+    }
+
+    return false;
+}
+
+bool CCustomBitcoinAddress::IsScript() const
+{
+    return IsValid() && vchVersion == base58Prefixes[1];
+}
+
+void CBitcoinSecret::SetKey(const CKey& vchSecret)
 {
     assert(vchSecret.IsValid());
     SetData(Params().Base58Prefix(CChainParams::SECRET_KEY), vchSecret.begin(), vchSecret.size());
@@ -329,7 +422,7 @@ void CKomodoSecret::SetKey(const CKey& vchSecret)
         vchData.push_back(1);
 }
 
-CKey CKomodoSecret::GetKey()
+CKey CBitcoinSecret::GetKey()
 {
     CKey ret;
     assert(vchData.size() >= 32);
@@ -337,19 +430,19 @@ CKey CKomodoSecret::GetKey()
     return ret;
 }
 
-bool CKomodoSecret::IsValid() const
+bool CBitcoinSecret::IsValid() const
 {
     bool fExpectedFormat = vchData.size() == 32 || (vchData.size() == 33 && vchData[32] == 1);
     bool fCorrectVersion = vchVersion == Params().Base58Prefix(CChainParams::SECRET_KEY);
     return fExpectedFormat && fCorrectVersion;
 }
 
-bool CKomodoSecret::SetString(const char* pszSecret)
+bool CBitcoinSecret::SetString(const char* pszSecret)
 {
     return CBase58Data::SetString(pszSecret, 1) && IsValid();
 }
 
-bool CKomodoSecret::SetString(const std::string& strSecret)
+bool CBitcoinSecret::SetString(const std::string& strSecret)
 {
     return SetString(strSecret.c_str());
 }

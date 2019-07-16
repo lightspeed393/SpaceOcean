@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.komodofoundation.PirateOceanGUI";
+        return @"org.komodofoundation.KomodoOceanGUI";
     } else {
         return [self __bundleIdentifier];
     }

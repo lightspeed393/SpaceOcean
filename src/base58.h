@@ -3,6 +3,21 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+/******************************************************************************
+ * Copyright © 2014-2019 The SuperNET Developers.                             *
+ *                                                                            *
+ * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
+ * the top-level directory of this distribution for the individual copyright  *
+ * holder information and the developer policies on copyright and licensing.  *
+ *                                                                            *
+ * Unless otherwise agreed in a custom licensing agreement, no part of the    *
+ * SuperNET software, including this file may be copied, modified, propagated *
+ * or distributed except according to the terms contained in the LICENSE file *
+ *                                                                            *
+ * Removal or modification of this copyright notice is prohibited.            *
+ *                                                                            *
+ ******************************************************************************/
+
 /**
  * Why base-58 instead of standard base-64 encoding?
  * - Don't want 0OIl characters that look the same in some fonts and
@@ -11,8 +26,8 @@
  * - E-mail usually won't line-break if there's no punctuation to break at.
  * - Double-clicking selects the whole string as one word if it's all alphanumeric.
  */
-#ifndef KOMODO_BASE58_H
-#define KOMODO_BASE58_H
+#ifndef BITCOIN_BASE58_H
+#define BITCOIN_BASE58_H
 
 #include "chainparams.h"
 #include "key.h"
@@ -124,33 +139,58 @@ public:
  * Script-hash-addresses have version 5 (or 196 testnet).
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
  */
-class CKomodoAddress : public CBase58Data {
+class CBitcoinAddress : public CBase58Data {
 public:
-    bool Set(const CKeyID &id);
-    bool Set(const CPubKey &key);
-    bool Set(const CScriptID &id);
+    virtual bool Set(const CKeyID &id);
+    virtual bool Set(const CPubKey &key);
+    virtual bool Set(const CScriptID &id);
     bool Set(const CTxDestination &dest);
     bool IsValid() const;
     bool IsValid(const CChainParams &params) const;
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
-    CKomodoAddress() {}
-    CKomodoAddress(const CTxDestination &dest) { Set(dest); }
-    CKomodoAddress(const std::string& strAddress) { SetString(strAddress); }
-    CKomodoAddress(const char* pszAddress) { SetString(pszAddress); }
+    CBitcoinAddress() {}
+    CBitcoinAddress(const CTxDestination &dest) { Set(dest); }
+    CBitcoinAddress(const std::string& strAddress) { SetString(strAddress); }
+    CBitcoinAddress(const char* pszAddress) { SetString(pszAddress); }
 
     CTxDestination Get() const;
     bool GetKeyID(CKeyID &keyID) const;
     bool GetKeyID_NoCheck(CKeyID& keyID) const;
-    bool GetIndexKey(uint160& hashBytes, int& type) const;
+    bool GetIndexKey(uint160& hashBytes, int& type, bool ccflag) const;
+    bool IsScript() const;
+};
+
+class CCustomBitcoinAddress : public CBitcoinAddress {
+    std::vector<unsigned char> base58Prefixes[2];
+public:
+    bool Set(const CKeyID &id);
+    bool Set(const CPubKey &key);
+    bool Set(const CScriptID &id);
+    bool Set(const CTxDestination &dest);
+    bool IsValid() const;
+
+    CCustomBitcoinAddress() {}
+    CCustomBitcoinAddress(const CTxDestination &dest,uint8_t taddr,uint8_t pubkey_prefix,uint8_t script_prefix)
+    {
+        if (taddr!=0) base58Prefixes[0].push_back(taddr);
+        base58Prefixes[0].push_back(pubkey_prefix);
+        base58Prefixes[1].push_back(script_prefix);
+        Set(dest);        
+    }
+
+    CTxDestination Get() const;
+    bool GetKeyID(CKeyID &keyID) const;
+    bool GetKeyID_NoCheck(CKeyID& keyID) const;
+    bool GetIndexKey(uint160& hashBytes, int& type, bool ccflag) const;
     bool IsScript() const;
 };
 
 /**
  * A base58-encoded secret key
  */
-class CKomodoSecret : public CBase58Data
+class CBitcoinSecret : public CBase58Data
 {
 public:
     void SetKey(const CKey& vchSecret);
@@ -159,11 +199,11 @@ public:
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
-    CKomodoSecret(const CKey& vchSecret) { SetKey(vchSecret); }
-    CKomodoSecret() {}
+    CBitcoinSecret(const CKey& vchSecret) { SetKey(vchSecret); }
+    CBitcoinSecret() {}
 };
 
-template<typename K, int Size, CChainParams::Base58Type Type> class CKomodoExtKeyBase : public CBase58Data
+template<typename K, int Size, CChainParams::Base58Type Type> class CBitcoinExtKeyBase : public CBase58Data
 {
 public:
     void SetKey(const K &key) {
@@ -181,18 +221,18 @@ public:
         return ret;
     }
 
-    CKomodoExtKeyBase(const K &key) {
+    CBitcoinExtKeyBase(const K &key) {
         SetKey(key);
     }
 
-    CKomodoExtKeyBase(const std::string& strBase58c) {
+    CBitcoinExtKeyBase(const std::string& strBase58c) {
         SetString(strBase58c.c_str(), Params().Base58Prefix(Type).size());
     }
 
-    CKomodoExtKeyBase() {}
+    CBitcoinExtKeyBase() {}
 };
 
-typedef CKomodoExtKeyBase<CExtKey, 74, CChainParams::EXT_SECRET_KEY> CKomodoExtKey;
-typedef CKomodoExtKeyBase<CExtPubKey, 74, CChainParams::EXT_PUBLIC_KEY> CKomodoExtPubKey;
+typedef CBitcoinExtKeyBase<CExtKey, 74, CChainParams::EXT_SECRET_KEY> CBitcoinExtKey;
+typedef CBitcoinExtKeyBase<CExtPubKey, 74, CChainParams::EXT_PUBLIC_KEY> CBitcoinExtPubKey;
 
 #endif // BITCOIN_BASE58_H

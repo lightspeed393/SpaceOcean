@@ -8,7 +8,7 @@
 #include <QFrame>
 #include <QMap>
 
-class PirateOceanGUI;
+class KomodoOceanGUI;
 class ClientModel;
 class PlatformStyle;
 class SendCoinsRecipient;
@@ -21,9 +21,9 @@ QT_END_NAMESPACE
 
 /**
  * A container for embedding all wallet-related
- * controls into PirateOceanGUI. The purpose of this class is to allow future
+ * controls into KomodoOceanGUI. The purpose of this class is to allow future
  * refinements of the wallet controls with minimal need for further
- * modifications to PirateOceanGUI, thus greatly simplifying merges while
+ * modifications to KomodoOceanGUI, thus greatly simplifying merges while
  * reducing the risk of breaking top-level stuff.
  */
 class WalletFrame : public QFrame
@@ -31,7 +31,7 @@ class WalletFrame : public QFrame
     Q_OBJECT
 
 public:
-    explicit WalletFrame(const PlatformStyle *platformStyle, PirateOceanGUI *_gui = 0);
+    explicit WalletFrame(const PlatformStyle *platformStyle, KomodoOceanGUI *_gui = 0);
     ~WalletFrame();
 
     void setClientModel(ClientModel *clientModel);
@@ -51,7 +51,7 @@ Q_SIGNALS:
 
 private:
     QStackedWidget *walletStack;
-    PirateOceanGUI *gui;
+    KomodoOceanGUI *gui;
     ClientModel *clientModel;
     QMap<QString, WalletView*> mapWalletViews;
 

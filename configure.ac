@@ -6,21 +6,21 @@ define(_CLIENT_VERSION_REVISION, 15)
 define(_CLIENT_VERSION_BUILD, 26)
 define(_ZC_BUILD_VAL, m4_if(m4_eval(_CLIENT_VERSION_BUILD < 25), 1, m4_incr(_CLIENT_VERSION_BUILD), m4_eval(_CLIENT_VERSION_BUILD < 50), 1, m4_eval(_CLIENT_VERSION_BUILD - 24), m4_eval(_CLIENT_VERSION_BUILD == 50), 1, , m4_eval(_CLIENT_VERSION_BUILD - 50)))
 define(_CLIENT_VERSION_SUFFIX, m4_if(m4_eval(_CLIENT_VERSION_BUILD < 25), 1, _CLIENT_VERSION_REVISION-beta$1, m4_eval(_CLIENT_VERSION_BUILD < 50), 1, _CLIENT_VERSION_REVISION-rc$1, m4_eval(_CLIENT_VERSION_BUILD == 50), 1, _CLIENT_VERSION_REVISION, _CLIENT_VERSION_REVISION-$1)))
-define(_CLIENT_VERSION_IS_RELEASE, false)
+define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2019)
-define(_COPYRIGHT_HOLDERS, "%s")
-define(_COPYRIGHT_HOLDERS_SUBSTITUTION, "ComputerGenie")
+define(_COPYRIGHT_HOLDERS, "The %s developers")
+define(_COPYRIGHT_HOLDERS_SUBSTITUTION, "Ocean and Decker")
 
-AC_INIT([Pirate],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_SUFFIX(_ZC_BUILD_VAL)],[https://github.com/zcash/zcash/issues],[zcash])
+AC_INIT([PirateOcean],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_SUFFIX(_ZC_BUILD_VAL)],[https://github.com/zcash/zcash/issues],[zcash])
 AC_CONFIG_SRCDIR([src/main.cpp])
-AC_CONFIG_HEADERS([src/config/komodo-config.h])
+AC_CONFIG_HEADERS([src/config/bitcoin-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
-BITCOIN_DAEMON_NAME=Pirated
-BITCOIN_GUI_NAME=Pirate-qt
-BITCOIN_CLI_NAME=Pirate-cli
-BITCOIN_TX_NAME=Pirate-tx
+BITCOIN_DAEMON_NAME=komodod
+BITCOIN_GUI_NAME=pirate-qt
+BITCOIN_CLI_NAME=komodo-cli
+BITCOIN_TX_NAME=komodo-tx
 
 AC_CANONICAL_HOST
 
@@ -413,7 +413,7 @@ AC_C_BIGENDIAN
 dnl Check for pthread compile/link requirements
 AX_PTHREAD
 
-# The following macro will add the necessary defines to komodo-config.h, but
+# The following macro will add the necessary defines to bitcoin-config.h, but
 # they also need to be passed down to any subprojects. Pull the results out of
 # the cache and add them to CPPFLAGS.
 AC_SYS_LARGEFILE
@@ -867,7 +867,9 @@ AX_CHECK_COMPILE_FLAG([-fwrapv],[CXXFLAGS="$CXXFLAGS -fwrapv"])
 AX_CHECK_COMPILE_FLAG([-fno-strict-aliasing],[CXXFLAGS="$CXXFLAGS -fno-strict-aliasing"])
 AX_CHECK_COMPILE_FLAG([-Wno-builtin-declaration-mismatch],[CXXFLAGS="$CXXFLAGS -Wno-builtin-declaration-mismatch"],,[[$CXXFLAG_WERROR]])
 
-if test x$TARGET_OS != xwindows; then
+if test x$TARGET_OS = xdarwin; then
+  LIBZCASH_LIBS="-lgmp -lgmpxx -lboost_system-mt -lcrypto -lsodium $RUST_LIBS"
+elif test x$TARGET_OS != xwindows; then
   LIBZCASH_LIBS="-lgmp -lgmpxx -lboost_system -lcrypto -lsodium $RUST_LIBS"
 else
   LIBZCASH_LIBS="-lgmp -lgmpxx -lboost_system-mt-s -lcrypto -lsodium $RUST_LIBS"
@@ -1087,7 +1089,7 @@ unset PKG_CONFIG_LIBDIR
 PKG_CONFIG_LIBDIR="$PKGCONFIG_LIBDIR_TEMP"
 
 ac_configure_args="${ac_configure_args} --disable-shared --with-pic --with-bignum=no --enable-module-recovery"
-AC_CONFIG_SUBDIRS([src/secp256k1 src/snark src/univalue src/cryptoconditions])
+AC_CONFIG_SUBDIRS([src/secp256k1 src/snark src/univalue src/cryptoconditions src/cc])
 
 AC_OUTPUT
 

@@ -3,14 +3,14 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/komodo-config.h"
+#include "config/bitcoin-config.h"
 #endif
 
 #include "zaddressbookpage.h"
 #include "ui_zaddressbookpage.h"
 
 #include "zaddresstablemodel.h"
-#include "PirateOceanGUI.h"
+#include "komodooceangui.h"
 #include "csvmodelwriter.h"
 #include "editzaddressdialog.h"
 #include "guiutil.h"

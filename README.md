@@ -1,53 +1,93 @@
-## PirateOcean (pirate-qt) ##
+# PirateOcean (pirate-qt) #
 
 Pirate-Qt (PirateOcean) is a world-first Qt native wallet for ARRR ([Pirate](https://pirate.black/)). It's available for three OS platforms - Windows, Linux, MacOS.
 
-**NB!** This repo has **three** branches:
+**NB!** Earlier (till 23.05.2019) we had three branches:
 
 
-- [WinOS](../../tree/WinOS) for Windows
-- [Linux](../../tree/Linux) for Linux
-- [MacOS](../../tree/MacOS) for MacOS
+- [WinOS](../../tree/WinOS) for Windows.
+- [Linux](../../tree/Linux) for Linux.
+- [MacOS](../../tree/MacOS) for MacOS.
 
-Visit [#wallet-development](https://discord.gg/6bMdb5P) channel in Pirate Discord for more information.
+Now we have only one branch [static](../../tree/static) for build static Pirate-Qt binaries from one branch for each OS.
 
-### How to build? ###
+Use the following scripts to build:
 
-Following dependencies are needed:
+- Linux: `build-linux.sh` (native build)
+- Windows: `build-win.sh` (cross-compilation for Win)
+- MacOS: `build-mac.sh` (native build)
 
+## How to build? ##
+
+#### Linux
+
+```shell
+#The following packages are needed:
+sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget libcurl4-gnutls-dev bsdmainutils automake curl
 ```
-sudo apt-get install build-essential pkg-config libcurl3-gnutls-dev libc6-dev libevent-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python zlib1g-dev wget bsdmainutils automake libboost-all-dev libssl-dev libprotobuf-dev protobuf-compiler libqt4-dev libqrencode-dev libdb++-dev ntp ntpdate
 
-sudo apt-get install libcurl4-gnutls-dev 
+```shell
+git clone https://github.com/TheComputerGenie/PirateOcean --branch static --single-branch
+cd pirate
+./zcutil/fetch-params.sh
+# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
+./zcutil/build-linux.sh -j8
+#This can take some time.
 ```
 
-To build Qt wallet execute first:
 
+#### OSX
+Ensure you have [brew](https://brew.sh) and Command Line Tools installed.
+```shell
+# Install brew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Install Xcode, opens a pop-up window to install CLT without installing the entire Xcode package
+xcode-select --install 
+# Update brew and install dependencies
+brew update
+brew upgrade
+brew tap discoteq/discoteq; brew install flock
+brew install autoconf autogen automake
+brew install gcc@6
+brew install binutils
+brew install protobuf
+brew install coreutils
+brew install wget
+# Clone the Pirate repo
+git clone https://github.com/TheComputerGenie/PirateOcean --branch static --single-branch
+# Change master branch to other branch you wish to compile
+cd pirate
+./zcutil/fetch-params.sh
+# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
+./zcutil/build-mac.sh -j8
+# This can take some time.
 ```
-sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
+
+#### Windows
+Use a debian cross-compilation setup with mingw for windows and run:
+```shell
+sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget libcurl4-gnutls-dev bsdmainutils automake curl cmake mingw-w64
+curl https://sh.rustup.rs -sSf | sh
+source $HOME/.cargo/env
+rustup target add x86_64-pc-windows-gnu
+
+sudo update-alternatives --config x86_64-w64-mingw32-gcc
+# (configure to use POSIX variant)
+sudo update-alternatives --config x86_64-w64-mingw32-g++
+# (configure to use POSIX variant)
+
+git clone https://github.com/TheComputerGenie/PirateOcean --branch static --single-branch
+cd pirate
+./zcutil/fetch-params.sh
+# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
+./zcutil/build-win.sh -j8
+#This can take some time.
 ```
+**Pirate QT is experimental and a work-in-progress.** Use at your own risk.
 
-Aslo, if you issued troubles with dependencies, may be this [doc](https://github.com/bitcoin/bitcoin/blob/master/doc/build-unix.md) will be useful.
 
-To build (Ubuntu 16.x / 18.x):
 
-```
-cd ~
-git clone https://github.com/TheComputerGenie/PirateOcean.git -b Linux
-cd PirateOcean
-./build.sh
-```
-For future runs, simply `./PirateWallet`
-
-If during build you get error like "fatal error: sodium.h: No such file or directory compilation terminated.", try to install libsodium-dev:
-
-```
-sudo apt install libsodium-dev
-```
-### Biuld Notes ###
-`build.sh` file builds and runs PirateWallet, if you do not want it to auto run then comment out `./PirateWallet`
-
-### Developers of Qt wallet ###
-- Main Pirate developer: [TheComputerGenie](https://github.com/TheComputerGenie)
-- Main developer: [Ocean](https://github.com/ip-gpu)
-- IT Expert / Sysengineer: [Decker](https://github.com/DeckerSU) 
+## Developers of Qt wallet ##
+- Pirate developer: [@ComputerGenie](https://github.com/TheComputerGenie)
+- Main developer: [@Ocean](https://pirate-platform.slack.com/team/U8BRG09EV)
+- IT Expert / Sysengineer: [@Decker](https://pirate-platform.slack.com/messages/D5UHJMCJ3)

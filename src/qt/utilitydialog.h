@@ -8,7 +8,7 @@
 #include <QDialog>
 #include <QObject>
 
-class PirateOceanGUI;
+class KomodoOceanGUI;
 
 namespace Ui {
     class HelpMessageDialog;
@@ -42,7 +42,7 @@ class ShutdownWindow : public QWidget
 
 public:
     explicit ShutdownWindow(QWidget *parent=0, Qt::WindowFlags f=0);
-    static QWidget *showShutdownWindow(PirateOceanGUI *window);
+    static QWidget *showShutdownWindow(KomodoOceanGUI *window);
 
 protected:
     void closeEvent(QCloseEvent *event);

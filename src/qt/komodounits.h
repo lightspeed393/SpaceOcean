@@ -56,9 +56,9 @@ public:
      */
     enum Unit
     {
-        ARRR,
-        mARRR,
-        uARRR
+        KMD,
+        mKMD,
+        uKMD
     };
 
     enum SeparatorStyle

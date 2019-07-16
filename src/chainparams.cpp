@@ -3,6 +3,21 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+/******************************************************************************
+ * Copyright © 2014-2019 The SuperNET Developers.                             *
+ *                                                                            *
+ * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
+ * the top-level directory of this distribution for the individual copyright  *
+ * holder information and the developer policies on copyright and licensing.  *
+ *                                                                            *
+ * Unless otherwise agreed in a custom licensing agreement, no part of the    *
+ * SuperNET software, including this file may be copied, modified, propagated *
+ * or distributed except according to the terms contained in the LICENSE file *
+ *                                                                            *
+ * Removal or modification of this copyright notice is prohibited.            *
+ *                                                                            *
+ ******************************************************************************/
+
 #include "key_io.h"
 #include "main.h"
 #include "crypto/equihash.h"
@@ -76,12 +91,8 @@ static CBlock CreateGenesisBlock(uint32_t nTime, const uint256& nNonce, const st
  */
 void *chainparams_commandline(void *ptr);
 #include "komodo_defs.h"
-
-extern char ASSETCHAINS_SYMBOL[KOMODO_ASSETCHAIN_MAXLEN];
-extern uint16_t ASSETCHAINS_P2PPORT,ASSETCHAINS_RPCPORT;
-extern uint32_t ASSETCHAIN_INIT, ASSETCHAINS_MAGIC, ASSETCHAINS_ALGO, ASSETCHAINS_EQUIHASH;
-extern int32_t VERUS_BLOCK_POSUNITS, ASSETCHAINS_LWMAPOS, ASSETCHAINS_SAPLING, ASSETCHAINS_OVERWINTER;
-extern uint64_t ASSETCHAINS_SUPPLY, ASSETCHAINS_VERUSHASH;
+int32_t ASSETCHAINS_BLOCKTIME = 60;
+uint64_t ASSETCHAINS_NK[2];
 
 const arith_uint256 maxUint = UintToArith256(uint256S("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"));
 
@@ -92,7 +103,7 @@ public:
 
         strNetworkID = "main";
         strCurrencyUnits = "KMD";
-        bip44CoinType = 141; // As registered in https://github.com/satoshilabs/slips/blob/master/slip-0044.md
+        bip44CoinType = 141; // As registered in https://github.com/satoshilabs/slips/blob/master/slip-0044.md 
         consensus.fCoinbaseMustBeProtected = false; // true this is only true wuth Verus and enforced after block 12800
         consensus.nSubsidySlowStartInterval = 20000;
         consensus.nSubsidyHalvingInterval = 840000;
@@ -230,15 +241,16 @@ void CChainParams::SetCheckpointData(CChainParams::CCheckpointData checkpointDat
         return(_OLD_MAX_BLOCK_SIZE);
     else return(_MAX_BLOCK_SIZE);
  }
+
 */
 
 int32_t MAX_BLOCK_SIZE(int32_t height)
 {
     int32_t saplinght = mainParams.consensus.vUpgrades[Consensus::UPGRADE_SAPLING].nActivationHeight;
-    //fprintf(stderr,"MAX_BLOCK_SIZE %d vs. %d\n",height,mainParams.consensus.vUpgrades[Consensus::UPGRADE_SAPLING].nActivationHeight);
+    //LogPrintf("MAX_BLOCK_SIZE %d vs. %d\n",height,mainParams.consensus.vUpgrades[Consensus::UPGRADE_SAPLING].nActivationHeight);
     if ( height <= 0 || (saplinght > 0 && height >= saplinght) )
     {
-        return(4096 * 1024);
+        return(_MAX_BLOCK_SIZE);
     }
     else return(2000000);
 }
@@ -265,7 +277,20 @@ void *chainparams_commandline(void *ptr)
     //LogPrintf(">>>>>>>> port.%u\n",ASSETCHAINS_P2PPORT);
     if ( ASSETCHAINS_SYMBOL[0] != 0 )
     {
+        if ( ASSETCHAINS_BLOCKTIME != 60 )
+        {
+            mainParams.consensus.nMaxFutureBlockTime = 7 * ASSETCHAINS_BLOCKTIME; // 7 blocks
+            mainParams.consensus.nPowTargetSpacing = ASSETCHAINS_BLOCKTIME;
+        }
         mainParams.SetDefaultPort(ASSETCHAINS_P2PPORT);
+        if ( ASSETCHAINS_NK[0] != 0 && ASSETCHAINS_NK[1] != 0 )
+        {
+            //BOOST_STATIC_ASSERT(equihash_parameters_acceptable(ASSETCHAINS_NK[0], ASSETCHAINS_NK[1]));
+            mainParams.SetNValue(ASSETCHAINS_NK[0]);
+            mainParams.SetKValue(ASSETCHAINS_NK[1]);
+        }
+        if ( KOMODO_TESTNODE != 0 )
+            mainParams.SetMiningRequiresPeers(false);
         if ( ASSETCHAINS_RPCPORT == 0 )
             ASSETCHAINS_RPCPORT = ASSETCHAINS_P2PPORT + 1;
         mainParams.pchMessageStart[0] = ASSETCHAINS_MAGIC & 0xff;
@@ -273,14 +298,21 @@ void *chainparams_commandline(void *ptr)
         mainParams.pchMessageStart[2] = (ASSETCHAINS_MAGIC >> 16) & 0xff;
         mainParams.pchMessageStart[3] = (ASSETCHAINS_MAGIC >> 24) & 0xff;
         LogPrintf(">>>>>>>>>> %s: p2p.%u rpc.%u magic.%08x %u %u coins\n",ASSETCHAINS_SYMBOL,ASSETCHAINS_P2PPORT,ASSETCHAINS_RPCPORT,ASSETCHAINS_MAGIC,ASSETCHAINS_MAGIC,(uint32_t)ASSETCHAINS_SUPPLY);
-
-        if (ASSETCHAINS_ALGO != ASSETCHAINS_EQUIHASH)
+        if (ASSETCHAINS_ALGO == ASSETCHAINS_VERUSHASH) 
         {
             // this is only good for 60 second blocks with an averaging window of 45. for other parameters, use:
-            // nLwmaAjustedWeight = (N+1)/2 * (0.9989^(500/nPowAveragingWindow)) * nPowTargetSpacing 
+            // nLwmaAjustedWeight = (N+1)/2 * (0.9989^(500/nPowAveragingWindow)) * nPowTargetSpacing
             mainParams.consensus.nLwmaAjustedWeight = 1350;
             mainParams.consensus.nPowAveragingWindow = 45;
             mainParams.consensus.powAlternate = uint256S("00000f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f");
+        }
+        else if (ASSETCHAINS_ALGO == ASSETCHAINS_VERUSHASHV1_1)
+        {
+            // this is only good for 60 second blocks with an averaging window of 45. for other parameters, use:
+            // nLwmaAjustedWeight = (N+1)/2 * (0.9989^(500/nPowAveragingWindow)) * nPowTargetSpacing
+            mainParams.consensus.nLwmaAjustedWeight = 1350;
+            mainParams.consensus.nPowAveragingWindow = 45;
+            mainParams.consensus.powAlternate = uint256S("0000000f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f");
         }
 
         if (ASSETCHAINS_LWMAPOS != 0)
@@ -653,7 +685,7 @@ public:
         BOOST_STATIC_ASSERT(equihash_parameters_acceptable(N, K));
         nEquihashN = N;
         nEquihashK = K;
-        
+
         genesis = CreateGenesisBlock(
             1296688602,
             uint256S("0x0000000000000000000000000000000000000000000000000000000000000009"),

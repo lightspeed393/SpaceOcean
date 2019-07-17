@@ -1,6 +1,6 @@
 *.tar.gz
 *.deb
-*.exe
+
 src/bitcoin
 src/zcashd
 src/zcash-cli

@@ -176,7 +176,7 @@ void ZAddressBookPage::onCopyZSendManyFromAction()
     if(!selection.isEmpty())
     {
         QString commandTemplate;
-        commandTemplate = QString("z_sendmany %1 '[{\"address\":\"%2\",\"amount\":\"%3\"}]'").arg(selection.at(0).data(Qt::DisplayRole).toString(),QString("YOUR_Z_OR_T_ADDRESS_TO"),QString::number(0,'f',8));
+        commandTemplate = QString("z_sendmany %1 '[{\"address\":\"%2\",\"amount\":\"%3\"}]'").arg(selection.at(0).data(Qt::DisplayRole).toString(),QString("YOUR_Z_ADDRESS_TO"),QString::number(0,'f',8));
         GUIUtil::setClipboard(commandTemplate);
     }
 }
@@ -187,7 +187,7 @@ void ZAddressBookPage::onCopyZSendManyToAction()
     if(!selection.isEmpty())
     {
         QString commandTemplate;
-        commandTemplate = QString("z_sendmany %1 '[{\"address\":\"%2\",\"amount\":\"%3\"}]'").arg(QString("YOUR_Z_OR_T_ADDRESS_FROM"),selection.at(0).data(Qt::DisplayRole).toString(),QString::number(0,'f',8));
+        commandTemplate = QString("z_sendmany %1 '[{\"address\":\"%2\",\"amount\":\"%3\"}]'").arg(QString("YOUR_Z_ADDRESS_FROM"),selection.at(0).data(Qt::DisplayRole).toString(),QString::number(0,'f',8));
         GUIUtil::setClipboard(commandTemplate);
     }
 }

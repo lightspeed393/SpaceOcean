@@ -28,7 +28,7 @@ sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoco
 
 ```shell
 git clone https://github.com/TheComputerGenie/PirateOcean --branch static --single-branch
-cd pirate
+cd PirateOcean
 ./zcutil/fetch-params.sh
 # -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
 ./zcutil/build-linux.sh -j8
@@ -56,7 +56,7 @@ brew install wget
 # Clone the Pirate repo
 git clone https://github.com/TheComputerGenie/PirateOcean --branch static --single-branch
 # Change master branch to other branch you wish to compile
-cd pirate
+cd PirateOcean
 ./zcutil/fetch-params.sh
 # -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
 ./zcutil/build-mac.sh -j8
@@ -77,7 +77,7 @@ sudo update-alternatives --config x86_64-w64-mingw32-g++
 # (configure to use POSIX variant)
 
 git clone https://github.com/TheComputerGenie/PirateOcean --branch static --single-branch
-cd pirate
+cd PirateOcean
 ./zcutil/build-win.sh -j8
 # -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
 #This can take some time and you'll need to run zcutil/fetch-params.bat on the Win system.

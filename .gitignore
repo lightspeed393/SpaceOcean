@@ -130,4 +130,4 @@ src/config/komodo-config.h.in
 src/komodod
 src/qt/komodo-qt
 
-
+src/qt/locale/*.qm

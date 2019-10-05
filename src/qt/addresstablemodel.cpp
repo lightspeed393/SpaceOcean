@@ -23,7 +23,7 @@ const QString AddressTableModel::Receive = "R";
 static int column_alignments[] = {
         Qt::AlignCenter|Qt::AlignVCenter, /* mine */
         Qt::AlignCenter|Qt::AlignVCenter, /* watchonly */
-        Qt::AlignRight|Qt::AlignVCenter,   /* balance */
+        //Qt::AlignRight|Qt::AlignVCenter,   /* balance */
         Qt::AlignLeft|Qt::AlignVCenter,   /* label */
         Qt::AlignLeft|Qt::AlignVCenter    /* address */
     };
@@ -61,7 +61,7 @@ struct AddressTableEntryLessThan
     }
 };
 
-extern CAmount getBalanceTaddr(std::string transparentAddress, int minDepth=1, bool ignoreUnspendable=true);
+//extern CAmount getBalanceTaddr(std::string transparentAddress, int minDepth=1, bool ignoreUnspendable=true);
 
 /* Determine address type from address purpose */
 static AddressTableEntry::Type translateTransactionType(const QString &strPurpose, bool isMine)
@@ -179,7 +179,7 @@ public:
 AddressTableModel::AddressTableModel(const PlatformStyle *_platformStyle, CWallet *_wallet, WalletModel *parent) :
     QAbstractTableModel(parent),walletModel(parent),wallet(_wallet),priv(0),platformStyle(_platformStyle)
 {
-    columns << tr("Mine") << tr("Watch-only") << tr("Balance") << tr("Label") << tr("Address");
+    columns << tr("Mine") << tr("Watch-only") << tr("Label") << tr("Address");
     priv = new AddressTablePriv(wallet, this);
     priv->refreshAddressTable();
 }
@@ -266,11 +266,11 @@ QVariant AddressTableModel::data(const QModelIndex &index, int role) const
             }
         case Address:
             return rec->address;
-        case Balance:
+        /*case Balance:
             {
                 CAmount nBalance = getBalanceTaddr(rec->address.toStdString(), 1, false);
                 return QString::number(ValueFromAmount(nBalance).get_real(),'f',8);
-            }
+            }*/
         }
     }
     else if (role == Qt::FontRole)

@@ -2,13 +2,6 @@
 
 Pirate-Qt (PirateOcean) is a world-first Qt native wallet for ARRR ([Pirate](https://pirate.black/)). It's available for three OS platforms - Windows, Linux, MacOS.
 
-**NB!** Earlier (till 23.05.2019) we had three branches:
-
-
-- [WinOS](../../tree/WinOS) for Windows.
-- [Linux](../../tree/Linux) for Linux.
-- [MacOS](../../tree/MacOS) for MacOS.
-
 **Now we have only one branch** [static](../../tree/static) for building static Pirate-Qt binaries, rather than one branch for each OS.
 
 Use the following scripts to build:

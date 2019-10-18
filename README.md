@@ -1,8 +1,11 @@
 # PirateOcean (pirate-qt) #
 
-Pirate-Qt (PirateOcean) is a world-first Qt native wallet for ARRR ([Pirate](https://pirate.black/)). It's available for three OS platforms - Windows, Linux, MacOS.
+Pirate-Qt (PirateOcean) is a world's first Qt native wallet for ARRR ([Pirate](https://pirate.black/)). It's available for three OS platforms - Windows, Linux, MacOS.
 
-**Now we have only one branch** [static](../../tree/static) for building static Pirate-Qt binaries, rather than one branch for each OS.
+**NB!** We have three branches:
+- [master](../../tree/master) for building stable Pirate-Qt binaries.
+- [beta](../../tree/beta) for partially tested changes.
+- [dev](../../tree/dev) for current work in progress.
 
 Use the following scripts to build:
 
@@ -20,7 +23,7 @@ sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoco
 ```
 
 ```shell
-git clone https://github.com/PirateNetwork/PirateOcean --branch static --single-branch
+git clone https://github.com/PirateNetwork/PirateOcean --branch master --single-branch
 cd PirateOcean
 ./zcutil/fetch-params.sh
 # -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
@@ -43,8 +46,6 @@ brew tap discoteq/discoteq; brew install flock
 brew install autoconf autogen automake
 brew install gcc@6
 brew install binutils
-brew install protobuf
-brew install coreutils
 brew install wget
 # Clone the Pirate repo
 git clone https://github.com/PirateNetwork/PirateOcean --branch static --single-branch

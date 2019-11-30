@@ -106,7 +106,7 @@ noinst_PROGRAMS =
 TESTS =
 
 if BUILD_KOMODOD
-#  temporary disable komodod build ... 
+#  temporary disable komodod build ...
 #  bin_PROGRAMS += komodod
 endif
 
@@ -409,6 +409,10 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/verus_hash.h \
   crypto/verus_hash.cpp
 
+if EXPERIMENTAL_ASM
+crypto_libbitcoin_crypto_a_SOURCES += crypto/sha256_sse4.cpp
+endif
+
 if ENABLE_MINING
 EQUIHASH_TROMP_SOURCES = \
 	pow/tromp/equi_miner.h \
@@ -642,7 +646,7 @@ libzcash_a_CPPFLAGS += -DMONTGOMERY_OUTPUT
 
 # zcashconsensus library #
 if BUILD_KOMODO_LIBS
-include_HEADERS = 
+include_HEADERS =
 libzcashconsensus_la_SOURCES = \
   crypto/equihash.cpp \
   crypto/hmac_sha512.cpp \

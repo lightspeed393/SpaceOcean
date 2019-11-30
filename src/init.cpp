@@ -791,9 +791,9 @@ static void ZC_LoadParams(
         boost::filesystem::exists(sprout_groth16)
     )) {
         uiInterface.ThreadSafeMessageBox(strprintf(
-            _("Cannot find the starter Zcash network parameters in the following directory:\n"
+            _("Cannot find the Zcash network parameters in the following directory:\n"
               "%s\n"
-              "Please run 'fetch-params.sh' or 'fetch-params.bat' Depending on your OS and then restart."),
+              "Please run 'zcash-fetch-params' or './zcutil/fetch-params.sh' and then restart."),
                 ZC_GetParamsDir()),
             "", CClientUIInterface::MSG_ERROR);
         StartShutdown();
@@ -1234,11 +1234,13 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     }
 
     // Initialize elliptic curve code
+    std::string sha256_algo = SHA256AutoDetect();
+    LogPrintf("Using the '%s' SHA256 implementation\n", sha256_algo);
     ECC_Start();
     globalVerifyHandle.reset(new ECCVerifyHandle());
 
     // set the hash algorithm to use for this chain
-    // Again likely better solution here, than using long IF ELSE. 
+    // Again likely better solution here, than using long IF ELSE.
     extern uint32_t ASSETCHAINS_ALGO, ASSETCHAINS_VERUSHASH, ASSETCHAINS_VERUSHASHV1_1;
     CVerusHash::init();
     CVerusHashV2::init();
@@ -1658,7 +1660,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                     strLoadError = _("You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain");
                     break;
                 }
-                
+
                 if ( ASSETCHAINS_CC != 0 && KOMODO_SNAPSHOT_INTERVAL != 0 && chainActive.Height() >= KOMODO_SNAPSHOT_INTERVAL )
                 {
                     if ( !komodo_dailysnapshot(chainActive.Height()) )
@@ -1934,7 +1936,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
         uiInterface.InitMessage(_("Activating best chain..."));
         // scan for better chains in the block chain database, that are not yet connected in the active best chain
         CValidationState state;
-        if ( !ActivateBestChain(true,state)) 
+        if ( !ActivateBestChain(true,state))
         {
          strErrors << "Failed to connect best block";
          LogPrintf("Failed to connect best block");
@@ -1982,7 +1984,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     // Start the thread that notifies listeners of transactions that have been
     // recently added to the mempool.
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "txnotify", &ThreadNotifyRecentlyAdded));
-    
+
     if (GetBoolArg("-listenonion", DEFAULT_LISTEN_ONION))
         StartTorControl(threadGroup, scheduler);
 

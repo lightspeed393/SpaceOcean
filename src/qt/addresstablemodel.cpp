@@ -23,7 +23,6 @@ const QString AddressTableModel::Receive = "R";
 static int column_alignments[] = {
         Qt::AlignCenter|Qt::AlignVCenter, /* mine */
         Qt::AlignCenter|Qt::AlignVCenter, /* watchonly */
-        //Qt::AlignRight|Qt::AlignVCenter,   /* balance */
         Qt::AlignLeft|Qt::AlignVCenter,   /* label */
         Qt::AlignLeft|Qt::AlignVCenter    /* address */
     };
@@ -60,8 +59,6 @@ struct AddressTableEntryLessThan
         return a < b.address;
     }
 };
-
-//extern CAmount getBalanceTaddr(std::string transparentAddress, int minDepth=1, bool ignoreUnspendable=true);
 
 /* Determine address type from address purpose */
 static AddressTableEntry::Type translateTransactionType(const QString &strPurpose, bool isMine)
@@ -266,11 +263,6 @@ QVariant AddressTableModel::data(const QModelIndex &index, int role) const
             }
         case Address:
             return rec->address;
-        /*case Balance:
-            {
-                CAmount nBalance = getBalanceTaddr(rec->address.toStdString(), 1, false);
-                return QString::number(ValueFromAmount(nBalance).get_real(),'f',8);
-            }*/
         }
     }
     else if (role == Qt::FontRole)

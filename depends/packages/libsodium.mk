@@ -13,6 +13,15 @@ define $(package)_set_vars
 endef
 endif
 
+define $(package)_set_vars
+  $(package)_build_env=DO_NOT_UPDATE_CONFIG_SCRIPTS=1
+  ifeq ($(build_os),darwin)
+  $(package)_build_env+=MACOSX_DEPLOYMENT_TARGET="10.11"
+  $(package)_cc=clang
+  $(package)_cxx=clang++
+  endif
+endef
+
 define $(package)_preprocess_cmds
   cd $($(package)_build_subdir); ./autogen.sh
 endef

@@ -1,9 +1,9 @@
 rust_packages := rust librustzcash
 
 ifeq ($(build_os),darwin)
-zcash_packages := libsnark libgmp libsodium utfcpp
+zcash_packages := libsnark libgmp libsodium
 else
-	zcash_packages := libgmp libsodium utfcpp
+	zcash_packages := libgmp libsodium
 endif
 
 qt_native_packages = native_protobuf

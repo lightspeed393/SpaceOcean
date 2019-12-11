@@ -28,7 +28,6 @@ public:
     enum ColumnIndex {
         isMine = 0,
         isWatchOnly = 1,
-        //Balance = 2,
         Label = 2,   /**< User specified label */
         Address = 3  /**< Komodo address */
     };

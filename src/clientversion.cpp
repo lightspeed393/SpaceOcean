@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright Â© 2014-2019 The SuperNET Developers.                             *
+ * Copyright © 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -67,7 +67,7 @@ const std::string CLIENT_NAME = GetArg("-clientname", "MagicBean");
 //! git will put "#define GIT_ARCHIVE 1" on the next line inside archives. 
 #define GIT_ARCHIVE 1
 #ifdef GIT_ARCHIVE
-#define GIT_COMMIT_ID "20"
+#define GIT_COMMIT_ID "28"
 #define GIT_COMMIT_DATE "Sun, 16 Jun 2019 00:00:00 +0500"
 #endif
 

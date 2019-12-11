@@ -1,17 +1,27 @@
-# PirateOcean (pirate-qt) #
+# KomodoOcean (komodo-qt) #
 
-Pirate-Qt (PirateOcean) is a world's first Qt native wallet for ARRR ([Pirate](https://pirate.black/)). It's available for three OS platforms - Windows, Linux, MacOS.
+![](./doc/images/komodo-qt-promo-10.png)
 
-**NB!** We have three branches:
-- [master](../../tree/master) for building stable Pirate-Qt binaries.
-- [beta](../../tree/beta) for partially tested changes.
-- [dev](../../tree/dev) for current work in progress.
+Komodo-Qt (KomodoOcean) is a world-first Qt native wallet for KMD ([Komodo](https://komodoplatform.com/)) and all of assetchains. It's available for three OS platforms - Windows, Linux, MacOS.
+
+**NB!** Earlier (till 23.05.2019) we had three branches:
+
+
+- [master](../../tree/master) for Windows.
+- [Linux](../../tree/Linux) for Linux.
+- [MacOS](../../tree/MacOS) for MacOS.
+
+Now we have only one branch [static](../../tree/static) for build static Komodo-Qt binaries from one branch for each OS.
 
 Use the following scripts to build:
 
 - Linux: `build-linux.sh` (native build)
 - Windows: `build-win.sh` (cross-compilation for Win)
 - MacOS: `build-mac.sh` (native build)
+
+`master` branch still can be used to build Windows version of Komodo-Qt with MSVC compiler.
+
+Visit [#wallet-ocean-qt](https://discord.gg/U5WWaJR) channel in Komodo Discord for more information.
 
 ## How to build? ##
 
@@ -23,8 +33,8 @@ sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoco
 ```
 
 ```shell
-git clone https://github.com/PirateNetwork/PirateOcean --branch master --single-branch
-cd PirateOcean
+git clone https://github.com/DeckerSU/KomodoOcean --branch static --single-branch
+cd komodo
 ./zcutil/fetch-params.sh
 # -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
 ./zcutil/build-linux.sh -j8
@@ -46,6 +56,8 @@ brew tap discoteq/discoteq; brew install flock
 brew install autoconf autogen automake
 brew install gcc@6
 brew install binutils
+brew install protobuf
+brew install coreutils
 brew install wget
 # Clone the Pirate repo
 git clone https://github.com/PirateNetwork/PirateOcean --branch master --single-branch
@@ -73,14 +85,13 @@ sudo update-alternatives --config x86_64-w64-mingw32-g++
 git clone https://github.com/PirateNetwork/PirateOcean --branch master --single-branch
 cd PirateOcean
 ./zcutil/build-win.sh -j8
-# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
-#This can take some time and you'll need to run zcutil/fetch-params.bat on the Win system.
+#This can take some time.
 ```
-**Pirate QT is experimental and a work-in-progress.** Use at your own risk.
+**komodo is experimental and a work-in-progress.** Use at your own risk.
 
 
 
 ## Developers of Qt wallet ##
-- Pirate developer: [@ComputerGenie](https://github.com/TheComputerGenie)
-- Main developer: [@Ocean](https://pirate-platform.slack.com/team/U8BRG09EV)
-- IT Expert / Sysengineer: [@Decker](https://pirate-platform.slack.com/messages/D5UHJMCJ3)
+
+- Main developer: [@Ocean](https://komodo-platform.slack.com/team/U8BRG09EV)
+- IT Expert / Sysengineer: [@Decker](https://komodo-platform.slack.com/messages/D5UHJMCJ3)

@@ -1709,13 +1709,7 @@ void komodo_args(char *argv0)
     NOTARY_PUBKEY = GetArg("-pubkey", "");
     KOMODO_DEALERNODE = GetArg("-dealer",0);
     KOMODO_TESTNODE = GetArg("-testnode",0);
-
-    SoftSetArg("-ac_name", std::string("PIRATE"));
-    SoftSetArg("-ac_supply", std::string("0"));
-    SoftSetArg("-ac_reward", std::string("25600000000"));
-    SoftSetArg("-ac_private", std::string("1"));
-    SoftSetArg("-ac_halving", std::string("77777"));
-
+    ASSETCHAINS_STAKED_SPLIT_PERCENTAGE = GetArg("-splitperc",0);
     if ( strlen(NOTARY_PUBKEY.c_str()) == 66 )
     {
         decode_hex(NOTARY_PUBKEY33,33,(char *)NOTARY_PUBKEY.c_str());
@@ -2452,4 +2446,3 @@ void komodo_prefetch(FILE *fp)
     }
     fseek(fp,fpos,SEEK_SET);
 }
-

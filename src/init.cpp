@@ -1240,7 +1240,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     globalVerifyHandle.reset(new ECCVerifyHandle());
 
     // set the hash algorithm to use for this chain
-    // Again likely better solution here, than using long IF ELSE.
+    // Again likely better solution here, than using long IF ELSE. 
     extern uint32_t ASSETCHAINS_ALGO, ASSETCHAINS_VERUSHASH, ASSETCHAINS_VERUSHASHV1_1;
     CVerusHash::init();
     CVerusHashV2::init();
@@ -1283,7 +1283,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 #endif
     if (GetBoolArg("-shrinkdebugfile", !fDebug))
         ShrinkDebugFile();
-    LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    //LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     LogPrintf("Komodo version %s (%s)\n", FormatFullVersion(), CLIENT_DATE);
 
     if (fPrintToDebugLog)
@@ -1292,6 +1292,13 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 #ifdef ENABLE_WALLET
     LogPrintf("Using BerkeleyDB version %s\n", DbEnv::version(0, 0, 0));
 #endif
+    std::stringstream boost_version_ss("");
+    boost_version_ss << BOOST_VERSION / 100000 << "." // major version
+          << BOOST_VERSION / 100 % 1000 << "."        // minor version
+          << BOOST_VERSION % 100;                     // patch level
+    LogPrintf("Using Boost version %s\n",  boost_version_ss.str() /*BOOST_LIB_VERSION*/ );
+    LogPrintf("Using Sodium version %s\n", sodium_version_string());
+
     if (!fLogTimestamps)
         LogPrintf("Startup time: %s\n", DateTimeStrFormat("%Y-%m-%d %H:%M:%S", GetTime()));
     LogPrintf("Default data directory %s\n", GetDefaultDataDir().string());
@@ -1640,7 +1647,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                 // (we're likely using a testnet datadir, or the other way around).
                 if (!mapBlockIndex.empty() && mapBlockIndex.count(chainparams.GetConsensus().hashGenesisBlock) == 0)
                     return InitError(_("Incorrect or no genesis block found. Wrong datadir for network?"));
-
+                
                 komodo_init(1);
                 // Initialize the block index (no-op if non-empty database was already loaded)
                 if (!InitBlockIndex()) {
@@ -1660,7 +1667,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                     strLoadError = _("You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain");
                     break;
                 }
-
+                
                 if ( ASSETCHAINS_CC != 0 && KOMODO_SNAPSHOT_INTERVAL != 0 && chainActive.Height() >= KOMODO_SNAPSHOT_INTERVAL )
                 {
                     if ( !komodo_dailysnapshot(chainActive.Height()) )
@@ -1936,7 +1943,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
         uiInterface.InitMessage(_("Activating best chain..."));
         // scan for better chains in the block chain database, that are not yet connected in the active best chain
         CValidationState state;
-        if ( !ActivateBestChain(true,state))
+        if ( !ActivateBestChain(true,state)) 
         {
          strErrors << "Failed to connect best block";
          LogPrintf("Failed to connect best block");

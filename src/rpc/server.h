@@ -399,6 +399,7 @@ extern UniValue getiguanajson(const UniValue& params, bool fHelp);
 extern UniValue getnotarysendmany(const UniValue& params, bool fHelp);
 extern UniValue geterablockheights(const UniValue& params, bool fHelp);
 extern UniValue setpubkey(const UniValue& params, bool fHelp);
+extern UniValue setstakingsplit(const UniValue& params, bool fHelp);
 extern UniValue getwalletinfo(const UniValue& params, bool fHelp);
 extern UniValue getblockchaininfo(const UniValue& params, bool fHelp);
 extern UniValue getnetworkinfo(const UniValue& params, bool fHelp);

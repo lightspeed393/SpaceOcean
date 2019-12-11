@@ -368,7 +368,7 @@ void KomodoOceanGUI::createActions()
 
     encryptWalletAction = new QAction(platformStyle->TextColorIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
     encryptWalletAction->setStatusTip(tr("Encrypt the private keys that belong to your wallet"));
-    encryptWalletAction->setCheckable(false);
+    encryptWalletAction->setCheckable(true);
     backupWalletAction = new QAction(platformStyle->TextColorIcon(":/icons/filesave"), tr("&Backup Wallet..."), this);
     backupWalletAction->setStatusTip(tr("Backup wallet to another location"));
     changePassphraseAction = new QAction(platformStyle->TextColorIcon(":/icons/key"), tr("&Change Passphrase..."), this);
@@ -424,15 +424,6 @@ void KomodoOceanGUI::createActions()
 
     new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_C), this, SLOT(showDebugWindowActivateConsole()));
     new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_D), this, SLOT(showDebugWindow()));
-    setStyleSheet("background-color: lightGray;");
-    //hide all the bits that are for t addys
-    sendCoinsAction->setVisible(false);
-    receiveCoinsAction->setVisible(false);
-    encryptWalletAction->setVisible(false);
-    usedSendingAddressesAction->setVisible(false);
-    usedReceivingAddressesAction->setVisible(false);
-    signMessageAction->setVisible(false);
-    verifyMessageAction->setVisible(false);
 }
 
 void KomodoOceanGUI::createMenuBar()

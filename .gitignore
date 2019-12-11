@@ -1,6 +1,6 @@
 *.tar.gz
 *.deb
-
+*.exe
 src/bitcoin
 src/zcashd
 src/zcash-cli
@@ -130,4 +130,4 @@ src/config/komodo-config.h.in
 src/komodod
 src/qt/komodo-qt
 
-src/qt/locale/*.qm
+

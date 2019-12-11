@@ -40,7 +40,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>KomodoOceanGUI</name>
     <message>
         <source>&amp;Send</source>
         <translation>&amp;ناردن</translation>
@@ -374,7 +374,7 @@
     </message>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>komodo-core</name>
     <message>
         <source>Options:</source>
         <translation>هەڵبژاردنەکان:</translation>

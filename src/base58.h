@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -177,7 +177,7 @@ public:
         if (taddr!=0) base58Prefixes[0].push_back(taddr);
         base58Prefixes[0].push_back(pubkey_prefix);
         base58Prefixes[1].push_back(script_prefix);
-        Set(dest);        
+        Set(dest);
     }
 
     CTxDestination Get() const;

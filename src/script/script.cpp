@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -260,7 +260,7 @@ bool CScript::IsPayToScriptHash() const
             (*this)[22] == OP_EQUAL);
 }
 
-// this returns true if either there is nothing left and pc points at the end, or 
+// this returns true if either there is nothing left and pc points at the end, or
 // all instructions from the pc to the end of the script are balanced pushes and pops
 // if there is data, it also returns all the values as byte vectors in a list of vectors
 bool CScript::GetBalancedData(const_iterator& pc, std::vector<std::vector<unsigned char>>& vSolutions) const
@@ -279,8 +279,8 @@ bool CScript::GetBalancedData(const_iterator& pc, std::vector<std::vector<unsign
                 // this should never pop what it hasn't pushed (like a success code)
                 if (--netPushes < 0)
                     return false;
-            } 
-            else 
+            }
+            else
             {
                 // push or fail
                 netPushes++;

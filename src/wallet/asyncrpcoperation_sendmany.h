@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -77,13 +77,13 @@ public:
         CAmount fee = ASYNC_RPC_OPERATION_DEFAULT_MINERS_FEE,
         UniValue contextInfo = NullUniValue);
     virtual ~AsyncRPCOperation_sendmany();
-    
+
     // We don't want to be copied or moved around
     AsyncRPCOperation_sendmany(AsyncRPCOperation_sendmany const&) = delete;             // Copy construct
     AsyncRPCOperation_sendmany(AsyncRPCOperation_sendmany&&) = delete;                  // Move construct
     AsyncRPCOperation_sendmany& operator=(AsyncRPCOperation_sendmany const&) = delete;  // Copy assign
     AsyncRPCOperation_sendmany& operator=(AsyncRPCOperation_sendmany &&) = delete;      // Move assign
-    
+
     virtual void main();
 
     virtual UniValue getStatus() const;
@@ -107,7 +107,7 @@ private:
     CTxDestination fromtaddr_;
     PaymentAddress frompaymentaddress_;
     SpendingKey spendingkey_;
-    
+
     uint256 joinSplitPubKey_;
     unsigned char joinSplitPrivKey_[crypto_sign_SECRETKEYBYTES];
 
@@ -122,7 +122,7 @@ private:
 
     TransactionBuilder builder_;
     CTransaction tx_;
-   
+
     void add_taddr_change_output_to_tx(CBitcoinAddress *fromaddress,CAmount amount);
     void add_taddr_outputs_to_tx();
     bool find_unspent_notes();
@@ -153,27 +153,27 @@ private:
 class TEST_FRIEND_AsyncRPCOperation_sendmany {
 public:
     std::shared_ptr<AsyncRPCOperation_sendmany> delegate;
-    
+
     TEST_FRIEND_AsyncRPCOperation_sendmany(std::shared_ptr<AsyncRPCOperation_sendmany> ptr) : delegate(ptr) {}
-    
+
     CTransaction getTx() {
         return delegate->tx_;
     }
-    
+
     void setTx(CTransaction tx) {
         delegate->tx_ = tx;
     }
-    
+
     // Delegated methods
-    
+
     void add_taddr_change_output_to_tx(CAmount amount) {
         delegate->add_taddr_change_output_to_tx(0,amount);
     }
-    
+
     void add_taddr_outputs_to_tx() {
         delegate->add_taddr_outputs_to_tx();
     }
-    
+
     bool find_unspent_notes() {
         return delegate->find_unspent_notes();
     }
@@ -181,11 +181,11 @@ public:
     bool find_utxos(bool fAcceptCoinbase) {
         return delegate->find_utxos(fAcceptCoinbase);
     }
-    
+
     std::array<unsigned char, ZC_MEMO_SIZE> get_memo_from_hex_string(std::string s) {
         return delegate->get_memo_from_hex_string(s);
     }
-    
+
     bool main_impl() {
         return delegate->main_impl();
     }
@@ -209,7 +209,7 @@ public:
     void sign_send_raw_transaction(UniValue obj) {
         delegate->sign_send_raw_transaction(obj);
     }
-    
+
     void set_state(OperationStatus state) {
         delegate->state_.store(state);
     }

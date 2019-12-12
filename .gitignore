@@ -1,6 +1,7 @@
 *.tar.gz
 *.deb
 *.exe
+PIRATE_777
 src/bitcoin
 src/zcashd
 src/zcash-cli
@@ -116,13 +117,13 @@ contrib/debian/files
 contrib/debian/substvars
 
 src/qt/test/test_bitcoin-qt
-share/qt/Info.plist        
-src/qt/*.moc               
-src/qt/moc_*.cpp           
-src/qt/forms/ui_*.h        
-src/qt/test/moc*.cpp       
-komodo-qt                 
-komodo-qt_test            
+share/qt/Info.plist
+src/qt/*.moc
+src/qt/moc_*.cpp
+src/qt/forms/ui_*.h
+src/qt/test/moc*.cpp
+komodo-qt
+komodo-qt_test
 src/qt/gen*
 
 src/config/komodo-config.h
@@ -130,4 +131,7 @@ src/config/komodo-config.h.in
 src/komodod
 src/qt/komodo-qt
 
+src/qt/locale/*.qm
+PIRATE_7776
 
+PirateWallet

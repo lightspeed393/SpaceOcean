@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -111,7 +111,7 @@ bool static IsCompressedOrUncompressedPubKey(const valtype &vchPubKey) {
  * Where R and S are not negative (their first byte has its highest bit not set), and not
  * excessively padded (do not start with a 0 byte, unless an otherwise negative number follows,
  * in which case a single 0 byte is necessary and even required).
- * 
+ *
  * See https://bitcointalk.org/index.php?topic=8392.msg127623#msg127623
  *
  * This function is consensus-critical since BIP66.
@@ -151,7 +151,7 @@ bool static IsValidSignatureEncoding(const std::vector<unsigned char> &sig) {
     // Verify that the length of the signature matches the sum of the length
     // of the elements.
     if ((size_t)(lenR + lenS + 7) != sig.size()) return false;
- 
+
     // Check whether the R element is an integer.
     if (sig[2] != 0x02) return false;
 
@@ -859,7 +859,7 @@ bool EvalScript(
                     bool fSuccess = checker.CheckSig(vchSig, vchPubKey, script, consensusBranchId);
 
                     // comment below when not debugging
-                    //LogPrintf("OP_CHECKSIG: scriptSig.%s\nscriptPubKey.%s\nbranchid.%x, success: %s\n", 
+                    //LogPrintf("OP_CHECKSIG: scriptSig.%s\nscriptPubKey.%s\nbranchid.%x, success: %s\n",
                     //       CScript(vchSig).ToString().c_str(), CScript(vchPubKey).ToString().c_str(), consensusBranchId, (fSuccess ? "true" : "false"));
 
                     popstack(stack);
@@ -976,7 +976,7 @@ bool EvalScript(
                     if (fResult == -1) {
                         return set_error(serror, SCRIPT_ERR_CRYPTOCONDITION_INVALID_FULFILLMENT);
                     }
-                    
+
                     popstack(stack);
                     popstack(stack);
 
@@ -1375,7 +1375,7 @@ int TransactionSignatureChecker::CheckCryptoCondition(
 
     if (!IsSupportedCryptoCondition(cond)) return 0;
     if (!IsSignedCryptoCondition(cond)) return 0;
-    
+
     uint256 sighash;
     int nHashType = ffillBin.back();
     try {
@@ -1481,7 +1481,7 @@ bool EvalCryptoConditionSig(
         return set_error(serror, SCRIPT_ERR_PUSH_SIZE);
 
     stack.push_back(vchPushValue);
-    
+
     return true;
 }
 

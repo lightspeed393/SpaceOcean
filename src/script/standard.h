@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -89,7 +89,7 @@ public:
     friend bool operator<(const CNoDestination &a, const CNoDestination &b) { return true; }
 };
 
-/** 
+/**
  * A txout script template with a specific destination. It is either:
  *  * CNoDestination: no destination set
  *  * CKeyID: TX_PUBKEYHASH destination
@@ -111,7 +111,7 @@ class COptCCParams
 
         COptCCParams() : version(0), evalCode(0), n(0), m(0) {}
 
-        COptCCParams(uint8_t ver, uint8_t code, uint8_t _n, uint8_t _m, std::vector<CPubKey> &vkeys, std::vector<std::vector<unsigned char>> &vdata) : 
+        COptCCParams(uint8_t ver, uint8_t code, uint8_t _n, uint8_t _m, std::vector<CPubKey> &vkeys, std::vector<std::vector<unsigned char>> &vdata) :
             version(ver), evalCode(code), n(_n), m(_m), vKeys(vkeys), vData(vdata) {}
 
         COptCCParams(std::vector<unsigned char> &vch);
@@ -126,12 +126,12 @@ class CStakeParams
     public:
         static const uint32_t STAKE_MINPARAMS = 4;
         static const uint32_t STAKE_MAXPARAMS = 5;
-        
+
         uint32_t srcHeight;
         uint32_t blkHeight;
         uint256 prevHash;
         CPubKey pk;
-    
+
         CStakeParams() : srcHeight(0), blkHeight(0), prevHash(), pk() {}
 
         CStakeParams(const std::vector<std::vector<unsigned char>> &vData);
@@ -147,12 +147,12 @@ class CStakeParams
             scr << srcHeight;
             scr << blkHeight;
             scr << std::vector<unsigned char>(prevHash.begin(), prevHash.end());
-            
+
             if (pk.IsValid())
             {
                 scr << std::vector<unsigned char>(pk.begin(), pk.end());
             }
-                                    
+
             ret = std::vector<unsigned char>(scr.begin(), scr.end());
             return ret;
         }

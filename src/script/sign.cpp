@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -45,14 +45,14 @@ bool TransactionSignatureCreator::CreateSig(std::vector<unsigned char>& vchSig, 
         key = *pprivKey;
     else if (!keystore || !keystore->GetKey(address, key))
         return false;
-    
+
     uint256 hash;
     try {
         hash = SignatureHash(scriptCode, *txTo, nIn, nHashType, amount, consensusBranchId);
     } catch (logic_error ex) {
         return false;
     }
-    
+
     if (scriptCode.IsPayToCryptoCondition())
     {
         CC *cc = (CC *)extraData;
@@ -75,9 +75,9 @@ bool TransactionSignatureCreator::CreateSig(std::vector<unsigned char>& vchSig, 
                 return false;
         }
     }
-    
+
     vchSig.push_back((unsigned char)nHashType);
-    
+
     return true;
 }
 
@@ -128,7 +128,7 @@ std::vector<CCcontract_info> &GetCryptoConditions()
     static bool initialized = false;
     static std::vector<CCcontract_info> vCC = std::vector<CCcontract_info>();
     CCcontract_info C;
-    
+
     if (!initialized)
     {
         // this should initialize any desired auto-signed crypto-conditions
@@ -140,7 +140,7 @@ bool GetCCByUnspendableAddress(struct CCcontract_info *cp, char *addrstr)
 {
     std::vector<CCcontract_info> &vCC = GetCryptoConditions();
     bool found = false;
-    
+
     for (int i = 0; i < vCC.size(); i++)
     {
         if (strcmp(addrstr, vCC[i].unspendableCCaddr) == 0)
@@ -157,7 +157,7 @@ bool CCinitLite(struct CCcontract_info *cp, uint8_t evalcode)
 {
     std::vector<CCcontract_info> &vCC = GetCryptoConditions();
     bool found = false;
-    
+
     for (int i = 0; i < vCC.size(); i++)
     {
         if (vCC[i].evalcode == evalcode)
@@ -199,10 +199,10 @@ static bool SignStepCC(const BaseSignatureCreator& creator, const CScript& scrip
     vector<CPubKey> vPK;
     vector<valtype> vParams = vector<valtype>();
     COptCCParams p;
-    
+
     // get information to sign with
     CCcontract_info C;
-    
+
     scriptPubKey.IsPayToCryptoCondition(&subScript, vParams);
     if (vParams.empty())
     {
@@ -219,12 +219,12 @@ static bool SignStepCC(const BaseSignatureCreator& creator, const CScript& scrip
     {
         p = COptCCParams(vParams[0]);
     }
-    
+
     if (p.IsValid() && p.vKeys.size() >= p.n)
     {
         bool is1of2 = (p.m == 1 && p.n == 2);
         CKey privKey;
-        
+
         // must be a valid cc eval code
         if (CCinitLite(&C, p.evalCode))
         {
@@ -232,7 +232,7 @@ static bool SignStepCC(const BaseSignatureCreator& creator, const CScript& scrip
             if (!is1of2)
             {
                 bool havePriv = creator.KeyStore().GetKey(p.vKeys[0].GetID(), privKey);
-                
+
                 // if we don't have the private key, it must be the unspendable address
                 if (!havePriv && (p.vKeys[0] == CPubKey(ParseHex(C.CChexstr))))
                 {
@@ -240,9 +240,9 @@ static bool SignStepCC(const BaseSignatureCreator& creator, const CScript& scrip
                     std::vector<unsigned char> vch(&(C.CCpriv[0]), C.CCpriv + sizeof(C.CCpriv));
                     privKey.Set(vch.begin(), vch.end(), false);
                 }
-                
+
                 CC *cc = CCcond1(p.evalCode, p.vKeys[0]);
-                
+
                 if (cc)
                 {
                     vector<unsigned char> vch;
@@ -254,7 +254,7 @@ static bool SignStepCC(const BaseSignatureCreator& creator, const CScript& scrip
                     {
                         LogPrintf("vin has 1of1 CC signing error with address.(%s)\n", p.vKeys[0].GetID().ToString().c_str());
                     }
-                    
+
                     cc_free(cc);
                     return ret.size() != 0;
                 }
@@ -266,7 +266,7 @@ static bool SignStepCC(const BaseSignatureCreator& creator, const CScript& scrip
                 {
                     if (creator.IsKeystoreValid() && creator.KeyStore().GetKey(pk.GetID(), privKey) && privKey.IsValid())
                         break;
-                    
+
                     if (pk == CPubKey(ParseHex(C.CChexstr)))
                     {
                         privKey = CKey();
@@ -275,12 +275,12 @@ static bool SignStepCC(const BaseSignatureCreator& creator, const CScript& scrip
                         break;
                     }
                 }
-                
+
                 if (!privKey.IsValid())
                     return false;
-                
+
                 CC *cc = CCcond1of2(p.evalCode, p.vKeys[0], p.vKeys[1]);
-                
+
                 if (cc)
                 {
                     vector<unsigned char> vch;
@@ -292,7 +292,7 @@ static bool SignStepCC(const BaseSignatureCreator& creator, const CScript& scrip
                     {
                         LogPrintf("vin has 1of2 CC signing error with addresses.(%s)\n(%s)\n", p.vKeys[0].GetID().ToString().c_str(), p.vKeys[1].GetID().ToString().c_str());
                     }
-                    
+
                     cc_free(cc);
                     return ret.size() != 0;
                 }
@@ -314,9 +314,9 @@ static bool SignStep(const BaseSignatureCreator& creator, const CScript& scriptP
     CScript scriptRet;
     uint160 h160;
     ret.clear();
-    
+
     vector<valtype> vSolutions;
-    
+
     if (!Solver(scriptPubKey, whichTypeRet, vSolutions))
     {
         // if this is a CLTV script, solve for the destination after CLTV
@@ -324,10 +324,10 @@ static bool SignStep(const BaseSignatureCreator& creator, const CScript& scriptP
         {
             uint8_t pushOp = scriptPubKey[0];
             uint32_t scriptStart = pushOp + 3;
-            
+
             // check post CLTV script
             CScript postfix = CScript(scriptPubKey.size() > scriptStart ? scriptPubKey.begin() + scriptStart : scriptPubKey.end(), scriptPubKey.end());
-            
+
             // check again with only postfix subscript
             if (!Solver(postfix, whichTypeRet, vSolutions))
                 return false;
@@ -335,9 +335,9 @@ static bool SignStep(const BaseSignatureCreator& creator, const CScript& scriptP
         else
             return false;
     }
-    
+
     CKeyID keyID;
-    
+
     switch (whichTypeRet)
     {
         case TX_NONSTANDARD:
@@ -363,14 +363,14 @@ static bool SignStep(const BaseSignatureCreator& creator, const CScript& scriptP
                 return true;
             }
             return false;
-            
+
         case TX_CRYPTOCONDITION:
             return SignStepCC(creator, scriptPubKey, vSolutions, ret, consensusBranchId);
-            
+
         case TX_MULTISIG:
             ret.push_back(valtype()); // workaround CHECKMULTISIG bug
             return (SignN(vSolutions, creator, scriptPubKey, ret, consensusBranchId));
-            
+
         default:
             return false;
     }
@@ -399,7 +399,7 @@ bool ProduceSignature(const BaseSignatureCreator& creator, const CScript& fromPu
     txnouttype whichType;
     solved = SignStep(creator, script, result, whichType, consensusBranchId);
     CScript subscript;
-    
+
     if (solved && whichType == TX_SCRIPTHASH)
     {
         // Solver returns the subscript that needs to be evaluated;
@@ -409,9 +409,9 @@ bool ProduceSignature(const BaseSignatureCreator& creator, const CScript& fromPu
         solved = solved && SignStep(creator, script, result, whichType, consensusBranchId) && whichType != TX_SCRIPTHASH;
         result.push_back(std::vector<unsigned char>(subscript.begin(), subscript.end()));
     }
-    
+
     sigdata.scriptSig = PushAll(result);
-    
+
     // Test solution
     return solved && VerifyScript(sigdata.scriptSig, fromPubKey, STANDARD_SCRIPT_VERIFY_FLAGS, creator.Checker(), consensusBranchId);
 }
@@ -440,10 +440,10 @@ bool SignSignature(
                    uint32_t consensusBranchId)
 {
     assert(nIn < txTo.vin.size());
-    
+
     CTransaction txToConst(txTo);
     TransactionSignatureCreator creator(&keystore, &txToConst, nIn, amount, nHashType);
-    
+
     SignatureData sigdata;
     bool ret = ProduceSignature(creator, fromPubKey, sigdata, consensusBranchId);
     UpdateTransaction(txTo, nIn, sigdata);
@@ -462,7 +462,7 @@ bool SignSignature(
     CTxIn& txin = txTo.vin[nIn];
     assert(txin.prevout.n < txFrom.vout.size());
     const CTxOut& txout = txFrom.vout[txin.prevout.n];
-    
+
     return SignSignature(keystore, txout.scriptPubKey, txTo, nIn, txout.nValue, nHashType, consensusBranchId);
 }
 
@@ -482,7 +482,7 @@ static vector<valtype> CombineMultisig(const CScript& scriptPubKey, const BaseSi
         if (!v.empty())
             allsigs.insert(v);
     }
-    
+
     // Build a map of pubkey -> signature by matching sigs to pubkeys:
     assert(vSolutions.size() > 1);
     unsigned int nSigsRequired = vSolutions.front()[0];
@@ -495,7 +495,7 @@ static vector<valtype> CombineMultisig(const CScript& scriptPubKey, const BaseSi
             const valtype& pubkey = vSolutions[i+1];
             if (sigs.count(pubkey))
                 continue; // Already got a sig for this pubkey
-            
+
             if (checker.CheckSig(sig, pubkey, scriptPubKey, consensusBranchId))
             {
                 sigs[pubkey] = sig;
@@ -517,7 +517,7 @@ static vector<valtype> CombineMultisig(const CScript& scriptPubKey, const BaseSi
     // Fill any missing with OP_0:
     for (unsigned int i = nSigsHave; i < nSigsRequired; i++)
         result.push_back(valtype());
-    
+
     return result;
 }
 
@@ -526,13 +526,13 @@ namespace
     struct Stacks
     {
         std::vector<valtype> script;
-        
+
         Stacks() {}
         explicit Stacks(const std::vector<valtype>& scriptSigStack_) : script(scriptSigStack_) {}
         explicit Stacks(const SignatureData& data, uint32_t consensusBranchId) {
             EvalScript(script, data.scriptSig, SCRIPT_VERIFY_STRICTENC, BaseSignatureChecker(), consensusBranchId);
         }
-        
+
         SignatureData Output() const {
             SignatureData result;
             result.scriptSig = PushAll(script);
@@ -570,7 +570,7 @@ static Stacks CombineSignatures(const CScript& scriptPubKey, const BaseSignature
                 // Recur to combine:
                 valtype spk = sigs1.script.back();
                 CScript pubKey2(spk.begin(), spk.end());
-                
+
                 txnouttype txType2;
                 vector<vector<unsigned char> > vSolutions2;
                 Solver(pubKey2, txType2, vSolutions2);
@@ -594,7 +594,7 @@ SignatureData CombineSignatures(const CScript& scriptPubKey, const BaseSignature
     txnouttype txType;
     vector<vector<unsigned char> > vSolutions;
     Solver(scriptPubKey, txType, vSolutions);
-    
+
     return CombineSignatures(
                              scriptPubKey, checker, txType, vSolutions,
                              Stacks(scriptSig1, consensusBranchId),
@@ -608,7 +608,7 @@ namespace {
     {
     public:
         DummySignatureChecker() {}
-        
+
         bool CheckSig(
                       const std::vector<unsigned char>& scriptSig,
                       const std::vector<unsigned char>& vchPubKey,
@@ -630,7 +630,7 @@ bool DummySignatureCreator::CreateSig(
                                       std::vector<unsigned char>& vchSig,
                                       const CKeyID& keyid,
                                       const CScript& scriptCode,
-                                      uint32_t consensusBranchId, 
+                                      uint32_t consensusBranchId,
                                       CKey *key,
                                       void *extraData) const
 {

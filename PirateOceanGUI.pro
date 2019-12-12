@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = KomodoOceanGUI
-VERSION = 0.1.0.0
+TARGET = PirateOceanGUI
+VERSION = 0.1.1.0
 
 INCLUDEPATH += src src\qt src\libsnark src\protobuf src\secp256k1 src\secp256k1\include src\leveldb\include src\leveldb\helpers\memenv src\leveldb src\univalue\include src\libevent\include src\libevent\compat src\cryptoconditions\include src\cryptoconditions src\cryptoconditions\src\asn
 
@@ -28,7 +28,7 @@ DEFINES += _AMD64_ _MT __STDC_FORMAT_MACROS __amd64__ __x86_64__ HAVE_WORKING_BO
 DEFINES += HAVE_CONFIG_H HAVE_DECL_STRNLEN ENABLE_MODULE_ECDH ENABLE_MODULE_RECOVERY
 DEFINES += CURVE_ALT_BN128 _REENTRANT __USE_MINGW_ANSI_STDIO=1 LEVELDB_ATOMIC_PRESENT
 
-windows:DEFINES += _WINDOWS 
+windows:DEFINES += _WINDOWS
 windows:DEFINES +=  OS_WIN LEVELDB_PLATFORM_WINDOWS
 
 CONFIG += no_include_pwd thread no_batch
@@ -549,7 +549,7 @@ SOURCES += src\protobuf\google\protobuf\any.cc \
     src\cryptoconditions\src\include\ed25519\src\cryptoconditions_sha512.cpp \
     src\cryptoconditions\src\include\ed25519\src\ge.cpp \
     src\cryptoconditions\src\include\ed25519\src\sc.cpp \
-    src\cryptoconditions\src\include\ed25519\src\fe.cpp 
+    src\cryptoconditions\src\include\ed25519\src\fe.cpp
 
 RESOURCES += \
     src\qt\komodo.qrc \
@@ -630,7 +630,7 @@ macx:OBJECTIVE_SOURCES += macdockiconhandler.mm macnotificationhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
 macx:ICON = src/qt/res/icons/komodo.icns
-macx:TARGET = "KomodoOceanGUI"
+macx:TARGET = "PirateOceanGUI"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread

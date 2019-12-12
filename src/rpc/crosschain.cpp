@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -210,19 +210,19 @@ UniValue migrate_converttoexport(const UniValue& params, bool fHelp)
 
     if (strcmp(ASSETCHAINS_SYMBOL,targetSymbol.c_str()) == 0)
         throw runtime_error("cant send a coin to the same chain");
-    
-    /// Tested 44 vins p2pkh inputs as working. Set this at 25, but its a tx size limit. 
+
+    /// Tested 44 vins p2pkh inputs as working. Set this at 25, but its a tx size limit.
     // likely with a single RPC you can limit it by the size of tx.
     if (tx.vout.size() > 25)
         throw JSONRPCError(RPC_TYPE_ERROR, "Cannot have more than 50 vins, transaction too large.");
 
     CAmount burnAmount = 0;
-    
+
     for (int i=0; i<tx.vout.size(); i++) burnAmount += tx.vout[i].nValue;
     if (burnAmount <= 0)
         throw JSONRPCError(RPC_TYPE_ERROR, "Cannot export a negative or zero value.");
     // This is due to MAX MONEY in target. We set it at min 1 million coins, so you cant export more than 1 million,
-    // without knowing the MAX money on the target this was the easiest solution. 
+    // without knowing the MAX money on the target this was the easiest solution.
     if (burnAmount > 1000000LL*COIN)
         throw JSONRPCError(RPC_TYPE_ERROR, "Cannot export more than 1 million coins per export.");
 
@@ -232,7 +232,7 @@ UniValue migrate_converttoexport(const UniValue& params, bool fHelp)
     for (i=0; i<rawproof.size(); i++)
         ptr[i] = ASSETCHAINS_SYMBOL[i]; */
     const std::string chainSymbol(ASSETCHAINS_SYMBOL);
-    rawproof = E_MARSHAL(ss << chainSymbol); // add src chain name 
+    rawproof = E_MARSHAL(ss << chainSymbol); // add src chain name
 
     CTxOut burnOut = MakeBurnOutput(burnAmount+txfee, ccid, targetSymbol, tx.vout,rawproof);
     UniValue ret(UniValue::VOBJ);
@@ -247,9 +247,9 @@ UniValue migrate_converttoexport(const UniValue& params, bool fHelp)
 UniValue migrate_createburntransaction(const UniValue& params, bool fHelp)
 {
     UniValue ret(UniValue::VOBJ);
-    //uint8_t *ptr; 
-    //uint8_t i; 
-    uint32_t ccid = ASSETCHAINS_CC; 
+    //uint8_t *ptr;
+    //uint8_t i;
+    uint32_t ccid = ASSETCHAINS_CC;
     int64_t txfee = 10000;
 
     if (fHelp || params.size() != 3 && params.size() != 4)
@@ -273,7 +273,7 @@ UniValue migrate_createburntransaction(const UniValue& params, bool fHelp)
     if (ASSETCHAINS_SYMBOL[0] == 0)
         throw runtime_error("Must be called on assetchain");
 
-    // if -pubkey not set it sends change to null pubkey. 
+    // if -pubkey not set it sends change to null pubkey.
     // we need a better way to return errors from this function!
     if (ensure_CCrequirements(225) < 0)
         throw runtime_error("You need to set -pubkey, or run setpukbey RPC, or imports are disabled on this chain.");
@@ -301,7 +301,7 @@ UniValue migrate_createburntransaction(const UniValue& params, bool fHelp)
     uint256 tokenid = zeroid;
     if( params.size() == 4 )
         tokenid = Parseuint256(params[3].get_str().c_str());
-        
+
     if ( tokenid != zeroid && strcmp("LABS", targetSymbol.c_str()))
         throw JSONRPCError(RPC_TYPE_ERROR, "There is no tokens support on LABS.");
 
@@ -328,7 +328,7 @@ UniValue migrate_createburntransaction(const UniValue& params, bool fHelp)
         mtx.vout.push_back(CTxOut(burnAmount, scriptPubKey));               // 'model' vout
         ret.push_back(Pair("payouts", HexStr(E_MARSHAL(ss << mtx.vout))));  // save 'model' vout
 
-        rawproof = E_MARSHAL(ss << chainSymbol); // add src chain name 
+        rawproof = E_MARSHAL(ss << chainSymbol); // add src chain name
 
         CTxOut burnOut = MakeBurnOutput(burnAmount+txfee, ccid, targetSymbol, mtx.vout, rawproof);  //make opret with burned amount
 
@@ -381,10 +381,10 @@ UniValue migrate_createburntransaction(const UniValue& params, bool fHelp)
         int64_t inputs;
         if ((inputs = AddNormalinputs(mtx, myPubKey, txfee, 1)) == 0)  // for miners in dest chain
             throw runtime_error("No normal input found for two txfee\n");
-      
+
         int64_t ccInputs;
         if ((ccInputs = AddTokenCCInputs(cpTokens, mtx, myPubKey, tokenid, burnAmount, 4)) < burnAmount)
-            throw runtime_error("No token inputs found (please try to consolidate tokens)\n"); 
+            throw runtime_error("No token inputs found (please try to consolidate tokens)\n");
 
         // make payouts  (which will be in the import tx with token):
         mtx.vout.push_back(MakeCC1vout(EVAL_TOKENS, txfee, GetUnspendable(cpTokens, NULL)));  // new marker to token cc addr, burnable and validated, vout position now changed to 0 (from 1)
@@ -399,12 +399,12 @@ UniValue migrate_createburntransaction(const UniValue& params, bool fHelp)
 
         rawproof = E_MARSHAL(ss << chainSymbol << tokenbasetx); // add src chain name and token creation tx
 
-        CTxOut burnOut = MakeBurnOutput(0, ccid, targetSymbol, mtx.vout, rawproof);  //make opret with amount=0 because tokens are burned, not coins (see next vout) 
+        CTxOut burnOut = MakeBurnOutput(0, ccid, targetSymbol, mtx.vout, rawproof);  //make opret with amount=0 because tokens are burned, not coins (see next vout)
         mtx.vout.clear();  // remove payouts
 
         // now make burn transaction:
         mtx.vout.push_back(MakeTokensCC1vout(destEvalCode, burnAmount, pubkey2pk(ParseHex(CC_BURNPUBKEY))));    // burn tokens
-                                                                                                                
+
         int64_t change = inputs - txfee;
         if (change != 0)
             mtx.vout.push_back(CTxOut(change, CScript() << ParseHex(HexStr(myPubKey)) << OP_CHECKSIG));         // make change here to prevent it from making in FinalizeCCtx
@@ -502,9 +502,9 @@ void CheckBurnTxSource(uint256 burntxid, UniValue &info) {
         else
             throw std::runtime_error("Incorrect eval code in opreturn");
     }
-    else 
+    else
         throw std::runtime_error("No opreturn in burn tx");
-    
+
 
     if (sourceSymbol != ASSETCHAINS_SYMBOL)
         throw std::runtime_error("Incorrect source chain in rawproof");
@@ -614,7 +614,7 @@ UniValue migrate_completeimporttransaction(const UniValue& params, bool fHelp)
     CTransaction importTx;
     if (!E_UNMARSHAL(ParseHexV(params[0], "argument 1"), ss >> importTx))
         throw runtime_error("Couldn't parse importTx");
-    
+
     int32_t offset = 0;
     if ( params.size() == 2 )
         offset = params[1].get_int();
@@ -633,7 +633,7 @@ UniValue migrate_completeimporttransaction(const UniValue& params, bool fHelp)
 * The workflow:
 * On the source chain user calls migrate_createburntransaction, sends the burn tx to the chain and sends its txid and the source chain name to the notary operators (off-chain)
 * the notary operators call migrate_checkburntransactionsource on the source chain
-* on the destination chain the notary operators call migrate_createnotaryapprovaltransaction and pass the burn txid and txoutproof received from the previous call, 
+* on the destination chain the notary operators call migrate_createnotaryapprovaltransaction and pass the burn txid and txoutproof received from the previous call,
 * the notary operators send the approval transactions to the chain and send their txids to the user (off-chain)
 * on the source chain the user calls migrate_createimporttransaction and passes to it notary txids as additional parameters
 * then the user sends the import transaction to the destination chain (where the notary approvals will be validated)
@@ -695,13 +695,13 @@ UniValue migrate_createnotaryapprovaltransaction(const UniValue& params, bool fH
 
     const int64_t txfee = 10000;
     struct CCcontract_info *cpDummy, C;
-    cpDummy = CCinit(&C, EVAL_TOKENS);  // just for FinalizeCCtx to work 
+    cpDummy = CCinit(&C, EVAL_TOKENS);  // just for FinalizeCCtx to work
 
     // creating a tx with proof:
     CMutableTransaction mtx = CreateNewContextualCMutableTransaction(Params().GetConsensus(), komodo_nextheight());
-    if (AddNormalinputs(mtx, Mypubkey(), txfee*2, 4) == 0) 
+    if (AddNormalinputs(mtx, Mypubkey(), txfee*2, 4) == 0)
         throw runtime_error("Cannot find normal inputs\n");
-    
+
     mtx.vout.push_back(CTxOut(txfee, CScript() << ParseHex(HexStr(Mypubkey())) << OP_CHECKSIG));
     std::string notaryTxHex = FinalizeCCTx(0, cpDummy, mtx, Mypubkey(), txfee, CScript() << OP_RETURN << E_MARSHAL(ss << proofData;));
 
@@ -716,14 +716,14 @@ UniValue selfimport(const UniValue& params, bool fHelp)
 {
     UniValue result(UniValue::VOBJ);
     std::string destaddr;
-    std::string source; 
+    std::string source;
     std::string sourceTxHex;
     std::string importTxHex;
-    CTransaction burnTx; 
-    CTxOut burnOut; 
-    uint64_t burnAmount; 
-    uint256 sourcetxid, blockHash; 
-	std::vector<CTxOut> vouts; 
+    CTransaction burnTx;
+    CTxOut burnOut;
+    uint64_t burnAmount;
+    uint256 sourcetxid, blockHash;
+	std::vector<CTxOut> vouts;
 	std::vector<uint8_t> rawproof;
 
     if ( ASSETCHAINS_SELFIMPORT.size() == 0 )
@@ -761,7 +761,7 @@ UniValue selfimport(const UniValue& params, bool fHelp)
         CTxDestination dest = DecodeDestination(destaddr.c_str());
         CMutableTransaction sourceMtx = MakeSelfImportSourceTx(dest, burnAmount);  // make self-import source tx
         vscript_t rawProofEmpty;
-        
+
         CMutableTransaction templateMtx;
         // prepare self-import 'quasi-burn' tx and also create vout for import tx (in mtx.vout):
         if (GetSelfimportProof(sourceMtx, templateMtx, proofNull) < 0)
@@ -776,10 +776,10 @@ UniValue selfimport(const UniValue& params, bool fHelp)
 
         sourceTxHex = HexStr(E_MARSHAL(ss << sourceMtx));
         importTxHex = HexStr(E_MARSHAL(ss << MakeImportCoinTransaction(proofNull, burnTx, vouts)));
-      
+
         result.push_back(Pair("SourceTxHex", sourceTxHex));
         result.push_back(Pair("ImportTxHex", importTxHex));
- 
+
         return result;
     }
     else if (source == ASSETCHAINS_SELFIMPORT)
@@ -864,13 +864,13 @@ UniValue importgatewaybind(const UniValue& params, bool fHelp)
 
     if ( ASSETCHAINS_SELFIMPORT.size() == 0 )
         throw runtime_error("importgatewaybind only works on -ac_import chains");
-    if ( fHelp || params.size() != 8) 
+    if ( fHelp || params.size() != 8)
         throw runtime_error("use \'importgatewaybind coin orcletxid M N pubkeys pubtype p2shtype wiftype [taddr]\' to bind an import gateway\n");
     if ( ensure_CCrequirements(EVAL_IMPORTGATEWAY) < 0 )
         throw runtime_error("to use CC contracts, you need to launch daemon with valid -pubkey= for an address in your wallet\n");
     CCerror = "";
     coin = params[0].get_str();
-    oracletxid = Parseuint256(params[1].get_str().c_str()); 
+    oracletxid = Parseuint256(params[1].get_str().c_str());
     M = atoi(params[2].get_str().c_str());
     N = atoi(params[3].get_str().c_str());
     if ( M > N || N == 0 || N > 15 )
@@ -878,7 +878,7 @@ UniValue importgatewaybind(const UniValue& params, bool fHelp)
     if ( params.size() < 4+N+3 )
         throw runtime_error("not enough parameters for N pubkeys\n");
     for (i=0; i<N; i++)
-    {       
+    {
         pubkey = ParseHex(params[4+i].get_str().c_str());
         if (pubkey.size()!= 33)
             throw runtime_error("invalid destination pubkey");
@@ -917,15 +917,15 @@ UniValue importgatewaydeposit(const UniValue& params, bool fHelp)
 
     if ( ASSETCHAINS_SELFIMPORT.size() == 0 )
         throw runtime_error("importgatewaydeposit only works on -ac_import chains");
-    if ( fHelp || params.size() != 9) 
+    if ( fHelp || params.size() != 9)
         throw runtime_error("use \'importgatewaydeposit bindtxid height coin burntxid nvout rawburntx rawproof destpub amount\' to import deposited coins\n");
     if ( ensure_CCrequirements(EVAL_IMPORTGATEWAY) < 0 )
         throw runtime_error("to use CC contracts, you need to launch daemon with valid -pubkey= for an address in your wallet\n");
     CCerror = "";
-    bindtxid = Parseuint256(params[0].get_str().c_str()); 
+    bindtxid = Parseuint256(params[0].get_str().c_str());
     height = atoi(params[1].get_str().c_str());
     coin = params[2].get_str();
-    burntxid = Parseuint256(params[3].get_str().c_str()); 
+    burntxid = Parseuint256(params[3].get_str().c_str());
     burnvout = atoi(params[4].get_str().c_str());
     rawburntx = params[5].get_str();
     rawproof = ParseHex(params[6].get_str());
@@ -960,12 +960,12 @@ UniValue importgatewaywithdraw(const UniValue& params, bool fHelp)
 
     if ( ASSETCHAINS_SELFIMPORT.size() == 0 )
         throw runtime_error("importgatewaywithdraw only works on -ac_import chains");
-    if ( fHelp || params.size() != 4) 
+    if ( fHelp || params.size() != 4)
         throw runtime_error("use \'importgatewaywithdraw bindtxid coin withdrawpub amount\' to burn imported coins and withdraw them on external chain\n");
     if ( ensure_CCrequirements(EVAL_IMPORTGATEWAY) < 0 )
         throw runtime_error("to use CC contracts, you need to launch daemon with valid -pubkey= for an address in your wallet\n");
     CCerror = "";
-    bindtxid = Parseuint256(params[0].get_str().c_str()); 
+    bindtxid = Parseuint256(params[0].get_str().c_str());
     coin = params[1].get_str();
     destpub = ParseHex(params[2].get_str());
     amount = atof((char *)params[3].get_str().c_str()) * COIN + 0.00000000499999;
@@ -1140,9 +1140,9 @@ UniValue getNotarisationsForBlock(const UniValue& params, bool fHelp)
     int32_t height = params[0].get_int();
     if ( height < 0 || height > chainActive.Height() )
         throw runtime_error("height out of range.\n");
-    
-    uint256 blockHash = chainActive[height]->GetBlockHash(); 
-    
+
+    uint256 blockHash = chainActive[height]->GetBlockHash();
+
     NotarisationsInBlock nibs;
     GetBlockNotarisations(blockHash, nibs);
     UniValue out(UniValue::VOBJ);
@@ -1164,7 +1164,7 @@ UniValue getNotarisationsForBlock(const UniValue& params, bool fHelp)
                 if ( !GetNotarisationNotaries(LABSpubkeys, numSN, tx.vin, NotarisationNotaries) )
                     continue;
             }
-            else 
+            else
             {
                 if ( !GetNotarisationNotaries(notarypubkeys, numNN, tx.vin, NotarisationNotaries) )
                     continue;
@@ -1175,13 +1175,13 @@ UniValue getNotarisationsForBlock(const UniValue& params, bool fHelp)
         item.push_back(make_pair("height", (int)n.second.height));
         item.push_back(make_pair("blockhash", n.second.blockHash.GetHex()));
         //item.push_back(make_pair("KMD_height", height)); // for when timstamp input is used.
-        
+
         for ( auto notary : NotarisationNotaries )
             notaryarr.push_back(notary);
         item.push_back(make_pair("notaries",notaryarr));
         if ( is_STAKED(n.second.symbol) != 0 )
             labs.push_back(item);
-        else 
+        else
             kmd.push_back(item);
     }
     out.push_back(make_pair("KMD", kmd));
@@ -1319,15 +1319,15 @@ UniValue getimports(const UniValue& params, bool fHelp)
             UniValue objTx(UniValue::VOBJ);
             objTx.push_back(Pair("txid",tx.GetHash().ToString()));
             ImportProof proof; CTransaction burnTx; std::vector<CTxOut> payouts; CTxDestination importaddress;
-            TotalImported += tx.vout[0].nValue; // were vouts swapped? 
+            TotalImported += tx.vout[0].nValue; // were vouts swapped?
             objTx.push_back(Pair("amount", ValueFromAmount(tx.vout[1].nValue)));
             if (ExtractDestination(tx.vout[1].scriptPubKey, importaddress))
             {
                 objTx.push_back(Pair("address", CBitcoinAddress(importaddress).ToString()));
             }
-            UniValue objBurnTx(UniValue::VOBJ);      
+            UniValue objBurnTx(UniValue::VOBJ);
             CPubKey vinPubkey;
-            if (UnmarshalImportTx(tx, proof, burnTx, payouts)) 
+            if (UnmarshalImportTx(tx, proof, burnTx, payouts))
             {
                 if (burnTx.vout.size() == 0)
                     continue;
@@ -1341,7 +1341,7 @@ UniValue getimports(const UniValue& params, bool fHelp)
                     {
                         std::string sourceSymbol;
                         CTransaction tokenbasetx;
-                        E_UNMARSHAL(rawproof,   ss >> sourceSymbol; 
+                        E_UNMARSHAL(rawproof,   ss >> sourceSymbol;
                                                 if (!ss.eof())
                                                     ss >> tokenbasetx );
                         objBurnTx.push_back(Pair("source", sourceSymbol));
@@ -1355,13 +1355,13 @@ UniValue getimports(const UniValue& params, bool fHelp)
         }
     }
     result.push_back(Pair("imports", imports));
-    result.push_back(Pair("TotalImported", TotalImported > 0 ? ValueFromAmount(TotalImported) : 0 ));    
+    result.push_back(Pair("TotalImported", TotalImported > 0 ? ValueFromAmount(TotalImported) : 0 ));
     result.push_back(Pair("time", block.GetBlockTime()));
     return result;
 }
 
 
-// outputs burn transactions in the wallet 
+// outputs burn transactions in the wallet
 UniValue getwalletburntransactions(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() > 1)
@@ -1460,14 +1460,14 @@ UniValue getwalletburntransactions(const UniValue& params, bool fHelp)
                         }
                     }
                 }
-                else 
+                else
                     entry.push_back(Pair("burnedAmount", ValueFromAmount(pwtx->vout.back().nValue)));   // coins
 
-                // check for corrupted strings (look for non-printable chars) from some older versions 
+                // check for corrupted strings (look for non-printable chars) from some older versions
                 // which caused "couldn't parse reply from server" error on client:
-                if (std::find_if(targetSymbol.begin(), targetSymbol.end(), [](int c) {return !std::isprint(c);}) != targetSymbol.end()) 
+                if (std::find_if(targetSymbol.begin(), targetSymbol.end(), [](int c) {return !std::isprint(c);}) != targetSymbol.end())
                     targetSymbol = "<value corrupted>";
-                
+
                 entry.push_back(Pair("targetSymbol", targetSymbol));
                 entry.push_back(Pair("targetCCid", std::to_string(targetCCid)));
                 if (mytxid_inmempool(pwtx->GetHash()))

@@ -23,3 +23,5 @@ CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site CXXFLAGS="-DPTW32_
 sed -i 's/-lboost_system-mt /-lboost_system-mt-s /' configure
 cd src/
 CC="${CC}" CXX="${CXX}" make V=1 -j$(nproc)
+
+cp src/qt/komodo-qt.exe ./pirate-qt-win.exe

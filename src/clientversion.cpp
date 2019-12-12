@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -32,10 +32,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both komodod and komodo-core, to make it harder for attackers to
+ * for both pirate and pirate-core, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME = GetArg("-clientname", "MagicBean");
+const std::string CLIENT_NAME = GetArg("-clientname", "OceanChest");
 
 /**
  * Client version number
@@ -64,28 +64,23 @@ const std::string CLIENT_NAME = GetArg("-clientname", "MagicBean");
 #include "build.h"
 #endif
 
-//! git will put "#define GIT_ARCHIVE 1" on the next line inside archives. 
+//! git will put "#define GIT_ARCHIVE 1" on the next line inside archives.
 #define GIT_ARCHIVE 1
 #ifdef GIT_ARCHIVE
-#define GIT_COMMIT_ID "28"
-#define GIT_COMMIT_DATE "Sun, 16 Jun 2019 00:00:00 +0500"
+#define GIT_COMMIT_ID "7bfdeb2"
+#define GIT_COMMIT_DATE "Sun Feb 24 11:14:11 2019 -0600"
 #endif
 
+#define RENDER_ALPHA_STRING(num) "-alpha" DO_STRINGIZE(num)
 #define RENDER_BETA_STRING(num) "-beta" DO_STRINGIZE(num)
 #define RENDER_RC_STRING(num) "-rc" DO_STRINGIZE(num)
-#define RENDER_DEV_STRING(num) "-" DO_STRINGIZE(num)
+#define RENDER_DEV_STRING(num) "-dev" DO_STRINGIZE(num)
 
 #define RENDER_BUILD(build) \
-    BOOST_PP_IF( \
-        BOOST_PP_LESS(build, 25), \
-        RENDER_BETA_STRING(BOOST_PP_ADD(build, 1)), \
-        BOOST_PP_IF( \
-            BOOST_PP_LESS(build, 50), \
-            RENDER_RC_STRING(BOOST_PP_SUB(build, 24)), \
-            BOOST_PP_IF( \
-                BOOST_PP_EQUAL(build, 50), \
-                "", \
-                RENDER_DEV_STRING(BOOST_PP_SUB(build, 50)))))
+    BOOST_PP_IF(BOOST_PP_LESS(build, 30), RENDER_ALPHA_STRING(BOOST_PP_SUB(build, 20)), \
+                BOOST_PP_IF(BOOST_PP_LESS(build, 40), RENDER_BETA_STRING(BOOST_PP_SUB(build, 30)), \
+                            BOOST_PP_IF(BOOST_PP_LESS(build, 50), RENDER_RC_STRING(BOOST_PP_SUB(build, 40)), \
+                                        BOOST_PP_IF(BOOST_PP_EQUAL(build, 60), "", RENDER_DEV_STRING(BOOST_PP_SUB(build, 60))))))
 
 #define BUILD_DESC_WITH_SUFFIX(maj, min, rev, build, suffix) \
     "v" DO_STRINGIZE(maj) "." DO_STRINGIZE(min) "." DO_STRINGIZE(rev) RENDER_BUILD(build) "-" DO_STRINGIZE(suffix)
@@ -119,14 +114,16 @@ const std::string CLIENT_DATE(BUILD_DATE);
 
 std::string FormatVersion(int nVersion)
 {
-    if (nVersion % 100 < 25)
-        return strprintf("%d.%d.%d-beta%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, (nVersion % 100)+1);
+    if (nVersion % 100 < 30)
+        return strprintf("%d.%d.%d-alpha%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, (nVersion % 100));
+    if (nVersion % 100 < 40)
+        return strprintf("%d.%d.%d-beta%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, (nVersion % 100));
     if (nVersion % 100 < 50)
-        return strprintf("%d.%d.%d-rc%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, (nVersion % 100)-24);
-    else if (nVersion % 100 == 50)
+        return strprintf("%d.%d.%d-rc%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, (nVersion % 100));
+    else if (nVersion % 100 == 60)
         return strprintf("%d.%d.%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100);
     else
-        return strprintf("%d.%d.%d-%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, (nVersion % 100)-50);
+        return strprintf("%d.%d.%d-%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, (nVersion % 100));
 }
 
 std::string FormatFullVersion()
@@ -134,8 +131,8 @@ std::string FormatFullVersion()
     return CLIENT_BUILD;
 }
 
-/** 
- * Format the subversion field according to BIP 14 spec (https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki) 
+/**
+ * Format the subversion field according to BIP 14 spec (https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki)
  */
 std::string FormatSubVersion(const std::string& name, int nClientVersion, const std::vector<std::string>& comments)
 {

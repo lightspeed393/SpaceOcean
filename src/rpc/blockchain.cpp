@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -663,7 +663,7 @@ UniValue getlastsegidstakes(const UniValue& params, bool fHelp)
     int depth = params[0].get_int();
     if ( depth > chainActive.Height() )
         throw runtime_error("Not enough blocks to scan back that far.\n");
-    
+
     int32_t segids[64] = {0};
     int32_t pow = 0;
     int32_t notset = 0;
@@ -679,9 +679,9 @@ UniValue getlastsegidstakes(const UniValue& params, bool fHelp)
         else
             notset++;
     }
-    
+
     int8_t posperc = 100*(depth-pow)/depth;
-    
+
     UniValue ret(UniValue::VOBJ);
     UniValue objsegids(UniValue::VOBJ);
     for (int8_t i = 0; i < 64; i++)
@@ -1176,7 +1176,7 @@ UniValue paxprice(const UniValue& params, bool fHelp)
         return(-1);
     for (i=0; i<width; i++)
     {
-        if ( (n= komodo_heightpricebits(&ignore,rawprices,firstheight + numblocks - 1 - i)) < 0 )  // stores raw prices in backward order 
+        if ( (n= komodo_heightpricebits(&ignore,rawprices,firstheight + numblocks - 1 - i)) < 0 )  // stores raw prices in backward order
             return(-1);
         if ( numpricefeeds < 0 )
             numpricefeeds = n;
@@ -1192,13 +1192,13 @@ UniValue paxprice(const UniValue& params, bool fHelp)
         rngval = (rngval*11109 + 13849);
         ptr = (uint32_t *)&pricedata[i*3];
         // takes previous PRICES_DAYWINDOW raw prices and calculates correlated price value
-        if ( (pricedata[i*3+1]= komodo_pricecorrelated(rngval,ind,(uint32_t *)&pricedata[i*3],6,0,PRICES_SMOOTHWIDTH)) < 0 ) // skip is 6 == sizeof(int64_t)/sizeof(int32_t)*3 
+        if ( (pricedata[i*3+1]= komodo_pricecorrelated(rngval,ind,(uint32_t *)&pricedata[i*3],6,0,PRICES_SMOOTHWIDTH)) < 0 ) // skip is 6 == sizeof(int64_t)/sizeof(int32_t)*3
             return(-3);
     }
     tmpbuf = (int64_t *)calloc(sizeof(int64_t),2*PRICES_DAYWINDOW);
     for (i=0; i<numblocks; i++)
         // takes previous PRICES_DAYWINDOW correlated price values and calculates smoothed value
-        pricedata[i*3+2] = komodo_priceave(tmpbuf,&pricedata[i*3+1],3); 
+        pricedata[i*3+2] = komodo_priceave(tmpbuf,&pricedata[i*3+1],3);
     free(tmpbuf);
     return(0);
 }*/
@@ -1902,7 +1902,7 @@ UniValue mempoolInfoToJSON()
     if (Params().NetworkIDString() == "regtest") {
         ret.push_back(Pair("fullyNotified", mempool.IsFullyNotified()));
     }
-    
+
     return ret;
 }
 

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -109,7 +109,7 @@ uint256 CalculateProofRoot(const char* symbol, uint32_t targetCCid, int kmdHeigh
     return uint256();
 
 end:
-    // add set to vector. Set makes sure there are no dupes included. 
+    // add set to vector. Set makes sure there are no dupes included.
     moms.clear();
     std::copy(tmp_moms.begin(), tmp_moms.end(), std::back_inserter(moms));
     //LogPrintf( "SeenOwnNotarisations.%i moms.size.%li blocks scanned.%i\n",seenOwnNotarisations, moms.size(), i);
@@ -181,7 +181,7 @@ TxProof GetCrossChainProof(const uint256 txid, const char* targetSymbol, uint32_
     kmdHeight = ScanNotarisationsFromHeight(kmdHeight, isTarget, nota);
     if (!kmdHeight)
         throw std::runtime_error("Cannot find notarisation for target inclusive of source");
-        
+
     if ( offset != 0 )
         kmdHeight += offset;
 
@@ -319,7 +319,7 @@ bool CheckMoMoM(uint256 kmdNotarisationHash, uint256 momom)
 * burntxid - txid of burn tx on the source chain
 * rawproof - array of txids of notaries' proofs
 */
-bool CheckNotariesApproval(uint256 burntxid, const std::vector<uint256> & notaryTxids) 
+bool CheckNotariesApproval(uint256 burntxid, const std::vector<uint256> & notaryTxids)
 {
     int count = 0;
 
@@ -335,7 +335,7 @@ bool CheckNotariesApproval(uint256 burntxid, const std::vector<uint256> & notary
 
         // get notary approval tx
         if (eval->GetTxConfirmed(notarytxid, notarytx, block)) {
-            
+
             std::vector<uint8_t> vopret;
             if (!notarytx.vout.empty() && GetOpReturnData(notarytx.vout.back().scriptPubKey, vopret)) {
                 std::vector<uint8_t> txoutproof;
@@ -350,7 +350,7 @@ bool CheckNotariesApproval(uint256 burntxid, const std::vector<uint256> & notary
                         merkleBlock.txn.ExtractMatches(prooftxids);
                         if (merkleBlock.txn.ExtractMatches(prooftxids) != merkleBlock.header.hashMerkleRoot ||  // check block merkle root is correct
                             std::find(prooftxids.begin(), prooftxids.end(), burntxid) != prooftxids.end()) {    // check burn txid is in proven txids list
-                            
+
                             if (komodo_notaries(notaries_pubkeys, block.GetHeight(), block.GetBlockTime()) >= 0) {
                                 // check it is a notary who signed approved tx:
                                 int i;
@@ -363,10 +363,10 @@ bool CheckNotariesApproval(uint256 burntxid, const std::vector<uint256> & notary
 #endif
                                     if (CheckVinPubKey(notarytx, 0, notaries_pubkeys[i])   // is signed by a notary?
                                         && std::find(alreadySigned.begin(), alreadySigned.end(), vnotarypubkey) == alreadySigned.end()   // check if notary not re-used
-#ifdef TESTMODE                                        
+#ifdef TESTMODE
                                         || CheckVinPubKey(notarytx, 0, test_notary_pubkey33)  // test
 #endif
-                                    )   
+                                    )
                                     {
                                         alreadySigned.push_back(vnotarypubkey);
                                         count++;
@@ -406,7 +406,7 @@ bool CheckNotariesApproval(uint256 burntxid, const std::vector<uint256> & notary
 #ifdef TESTMODE
     if (count < 1) { // 1 for test
 #else
-    if (count < 5) { 
+    if (count < 5) {
 #endif
         LOGSTREAM("importcoin", CCLOG_INFO, stream << "CheckNotariesApproval() not enough signed notary transactions=" << count << std::endl);
         retcode = false;

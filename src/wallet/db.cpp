@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -111,7 +111,7 @@ bool CDBEnv::Open(const boost::filesystem::path& pathIn)
     char err_path[256];
     memset(err_path, 0, 256);
 
-    #ifdef WIN32	
+    #ifdef WIN32
     GetShortPathNameA(strPath.c_str(), db_path, 256);
     GetShortPathNameA(pathLogDir.string().c_str(), log_path, 256);
     GetShortPathNameA(pathErrorFile.string().c_str(), err_path, 256);

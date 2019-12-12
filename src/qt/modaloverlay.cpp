@@ -104,7 +104,7 @@ void ModalOverlay::tipUpdate(int count, const QDateTime& blockDate, double nVeri
         ui->progressIncreasePerH->setText(QString::number(progressPerHour * 100, 'f', 2)+"%");
 
         // show expected remaining time
-        if(remainingMSecs >= 0) {	
+        if(remainingMSecs >= 0) {
             ui->expectedTimeLeft->setText(GUIUtil::formatNiceTimeOffset(remainingMSecs / 1000.0));
         } else {
             ui->expectedTimeLeft->setText(QObject::tr("unknown"));
@@ -150,11 +150,16 @@ void ModalOverlay::toggleVisibility()
 
 void ModalOverlay::showHide(bool hide, bool userRequested)
 {
-    if ( (layerIsVisible && !hide) || (!layerIsVisible && hide) || (!hide && userClosed && !userRequested))
-        return;
+    if ( (layerIsVisible && !hide) || (!layerIsVisible && hide) || (!hide && userClosed && !userRequested)) { return; }
+
+    if (isVisible()) { setStyleSheet("background-color: transparent;"); }
+    else { setStyleSheet("background-color: lightGray;"); }
 
     if (!isVisible() && !hide)
+    {
+        setStyleSheet("background-color: transparent;");
         setVisible(true);
+    }
 
     setGeometry(0, hide ? 0 : height(), width(), height());
 

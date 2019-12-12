@@ -1673,11 +1673,11 @@ void SplitStr(const std::string& strVal, std::vector<std::string> &outVals);
 int8_t equihash_params_possible(uint64_t n, uint64_t k)
 {
     /* To add more of these you also need to edit:
-    * equihash.cpp very end of file with the tempate to point to the new param numbers 
+    * equihash.cpp very end of file with the tempate to point to the new param numbers
     * equihash.h
     *  line 210/217 (declaration of equihash class)
-    * Add this object to the following functions: 
-    *  EhInitialiseState 
+    * Add this object to the following functions:
+    *  EhInitialiseState
     *  EhBasicSolve
     *  EhOptimisedSolve
     *  EhIsValidSolution
@@ -1716,8 +1716,8 @@ void komodo_args(char *argv0)
         USE_EXTERNAL_PUBKEY = 1;
         if ( IS_KOMODO_NOTARY == 0 )
         {
-            // We dont have any chain data yet, so use system clock to guess. 
-            // I think on season change should reccomend notaries to use -notary to avoid needing this. 
+            // We dont have any chain data yet, so use system clock to guess.
+            // I think on season change should reccomend notaries to use -notary to avoid needing this.
             int32_t kmd_season = getacseason(time(NULL));
             for (i=0; i<64; i++)
             {
@@ -1737,7 +1737,29 @@ void komodo_args(char *argv0)
         LogPrintf( "Cannot be STAKED and KMD notary at the same time!\n");
         StartShutdown();
     }
-	name = GetArg("-ac_name","");
+    SoftSetArg("-ac_name", std::string("PIRATE"));
+    SoftSetArg("-ac_supply", std::string("0"));
+    SoftSetArg("-ac_reward", std::string("25600000000"));
+    SoftSetArg("-ac_private", std::string("1"));
+    SoftSetArg("-ac_halving", std::string("77777"));
+    SoftSetArg("-addnode", std::string("zero.kolo.supernet.org"));
+    SoftSetArg("-addnode", std::string("149.56.151.69"));
+    SoftSetArg("-addnode", std::string("66.70.180.144"));
+    SoftSetArg("-addnode", std::string("209.58.144.205"));
+    SoftSetArg("-addnode", std::string("45.77.207.1"));
+    SoftSetArg("-addnode", std::string("78.47.205.239"));
+    SoftSetArg("-addnode", std::string("136.243.58.134"));
+    SoftSetArg("-addnode", std::string("209.250.227.29"));
+    SoftSetArg("-addnode", std::string("195.201.230.227"));
+    SoftSetArg("-addnode", std::string("159.89.45.197"));
+    SoftSetArg("-addnode", std::string("67.207.94.69"));
+    SoftSetArg("-addnode", std::string("178.63.77.56"));
+    SoftSetArg("-addnode", std::string("94.45.155.6"));
+    SoftSetArg("-addnode", std::string("195.93.180.221"));
+    SoftSetArg("-addnode", std::string("51.83.3.42"));
+    SoftSetArg("-addnode", std::string("45.76.232.40"));
+    SoftSetArg("-addnode", std::string("139.99.208.174"));
+    name = GetArg("-ac_name","");
     if ( argv0 != 0 )
     {
         len = (int32_t)strlen(argv0);
@@ -1762,7 +1784,7 @@ void komodo_args(char *argv0)
     ASSETCHAINS_PRIVATE = GetArg("-ac_private",0);
     KOMODO_SNAPSHOT_INTERVAL = GetArg("-ac_snapshot",0);
     Split(GetArg("-ac_nk",""), sizeof(ASSETCHAINS_NK)/sizeof(*ASSETCHAINS_NK), ASSETCHAINS_NK, 0);
-    
+
     // -ac_ccactivateht=evalcode,height,evalcode,height,evalcode,height....
     Split(GetArg("-ac_ccactivateht",""), sizeof(ccEnablesHeight)/sizeof(*ccEnablesHeight), ccEnablesHeight, 0);
     // fill map with all eval codes and activation height of 0.
@@ -1778,13 +1800,13 @@ void komodo_args(char *argv0)
             LogPrintf( "ac_ccactivateht: invalid evalcode.%i must be between 0 and 256.\n", ecode);
         else if ( ht > 0 )
         {
-            // update global map. 
+            // update global map.
             mapHeightEvalActivate[ecode] = ht;
             LogPrintf( "ac_ccactivateht: ecode.%i activates at height.%i\n", ecode, mapHeightEvalActivate[ecode]);
         }
         i++;
     }
-    
+
     if ( (KOMODO_REWIND= GetArg("-rewind",0)) != 0 )
     {
         LogPrintf("KOMODO_REWIND %d\n",KOMODO_REWIND);
@@ -1809,7 +1831,7 @@ void komodo_args(char *argv0)
         }
         if ( ASSETCHAINS_ALGO == ASSETCHAINS_EQUIHASH && ASSETCHAINS_NK[0] != 0 && ASSETCHAINS_NK[1] != 0 )
         {
-            if ( equihash_params_possible(ASSETCHAINS_NK[0], ASSETCHAINS_NK[1]) == -1 ) 
+            if ( equihash_params_possible(ASSETCHAINS_NK[0], ASSETCHAINS_NK[1]) == -1 )
             {
                 LogPrintf("equihash values N.%li and K.%li are not currently available\n", ASSETCHAINS_NK[0], ASSETCHAINS_NK[1]);
                 exit(0);
@@ -1869,7 +1891,7 @@ void komodo_args(char *argv0)
             StartShutdown();
         }
         LogPrintf("ASSETCHAINS_SUPPLY %llu\n",(long long)ASSETCHAINS_SUPPLY);
-        
+
         ASSETCHAINS_COMMISSION = GetArg("-ac_perc",0);
         ASSETCHAINS_OVERRIDE_PUBKEY = GetArg("-ac_pubkey","");
         ASSETCHAINS_SCRIPTPUB = GetArg("-ac_script","");
@@ -1975,7 +1997,7 @@ void komodo_args(char *argv0)
             LogPrintf("when using gateway import these must be set: -ac_end=1 -ac_supply=0 -ac_perc=0\n");
             StartShutdown();
         }
-        
+
 
         if ( (ASSETCHAINS_STAKED= GetArg("-ac_staked",0)) > 100 )
             ASSETCHAINS_STAKED = 100;
@@ -2099,7 +2121,7 @@ void komodo_args(char *argv0)
 
             val = ASSETCHAINS_COMMISSION | (((int64_t)ASSETCHAINS_STAKED & 0xff) << 32) | (((uint64_t)ASSETCHAINS_CC & 0xffff) << 40) | ((ASSETCHAINS_PUBLIC != 0) << 7) | ((ASSETCHAINS_PRIVATE != 0) << 6) | ASSETCHAINS_TXPOW;
             extralen += iguana_rwnum(1,&extraptr[extralen],sizeof(val),(void *)&val);
-            
+
             if ( ASSETCHAINS_FOUNDERS != 0 )
             {
                 uint8_t tmp = 1;
@@ -2193,7 +2215,7 @@ void komodo_args(char *argv0)
                 extralen += iguana_rwnum(1,&extraptr[extralen],sizeof(ASSETCHAINS_EARLYTXIDCONTRACT),(void *)&ASSETCHAINS_EARLYTXIDCONTRACT);
             }
         }
-        
+
         addn = GetArg("-seednode","");
         if ( strlen(addn.c_str()) > 0 )
             ASSETCHAINS_SEED = 1;
@@ -2328,7 +2350,7 @@ void komodo_args(char *argv0)
             LogPrintf("-ac_private for a non-PIRATE chain is not supported. The only reason to have an -ac_private chain is for total privacy and that is best achieved with the largest anon set. PIRATE has that and it is recommended to just use PIRATE\n");
             StartShutdown();
         }
-        // Set cc enables for all existing ac_cc chains here. 
+        // Set cc enables for all existing ac_cc chains here.
         if ( strcmp("AXO",ASSETCHAINS_SYMBOL) == 0 )
         {
             // No CCs used on this chain yet.
@@ -2336,7 +2358,7 @@ void komodo_args(char *argv0)
         }
         if ( strcmp("CCL",ASSETCHAINS_SYMBOL) == 0 )
         {
-            // No CCs used on this chain yet. 
+            // No CCs used on this chain yet.
             CCDISABLEALL;
             CCENABLE(EVAL_TOKENS);
             CCENABLE(EVAL_HEIR);
@@ -2352,28 +2374,28 @@ void komodo_args(char *argv0)
         }
         if ( strcmp("DION",ASSETCHAINS_SYMBOL) == 0 )
         {
-            // No CCs used on this chain yet. 
+            // No CCs used on this chain yet.
             CCDISABLEALL;
         }
-        
+
         if ( strcmp("EQL",ASSETCHAINS_SYMBOL) == 0 )
         {
-            // No CCs used on this chain yet. 
+            // No CCs used on this chain yet.
             CCDISABLEALL;
         }
         if ( strcmp("ILN",ASSETCHAINS_SYMBOL) == 0 )
         {
-            // No CCs used on this chain yet. 
+            // No CCs used on this chain yet.
             CCDISABLEALL;
         }
         if ( strcmp("OUR",ASSETCHAINS_SYMBOL) == 0 )
         {
-            // No CCs used on this chain yet. 
+            // No CCs used on this chain yet.
             CCDISABLEALL;
         }
         if ( strcmp("ZEXO",ASSETCHAINS_SYMBOL) == 0 )
         {
-            // No CCs used on this chain yet. 
+            // No CCs used on this chain yet.
             CCDISABLEALL;
         }
         if ( strcmp("SEC",ASSETCHAINS_SYMBOL) == 0 )

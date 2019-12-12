@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -534,7 +534,7 @@ bool CBlockTreeDB::Snapshot2(std::map <std::string, CAmount> &addressAmounts, Un
         }
     }
     //LogPrintf( "total=%f, totalAddresses=%li, utxos=%li, ignored=%li\n", (double) total / COIN, totalAddresses, utxos, ignoredAddresses);
-    
+
     // this is for the snapshot RPC, you can skip this by passing a 0 as the last argument.
     if (ret)
     {
@@ -579,7 +579,7 @@ UniValue CBlockTreeDB::Snapshot(int top)
                 vaddr.push_back( make_pair(element.second, element.first) );
             std::sort(vaddr.rbegin(), vaddr.rend());
         }
-        else 
+        else
         {
             for ( auto address : vAddressSnapshot )
                 vaddr.push_back(make_pair(address.first, CBitcoinAddress(address.second).ToString()));

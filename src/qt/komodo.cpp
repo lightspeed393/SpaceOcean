@@ -103,7 +103,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("komodo-core", psz).toStdString();
+    return QCoreApplication::translate("pirate-core", psz).toStdString();
 }
 
 static QString GetLangTerritory()
@@ -528,7 +528,7 @@ void KomodoApplication::initializeResult(bool success)
 
             window->addWallet(KomodoOceanGUI::DEFAULT_WALLET, walletModel);
             window->setCurrentWallet(KomodoOceanGUI::DEFAULT_WALLET);
-            
+
             #ifdef ENABLE_BIP70
             connect(walletModel, SIGNAL(coinsSent(CWallet*,SendCoinsRecipient,QByteArray)),
                              paymentServer, SLOT(fetchPaymentACK(CWallet*,const SendCoinsRecipient&,QByteArray)));

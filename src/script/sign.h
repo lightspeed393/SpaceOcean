@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -44,11 +44,11 @@ public:
     virtual const BaseSignatureChecker& Checker() const =0;
 
     /** Create a singular (non-script) signature. */
-    virtual bool CreateSig(std::vector<unsigned char>& vchSig, 
-                           const CKeyID& keyid, 
-                           const CScript& scriptCode, 
-                           uint32_t consensusBranchId, 
-                           CKey *key = NULL, 
+    virtual bool CreateSig(std::vector<unsigned char>& vchSig,
+                           const CKeyID& keyid,
+                           const CScript& scriptCode,
+                           uint32_t consensusBranchId,
+                           CKey *key = NULL,
                            void *extraData = NULL) const = 0;
 };
 

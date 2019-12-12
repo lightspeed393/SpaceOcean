@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright © 2014-2019 The SuperNET Developers.                             *
+* Copyright Â© 2014-2019 The SuperNET Developers.                             *
 *                                                                            *
 * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
 * the top-level directory of this distribution for the individual copyright  *
@@ -13,7 +13,7 @@
 *                                                                            *
 ******************************************************************************/
 
-// encode decode tokens opret 
+// encode decode tokens opret
 // make token cryptoconditions and vouts
 // This code was moved to a separate source file to enable linking libcommon.so (with importcoin.cpp which depends on some token functions)
 
@@ -117,11 +117,11 @@ CScript EncodeTokenOpRet(uint256 tokenid, std::vector<CPubKey> voutPubkeys, std:
         }
     });
 
-    // bad opret cases (tries to attach payload without re-serialization): 
+    // bad opret cases (tries to attach payload without re-serialization):
 
     // error "64: scriptpubkey":
-    // if (payload.size() > 0) 
-    //	   opret += payload; 
+    // if (payload.size() > 0)
+    //	   opret += payload;
 
     // error "64: scriptpubkey":
     // CScript opretPayloadNoOpcode(vpayload);
@@ -136,7 +136,7 @@ CScript EncodeTokenOpRet(uint256 tokenid, std::vector<CPubKey> voutPubkeys, std:
     return opret;
 }
 
-// overload for compatibility 
+// overload for compatibility
 //CScript EncodeTokenOpRet(uint8_t tokenFuncId, uint8_t evalCodeInOpret, uint256 tokenid, std::vector<CPubKey> voutPubkeys, CScript payload)
 //{
 //	return EncodeTokenOpRet(tokenid, voutPubkeys, payload);
@@ -175,8 +175,8 @@ uint8_t DecodeTokenCreateOpRet(const CScript &scriptPubKey, std::vector<uint8_t>
     return (uint8_t)0;
 }
 
-// decode token opret: 
-// for 't' returns all data from opret, vopretExtra contains other contract's data (currently only assets'). 
+// decode token opret:
+// for 't' returns all data from opret, vopretExtra contains other contract's data (currently only assets').
 // for 'c' returns only funcid. NOTE: nonfungible data is not returned
 uint8_t DecodeTokenOpRet(const CScript scriptPubKey, uint8_t &evalCodeTokens, uint256 &tokenid, std::vector<CPubKey> &voutPubkeys, std::vector<std::pair<uint8_t, vscript_t>>  &oprets)
 {
@@ -211,7 +211,7 @@ uint8_t DecodeTokenOpRet(const CScript scriptPubKey, uint8_t &evalCodeTokens, ui
             return DecodeTokenCreateOpRet(scriptPubKey, dummyPubkey, dummyName, dummyDescription, oprets);
 
         case 't':
-           
+
             // compatibility with old-style rogue or assets data (with no opretid):
             // try to unmarshal old-style rogue or assets data:
             foundOldstyle = E_UNMARSHAL(vopret, ss >> dummyEvalCode; ss >> dummyFuncId; ss >> tokenid; ss >> ccType;
@@ -219,10 +219,10 @@ uint8_t DecodeTokenOpRet(const CScript scriptPubKey, uint8_t &evalCodeTokens, ui
                                         if (ccType == 2) ss >> voutPubkey2;
                                         if (!ss.eof()) {
                                             ss >> voldstyledata;
-                                        }) && voldstyledata.size() >= 2 && 
+                                        }) && voldstyledata.size() >= 2 &&
                                             (voldstyledata.begin()[0] == 0x11 /*EVAL_ROGUE*/ && IS_CHARINSTR(voldstyledata.begin()[1], "RHQKG")  ||
                                              voldstyledata.begin()[0] == EVAL_ASSETS && IS_CHARINSTR(voldstyledata.begin()[1], "sbSBxo")) ;
-                
+
             if (foundOldstyle ||  // fix for compatibility with old style data (no opretid)
                 E_UNMARSHAL(vopret, ss >> dummyEvalCode; ss >> dummyFuncId; ss >> tokenid; ss >> ccType;
                     if (ccType >= 1) ss >> voutPubkey1;
@@ -280,7 +280,7 @@ uint8_t DecodeTokenOpRet(const CScript scriptPubKey, uint8_t &evalCodeTokens, ui
 // make three-eval (token+evalcode+evalcode2) 1of2 cryptocondition:
 CC *MakeTokensCCcond1of2(uint8_t evalcode, uint8_t evalcode2, CPubKey pk1, CPubKey pk2)
 {
-    // make 1of2 sigs cond 
+    // make 1of2 sigs cond
     std::vector<CC*> pks;
     pks.push_back(CCNewSecp256k1(pk1));
     pks.push_back(CCNewSecp256k1(pk2));

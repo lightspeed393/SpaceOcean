@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -106,7 +106,7 @@ void AsyncRPCOperation::main() {
     if (isCancelled()) {
         return;
     }
-    
+
     set_state(OperationStatus::EXECUTING);
 
     start_execution_clock();

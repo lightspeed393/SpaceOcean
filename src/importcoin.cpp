@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright © 2014-2019 The SuperNET Developers.                             *
+ * Copyright Â© 2014-2019 The SuperNET Developers.                             *
  *                                                                            *
  * See the AUTHORS, DEVELOPER-AGREEMENT and LICENSE files at                  *
  * the top-level directory of this distribution for the individual copyright  *
@@ -35,7 +35,7 @@ CTransaction MakeImportCoinTransaction(const ImportProof proof, const CTransacti
     CScript scriptSig;
 
     CMutableTransaction mtx = CreateNewContextualCMutableTransaction(Params().GetConsensus(), komodo_nextheight());
-    if (mtx.fOverwintered) 
+    if (mtx.fOverwintered)
         mtx.nExpiryHeight = 0;
     mtx.vout = payouts;
     if (mtx.vout.size() == 0)
@@ -62,7 +62,7 @@ CTransaction MakeImportCoinTransaction(const ImportProof proof, const CTransacti
         if (DecodeTokenCreateOpRet(mtx.vout.back().scriptPubKey, vorigpubkey, name, desc, oprets) == 'c') {    // parse token 'c' opret
             mtx.vout.pop_back(); //remove old token opret
             oprets.push_back(std::make_pair(OPRETID_IMPORTDATA, importData));
-            mtx.vout.push_back(CTxOut(0, EncodeTokenCreateOpRet('c', vorigpubkey, name, desc, oprets)));   // make new token 'c' opret with importData                                                                                    
+            mtx.vout.push_back(CTxOut(0, EncodeTokenCreateOpRet('c', vorigpubkey, name, desc, oprets)));   // make new token 'c' opret with importData
         }
         else {
             LOGSTREAM("importcoin", CCLOG_INFO, stream << "MakeImportCoinTransaction() incorrect token import opret" << std::endl);
@@ -102,10 +102,10 @@ CTxOut MakeBurnOutput(CAmount value, uint32_t targetCCid, std::string targetSymb
                       ss << burntxid;
                       ss << height;
                       ss << burnvout;
-                      ss << rawburntx;                      
+                      ss << rawburntx;
                       ss << destpub;
                       ss << amount);
-                      
+
     return CTxOut(value, CScript() << OP_RETURN << opret);
 }
 
@@ -126,9 +126,9 @@ CTxOut MakeBurnOutput(CAmount value, uint32_t targetCCid, std::string targetSymb
 
 bool UnmarshalImportTx(const CTransaction importTx, ImportProof &proof, CTransaction &burnTx, std::vector<CTxOut> &payouts)
 {
-    if (importTx.vout.size() < 1) 
+    if (importTx.vout.size() < 1)
         return false;
-    
+
     if (importTx.vin.size() != 1 || importTx.vin[0].scriptSig != (CScript() << E_MARSHAL(ss << EVAL_IMPORTCOIN))) {
         LOGSTREAM("importcoin", CCLOG_INFO, stream << "UnmarshalImportTx() incorrect import tx vin" << std::endl);
         return false;
@@ -159,7 +159,7 @@ bool UnmarshalImportTx(const CTransaction importTx, ImportProof &proof, CTransac
                 break;
             }
 
-        payouts = std::vector<CTxOut>(importTx.vout.begin(), importTx.vout.end()-1);       //exclude opret with import data 
+        payouts = std::vector<CTxOut>(importTx.vout.begin(), importTx.vout.end()-1);       //exclude opret with import data
         payouts.push_back(CTxOut(0, EncodeTokenCreateOpRet('c', vorigpubkey, name, desc, oprets)));   // make original payouts token opret (without import data)
     }
     else {
@@ -180,7 +180,7 @@ bool UnmarshalBurnTx(const CTransaction burnTx, std::string &targetSymbol, uint3
     std::vector<uint8_t> vburnOpret; uint32_t ccid = 0;
     uint8_t evalCode;
 
-    if (burnTx.vout.size() == 0) 
+    if (burnTx.vout.size() == 0)
         return false;
 
     GetOpReturnData(burnTx.vout.back().scriptPubKey, vburnOpret);
@@ -258,7 +258,7 @@ bool UnmarshalBurnTx(const CTransaction burnTx,uint256 &bindtxid,std::vector<CPu
                     ss >> burntxid;
                     ss >> height;
                     ss >> burnvout;
-                    ss >> rawburntx;                      
+                    ss >> rawburntx;
                     ss >> destpub;
                     ss >> amount));
 }

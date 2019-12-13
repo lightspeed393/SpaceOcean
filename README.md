@@ -48,7 +48,7 @@ brew install gcc@6
 brew install binutils
 brew install wget
 # Clone the Pirate repo
-git clone https://github.com/PirateNetwork/PirateOcean --branch static --single-branch
+git clone https://github.com/PirateNetwork/PirateOcean --branch master --single-branch
 # Change static branch to other branch you wish to compile
 cd PirateOcean
 ./zcutil/fetch-params.sh
@@ -70,7 +70,7 @@ sudo update-alternatives --config x86_64-w64-mingw32-gcc
 sudo update-alternatives --config x86_64-w64-mingw32-g++
 # (configure to use POSIX variant)
 
-git clone https://github.com/PirateNetwork/PirateOcean --branch static --single-branch
+git clone https://github.com/PirateNetwork/PirateOcean --branch master --single-branch
 cd PirateOcean
 ./zcutil/build-win.sh -j8
 # -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use

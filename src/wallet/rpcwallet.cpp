@@ -4142,6 +4142,7 @@ UniValue z_viewtransaction(const UniValue& params, bool fHelp)
             "\nResult:\n"
             "{\n"
             "  \"txid\" : \"transactionid\",   (string) The transaction id\n"
+			"  \"txFee\" : x.xxx                 (numeric) The fee amount in " + CURRENCY_UNIT + ", if in notes\n"
             "  \"spends\" : [\n"
             "    {\n"
             "      \"type\" : \"sprout|sapling\",      (string) The type of address\n"
@@ -4152,7 +4153,7 @@ UniValue z_viewtransaction(const UniValue& params, bool fHelp)
             "      \"jsPrev\" : n,                   (numeric, sprout) the index of the JSDescription within vJoinSplit\n"
             "      \"jsOutputPrev\" : n,             (numeric, sprout) the index of the output within the JSDescription\n"
             "      \"outputPrev\" : n,               (numeric, sapling) the index of the output within the vShieldedOutput\n"
-            "      \"address\" : \"zcashaddress\",     (string) The Zcash address involved in the transaction\n"
+            "      \"address\" : \"zcashaddress\",     (string) The Pirate address involved in the transaction\n"
             "      \"value\" : x.xxx                 (numeric) The amount in " + CURRENCY_UNIT + "\n"
             "      \"valueZat\" : xxxx               (numeric) The amount in zatoshis\n"
             "    }\n"
@@ -4164,7 +4165,7 @@ UniValue z_viewtransaction(const UniValue& params, bool fHelp)
             "      \"js\" : n,                       (numeric, sprout) the index of the JSDescription within vJoinSplit\n"
             "      \"jsOutput\" : n,                 (numeric, sprout) the index of the output within the JSDescription\n"
             "      \"output\" : n,                   (numeric, sapling) the index of the output within the vShieldedOutput\n"
-            "      \"address\" : \"zcashaddress\",     (string) The Zcash address involved in the transaction\n"
+            "      \"address\" : \"zcashaddress\",     (string) The Pirate address involved in the transaction\n"
             "      \"recovered\" : true|false        (boolean, sapling) True if the output is not for an address in the wallet\n"
             "      \"value\" : x.xxx                 (numeric) The amount in " + CURRENCY_UNIT + "\n"
             "      \"valueZat\" : xxxx               (numeric) The amount in zatoshis\n"
@@ -4177,7 +4178,6 @@ UniValue z_viewtransaction(const UniValue& params, bool fHelp)
 
             "\nExamples:\n"
             + HelpExampleCli("z_viewtransaction", "\"1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d\"")
-            + HelpExampleCli("z_viewtransaction", "\"1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d\" true")
             + HelpExampleRpc("z_viewtransaction", "\"1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d\"")
         );
 
@@ -4192,6 +4192,8 @@ UniValue z_viewtransaction(const UniValue& params, bool fHelp)
     const CWalletTx& wtx = pwalletMain->mapWallet[hash];
 
     entry.push_back(Pair("txid", hash.GetHex()));
+	if (wtx.vShieldedSpend.size() == 0) { entry.push_back(Pair("txFee", "Cannot be determined from SaplingNote")); }
+	else {entry.push_back(Pair("txFee", ValueFromAmount(wtx.valueBalance))); }
 
     UniValue spends(UniValue::VARR);
     UniValue outputs(UniValue::VARR);

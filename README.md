@@ -40,13 +40,9 @@ Ensure you have [brew](https://brew.sh) and Command Line Tools installed.
 # Install Xcode, opens a pop-up window to install CLT without installing the entire Xcode package
 xcode-select --install
 # Update brew and install dependencies
-brew update
-brew upgrade
-brew tap discoteq/discoteq; brew install flock
-brew install autoconf autogen automake
-brew install gcc@6
-brew install binutils
-brew install wget
+brew update && brew upgrade
+brew tap discoteq/discoteq
+brew install flock autoconf autogen automake gcc@6 binutils wget coreutils
 # Clone the Pirate repo
 git clone https://github.com/PirateNetwork/PirateOcean --branch master --single-branch
 # Change static branch to other branch you wish to compile

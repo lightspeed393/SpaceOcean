@@ -68,7 +68,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>tSPACEoceanGUI</name>
     </context>
 <context>
     <name>CoinControlDialog</name>
@@ -170,6 +170,6 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>tSPACE-core</name>
     </context>
 </TS>

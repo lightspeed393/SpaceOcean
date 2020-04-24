@@ -72,7 +72,7 @@
     </message>
 </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>tSPACEoceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Pasirašyti ži&amp;nutę...</translation>
@@ -154,8 +154,8 @@
         <translation>Blokai iš naujo indeksuojami...</translation>
     </message>
     <message>
-        <source>Send coins to a Pirate address</source>
-        <translation>Siųsti monetas Pirate adresui</translation>
+        <source>Send coins to a tSPACE address</source>
+        <translation>Siųsti monetas tSPACE adresui</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -178,8 +178,8 @@
         <translation>&amp;Tikrinti žinutę...</translation>
     </message>
     <message>
-        <source>Pirate</source>
-        <translation>Pirate</translation>
+        <source>tSPACE</source>
+        <translation>tSPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -418,8 +418,8 @@
         <translation>Piniginė</translation>
     </message>
     <message>
-        <source>Automatically open the Pirate client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatiškai atidaryti Pirate kliento prievadą maršrutizatoriuje. Tai veikia tik tada, kai jūsų maršrutizatorius palaiko UPnP ir ji įjungta.</translation>
+        <source>Automatically open the tSPACE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatiškai atidaryti tSPACE kliento prievadą maršrutizatoriuje. Tai veikia tik tada, kai jūsų maršrutizatorius palaiko UPnP ir ji įjungta.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -521,7 +521,7 @@
         <translation>Forma</translation>
     </message>
     <message>
-        <source>Available:</source>
+        <source>Transparent:</source>
         <translation>Galimi:</translation>
     </message>
     <message>
@@ -847,7 +847,7 @@
         <translation>Įveskite pranešimą, kurį norite pasirašyti čia</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Pirate address</source>
+        <source>Sign the message to prove you own this tSPACE address</source>
         <translation>Registruotis žinute įrodymuii, kad turite šį adresą</translation>
     </message>
     <message>
@@ -863,8 +863,8 @@
         <translation>&amp;Patikrinti žinutę</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Pirate address</source>
-        <translation>Patikrinkite žinutę, jog įsitikintumėte, kad ją pasirašė nurodytas Pirate adresas</translation>
+        <source>Verify the message to ensure it was signed with the specified tSPACE address</source>
+        <translation>Patikrinkite žinutę, jog įsitikintumėte, kad ją pasirašė nurodytas tSPACE adresas</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -914,7 +914,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>tSPACE-core</name>
     <message>
         <source>Options:</source>
         <translation>Parinktys:</translation>
@@ -936,8 +936,8 @@
         <translation>Dirbti fone kaip šešėlyje ir priimti komandas</translation>
     </message>
     <message>
-        <source>Pirate Core</source>
-        <translation>Pirate branduolys</translation>
+        <source>tSPACE Core</source>
+        <translation>tSPACE branduolys</translation>
     </message>
     <message>
         <source>Error opening block database</source>

@@ -24,4 +24,4 @@ sed -i 's/-lboost_system-mt /-lboost_system-mt-s /' configure
 cd src/
 CC="${CC}" CXX="${CXX}" make V=1 -j$(nproc)
 
-cp src/qt/komodo-qt.exe ./pirate-qt-win.exe
+cp src/qt/komodo-qt.exe ./tSPACE-qt-win.exe

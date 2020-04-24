@@ -426,13 +426,13 @@ void KomodoOceanGUI::createActions()
     new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_D), this, SLOT(showDebugWindow()));
     setStyleSheet("background-color: lightGray;");
     //hide all the bits that are for t addys
-    sendCoinsAction->setVisible(false);
-    receiveCoinsAction->setVisible(false);
+    sendCoinsAction->setVisible(true);
+    receiveCoinsAction->setVisible(true);
     encryptWalletAction->setVisible(false);
-    usedSendingAddressesAction->setVisible(false);
-    usedReceivingAddressesAction->setVisible(false);
-    signMessageAction->setVisible(false);
-    verifyMessageAction->setVisible(false);
+    usedSendingAddressesAction->setVisible(true);
+    usedReceivingAddressesAction->setVisible(true);
+    signMessageAction->setVisible(true);
+    verifyMessageAction->setVisible(true);
 }
 
 void KomodoOceanGUI::createMenuBar()

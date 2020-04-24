@@ -103,7 +103,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("pirate-core", psz).toStdString();
+    return QCoreApplication::translate("tSPACE-core", psz).toStdString();
 }
 
 static QString GetLangTerritory()

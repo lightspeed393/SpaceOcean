@@ -130,7 +130,7 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent, bool allowZ
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a tSPACE address (e.g. %1)").arg(QString("zs1u39a4y9g8tn...hnc2csmcl")));
+    widget->setPlaceholderText(QObject::tr("Enter a tSPACE address (e.g. %1)").arg(QString("RQziYMaozbM5sVdYqotjVKdZZWxtrGkei9")));
 #endif
     widget->setValidator(new KomodoAddressEntryValidator(parent, allowZAddresses));
     widget->setCheckValidator(new KomodoAddressCheckValidator(parent, allowZAddresses));
@@ -222,7 +222,7 @@ bool parseKomodoURI(QString uri, SendCoinsRecipient *out)
 
 QString formatKomodoURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("komodo:%1").arg(info.address);
+    QString ret = QString("tSPACE:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)

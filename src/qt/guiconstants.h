@@ -48,8 +48,8 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "Komodo"
-#define QAPP_ORG_DOMAIN "komodo.org"
+#define QAPP_ORG_NAME "SpaceWorks"
+#define QAPP_ORG_DOMAIN "spaceworks.co"
 #define QAPP_APP_NAME_DEFAULT "KomodoOceanGUI"
 #define QAPP_APP_NAME_TESTNET "KomodoOceanGUI-testnet"
 

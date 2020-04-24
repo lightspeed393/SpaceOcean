@@ -130,7 +130,7 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent, bool allowZ
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a Pirate address (e.g. %1)").arg(QString("zs1u39a4y9g8tn...hnc2csmcl")));
+    widget->setPlaceholderText(QObject::tr("Enter a tSPACE address (e.g. %1)").arg(QString("zs1u39a4y9g8tn...hnc2csmcl")));
 #endif
     widget->setValidator(new KomodoAddressEntryValidator(parent, allowZAddresses));
     widget->setCheckValidator(new KomodoAddressCheckValidator(parent, allowZAddresses));
@@ -148,7 +148,7 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
 bool parseKomodoURI(const QUrl &uri, SendCoinsRecipient *out)
 {
     // return if URI is not valid or is no komodo: URI
-    if(!uri.isValid() || uri.scheme() != QString("komodo"))
+    if(!uri.isValid() || uri.scheme() != QString("tSPACE"))
         return false;
 
     SendCoinsRecipient rv;
@@ -188,7 +188,7 @@ bool parseKomodoURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!KomodoUnits::parse(KomodoUnits::ARRR, i->second, &rv.amount))
+                if(!KomodoUnits::parse(KomodoUnits::tSPACE, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -212,9 +212,9 @@ bool parseKomodoURI(QString uri, SendCoinsRecipient *out)
     //
     //    Cannot handle this later, because komodo:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("komodo://", Qt::CaseInsensitive))
+    if(uri.startsWith("tSPACE://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 10, "komodo:");
+        uri.replace(0, 10, "tSPACE:");
     }
     QUrl uriInstance(uri);
     return parseKomodoURI(uriInstance, out);
@@ -227,7 +227,7 @@ QString formatKomodoURI(const SendCoinsRecipient &info)
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(KomodoUnits::format(KomodoUnits::ARRR, info.amount, false, KomodoUnits::separatorNever));
+        ret += QString("?amount=%1").arg(KomodoUnits::format(KomodoUnits::tSPACE, info.amount, false, KomodoUnits::separatorNever));
         paramCount++;
     }
 

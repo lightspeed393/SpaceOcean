@@ -44,9 +44,9 @@ QString KomodoUnits::name(int unit)
 {
     switch(unit)
     {
-    case ARRR: return QString("tSPACE");
-    case mARRR: return QString("mtSPACE");
-    case uARRR: return QString::fromUtf8("μtSPACE");
+    case tSPACE: return QString("tSPACE");
+    case mtSPACE: return QString("mtSPACE");
+    case utSPACE: return QString::fromUtf8("μtSPACE");
     default: return QString("???");
     }
 }

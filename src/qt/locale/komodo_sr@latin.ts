@@ -124,7 +124,7 @@
     </message>
 </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>tSPACEoceanGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Usklađivanje sa mrežom...</translation>
@@ -158,16 +158,16 @@
         <translation>Otvori &amp;URI...</translation>
     </message>
     <message>
-        <source>Send coins to a Pirate address</source>
-        <translation>Pošalji novčiće na Pirate adresu</translation>
+        <source>Send coins to a tSPACE address</source>
+        <translation>Pošalji novčiće na tSPACE adresu</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
         <translation>&amp;Proveri poruku...</translation>
     </message>
     <message>
-        <source>Pirate</source>
-        <translation>Pirate</translation>
+        <source>tSPACE</source>
+        <translation>tSPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -404,10 +404,10 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>tSPACE-core</name>
     <message>
-        <source>Pirate Core</source>
-        <translation>Pirate Core</translation>
+        <source>tSPACE Core</source>
+        <translation>tSPACE Core</translation>
     </message>
     <message>
         <source>Information</source>

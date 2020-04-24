@@ -1737,28 +1737,18 @@ void komodo_args(char *argv0)
         LogPrintf( "Cannot be STAKED and KMD notary at the same time!\n");
         StartShutdown();
     }
-    SoftSetArg("-ac_name", std::string("PIRATE"));
-    SoftSetArg("-ac_supply", std::string("0"));
-    SoftSetArg("-ac_reward", std::string("25600000000"));
-    SoftSetArg("-ac_private", std::string("1"));
-    SoftSetArg("-ac_halving", std::string("77777"));
-    SoftSetArg("-addnode", std::string("zero.kolo.supernet.org"));
-    SoftSetArg("-addnode", std::string("149.56.151.69"));
-    SoftSetArg("-addnode", std::string("66.70.180.144"));
-    SoftSetArg("-addnode", std::string("209.58.144.205"));
-    SoftSetArg("-addnode", std::string("45.77.207.1"));
-    SoftSetArg("-addnode", std::string("78.47.205.239"));
-    SoftSetArg("-addnode", std::string("136.243.58.134"));
-    SoftSetArg("-addnode", std::string("209.250.227.29"));
-    SoftSetArg("-addnode", std::string("195.201.230.227"));
-    SoftSetArg("-addnode", std::string("159.89.45.197"));
-    SoftSetArg("-addnode", std::string("67.207.94.69"));
-    SoftSetArg("-addnode", std::string("178.63.77.56"));
-    SoftSetArg("-addnode", std::string("94.45.155.6"));
-    SoftSetArg("-addnode", std::string("195.93.180.221"));
-    SoftSetArg("-addnode", std::string("51.83.3.42"));
-    SoftSetArg("-addnode", std::string("45.76.232.40"));
-    SoftSetArg("-addnode", std::string("139.99.208.174"));
+		SoftSetArg("-ac_name", std::string("tSPACE"));
+    SoftSetArg("-ac_supply", std::string("393939"));
+    SoftSetArg("-ac_reward", std::string("300000000"));
+		SoftSetArg("-ac_end", std::string("939393939"));
+    SoftSetArg("-ac_halving", std::string("313131313"));
+		SoftSetArg("-ac_decay", std::string("66666667"));
+		SoftSetArg("-ac_cc", std::string("939"));
+		SoftSetArg("-ac_staked", std::string("50"));
+		SoftSetArg("-ac_blocktime", std::string("120"));
+		SoftSetArg("-addnode", std::string("165.227.35.158"));
+		vector<string> tSPACEnodes = { "165.227.35.158", "167.172.39.135" };
+    mapMultiArgs["-addnode"] = tSPACEnodes;
     name = GetArg("-ac_name","");
     if ( argv0 != 0 )
     {

@@ -20,7 +20,7 @@
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">QLabel { background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop:0 #F0D0A0, stop:1 #F8D488); color:#000000; }</string>
+      <string notr="true">QLabel { background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop:0 #262732, stop:1 #1c1d26); color:#000000; }</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -73,7 +73,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the Komodo network after a connection is established, but this process has not completed yet.</string>
+               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the tSPACE network after a connection is established, but this process has not completed yet.</string>
               </property>
               <property name="text">
                <string/>
@@ -110,7 +110,7 @@
            </layout>
           </item>
           <item>
-           <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0">
+           <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0,0,0">
             <property name="spacing">
              <number>12</number>
             </property>
@@ -483,6 +483,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="StakeButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton { background-color: qlineargradient(spread:repeat, x1:1, y1:1, x2:0, y2:0, stop:0 rgba(25, 57, 94, 255), stop:1 rgba(255, 255, 255, 255));\nfont: 22pt &quot;Franklin Gothic Heavy&quot;; }</string>
+         </property>
+         <property name="text">
+          <string>Stake tSPACE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -535,7 +545,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the Komodo network after a connection is established, but this process has not completed yet.</string>
+               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the tSPACE network after a connection is established, but this process has not completed yet.</string>
               </property>
               <property name="text">
                <string/>

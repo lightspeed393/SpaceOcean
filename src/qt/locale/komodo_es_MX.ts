@@ -72,7 +72,7 @@
     </message>
     </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>tSPACEoceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Firmar &amp;mensaje</translation>
@@ -150,8 +150,8 @@
         <translation>Reindexando bloques en el disco...</translation>
     </message>
     <message>
-        <source>Send coins to a Pirate address</source>
-        <translation>Enviar monedas a una dirección Pirate</translation>
+        <source>Send coins to a tSPACE address</source>
+        <translation>Enviar monedas a una dirección tSPACE</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -174,8 +174,8 @@
         <translation>&amp;Verificar mensaje...</translation>
     </message>
     <message>
-        <source>Pirate</source>
-        <translation>Pirate</translation>
+        <source>tSPACE</source>
+        <translation>tSPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -418,8 +418,8 @@
         <translation>Mensaje:</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Pirate network.</source>
-        <translation>Mensaje opcional para agregar a la solicitud de pago, el cual será mostrado cuando la solicitud este abierta. Nota: El mensaje no se manda con el pago a travéz de la red de Pirate.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the tSPACE network.</source>
+        <translation>Mensaje opcional para agregar a la solicitud de pago, el cual será mostrado cuando la solicitud este abierta. Nota: El mensaje no se manda con el pago a travéz de la red de tSPACE.</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
@@ -602,14 +602,14 @@
     </message>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>tSPACE-core</name>
     <message>
         <source>Options:</source>
         <translation>Opciones:</translation>
     </message>
     <message>
-        <source>Pirate Core</source>
-        <translation>nucleo Pirate</translation>
+        <source>tSPACE Core</source>
+        <translation>nucleo tSPACE</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>

@@ -288,7 +288,7 @@ void KomodoOceanGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(platformStyle->SingleColorIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a Komodo address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a tSPACE address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
@@ -299,7 +299,7 @@ void KomodoOceanGUI::createActions()
     sendCoinsMenuAction->setToolTip(sendCoinsMenuAction->statusTip());
 
     zsendCoinsAction = new QAction(platformStyle->SingleColorIcon(":/icons/z-send"), tr("&Z-Send"), this);
-    zsendCoinsAction->setStatusTip(tr("Send coins to/from z-address"));
+    zsendCoinsAction->setStatusTip(tr("Send coins to/from a z-address"));
     zsendCoinsAction->setToolTip(zsendCoinsAction->statusTip());
     zsendCoinsAction->setCheckable(true);
     zsendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
@@ -310,7 +310,7 @@ void KomodoOceanGUI::createActions()
     zsendCoinsMenuAction->setToolTip(zsendCoinsMenuAction->statusTip());
 
     receiveCoinsAction = new QAction(platformStyle->SingleColorIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and komodo: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and tSPACE: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
@@ -374,9 +374,9 @@ void KomodoOceanGUI::createActions()
     changePassphraseAction = new QAction(platformStyle->TextColorIcon(":/icons/key"), tr("&Change Passphrase..."), this);
     changePassphraseAction->setStatusTip(tr("Change the passphrase used for wallet encryption"));
     signMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your Komodo addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your tSPACE addresses to prove you own them"));
     verifyMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/verify"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Komodo addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified tSPACE addresses"));
 
     openRPCConsoleAction = new QAction(platformStyle->TextColorIcon(":/icons/debugwindow"), tr("&Debug window"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging and diagnostic console"));
@@ -391,11 +391,11 @@ void KomodoOceanGUI::createActions()
     usedReceivingZAddressesAction->setStatusTip(tr("Show the list of used receiving z-addresses and labels"));
 
     openAction = new QAction(platformStyle->TextColorIcon(":/icons/open"), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a komodo: URI or payment request"));
+    openAction->setStatusTip(tr("Open a tSPACE: URI or payment request"));
 
     showHelpMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/info"), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible Komodo command-line options").arg(tr(PACKAGE_NAME)));
+    showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible tSPACE command-line options").arg(tr(PACKAGE_NAME)));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -426,13 +426,13 @@ void KomodoOceanGUI::createActions()
     new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_D), this, SLOT(showDebugWindow()));
     setStyleSheet("background-color: lightGray;");
     //hide all the bits that are for t addys
-    sendCoinsAction->setVisible(false);
-    receiveCoinsAction->setVisible(false);
+    sendCoinsAction->setVisible(true);
+    receiveCoinsAction->setVisible(true);
     encryptWalletAction->setVisible(false);
-    usedSendingAddressesAction->setVisible(false);
-    usedReceivingAddressesAction->setVisible(false);
-    signMessageAction->setVisible(false);
-    verifyMessageAction->setVisible(false);
+    usedSendingAddressesAction->setVisible(true);
+    usedReceivingAddressesAction->setVisible(true);
+    signMessageAction->setVisible(true);
+    verifyMessageAction->setVisible(true);
 }
 
 void KomodoOceanGUI::createMenuBar()
@@ -781,7 +781,7 @@ void KomodoOceanGUI::updateNetworkState()
 
     QString tooltip;
 
-    tooltip = tr("%n active connection(s) to Komodo network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
+    tooltip = tr("%n active connection(s) to tSPACE network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
 
     // Don't word-wrap this (fixed-width) tooltip
     tooltip = QString("<nobr>") + tooltip + QString("</nobr>");
@@ -923,7 +923,7 @@ void KomodoOceanGUI::setNumBlocks(int count, const QDateTime& blockDate, double 
 
 void KomodoOceanGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("Komodo"); // default title
+    QString strTitle = tr("tSPACE"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;

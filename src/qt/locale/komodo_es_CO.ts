@@ -64,7 +64,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>tSPACEoceanGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Sincronizando con la red...</translation>
@@ -126,8 +126,8 @@
         <translation>Abrir &amp;URL...</translation>
     </message>
     <message>
-        <source>Send coins to a Pirate address</source>
-        <translation>Enviando monedas a una dirección de Pirate</translation>
+        <source>Send coins to a tSPACE address</source>
+        <translation>Enviando monedas a una dirección de tSPACE</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
@@ -146,8 +146,8 @@
         <translation>&amp;Verificar Mensaje...</translation>
     </message>
     <message>
-        <source>Pirate</source>
-        <translation>Pirate</translation>
+        <source>tSPACE</source>
+        <translation>tSPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -294,10 +294,10 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>tSPACE-core</name>
     <message>
-        <source>Pirate Core</source>
-        <translation>Pirate Core</translation>
+        <source>tSPACE Core</source>
+        <translation>tSPACE Core</translation>
     </message>
     <message>
         <source>Insufficient funds</source>

@@ -554,7 +554,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Transparent:</string>
+          <string>Balance:</string>
          </property>
         </widget>
        </item>

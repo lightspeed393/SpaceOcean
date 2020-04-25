@@ -1,8 +1,8 @@
 # SpaceOcean
 
-SpaceOcean is a Qt native wallet for ([Spacecoin](https://pirate.black/)) (SPACE). It's available for Windows, Linux, MacOS.
+SpaceOcean is a Qt native wallet for [Spacecoin](https://spaceworks.co/spacecoin) (SPACE). It's available for Windows, Linux, MacOS.
 
-**NB!** We have multiple branches:
+There are multiple branches:
 - [master](../../tree/master) for building stable SpaceOcean binaries.
 - [beta](../../tree/beta) for partially tested changes.
 - [dev](../../tree/dev) for current work in progress.
@@ -78,7 +78,7 @@ cd SpaceOcean
 # -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
 #This can take some time and you'll need to run zcutil/fetch-params.bat on the Win system.
 ```
-**SpaceOcean is experimental and a work-in-progress.** Use at your own risk.
+**SpaceOcean is experimental and a work-in-progress.** Use at your own risk. [Disclaimer](https://spaceworks.co/disclaimer/#wallets).
 
 
 

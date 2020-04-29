@@ -196,7 +196,7 @@
     </message>
 </context>
 <context>
-    <name>SPACEOceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;امضای پیام...</translation>

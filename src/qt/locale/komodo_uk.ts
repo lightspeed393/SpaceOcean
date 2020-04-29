@@ -232,7 +232,7 @@
     </message>
 </context>
 <context>
-    <name>SPACEoceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;Підписати повідомлення...</translation>

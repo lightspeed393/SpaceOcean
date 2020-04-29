@@ -80,7 +80,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>SPACEoceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
         <source>Error</source>
         <translation>نقص</translation>

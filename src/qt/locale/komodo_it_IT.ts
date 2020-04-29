@@ -88,7 +88,7 @@
     </message>
 </context>
 <context>
-    <name>SPACEoceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
         <source>&amp;Transactions</source>
         <translation>Transazioni</translation>

@@ -297,9 +297,9 @@
     </message>
 </context>
 <context>
-    <name>SPACEoceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
-        <location filename="../SPACEoceangui.cpp" line="+357"/>
+        <location filename="../komodooceangui.cpp" line="+357"/>
         <source>Sign &amp;message...</source>
         <translation>Sign &amp;message...</translation>
     </message>
@@ -3876,7 +3876,7 @@
 <context>
     <name>UnitDisplayStatusBarControl</name>
     <message>
-        <location filename="../SPACEoceangui.cpp" line="+129"/>
+        <location filename="../komodooceangui.cpp" line="+129"/>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation type="unfinished"></translation>
     </message>

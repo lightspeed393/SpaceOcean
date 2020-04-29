@@ -26,11 +26,12 @@ sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoco
 
 ```shell
 git clone https://github.com/SpaceWorksCo/SpaceOcean --branch master --single-branch
+# Change master branch to other branch you wish to compile
 cd SpaceOcean
 ./zcutil/fetch-params.sh
-# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
 ./zcutil/build-linux.sh -j8
-#This can take some time.
+# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
+#This can take some time and you'll need to run zcutil/fetch-params.sh on the nix system.
 ```
 
 
@@ -42,21 +43,17 @@ Ensure you have [brew](https://brew.sh) and Command Line Tools installed.
 # Install Xcode, opens a pop-up window to install CLT without installing the entire Xcode package
 xcode-select --install
 # Update brew and install dependencies
-brew update
-brew upgrade
-brew tap discoteq/discoteq; brew install flock
-brew install autoconf autogen automake
-brew install gcc@6
-brew install binutils
-brew install wget
+brew update && brew upgrade
+brew tap discoteq/discoteq
+brew install flock autoconf autogen automake gcc@6 binutils wget coreutils
 # Clone the Pirate repo
 git clone https://github.com/SpaceWorksCo/SpaceOcean --branch master --single-branch
 # Change master branch to other branch you wish to compile
 cd SpaceOcean
 ./zcutil/fetch-params.sh
-# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
 ./zcutil/build-mac.sh -j8
-# This can take some time.
+# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
+#This can take some time and you'll need to run zcutil/fetch-params./sh on the Mac system.
 ```
 
 #### Windows

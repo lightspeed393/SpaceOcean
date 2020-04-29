@@ -46,12 +46,12 @@
         <translation>Duke marr adresen</translation>
     </message>
     <message>
-        <source>These are your tSPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Këto janë tSPACE adresat e juaja për të dërguar pagesa. Gjithmon kontrolloni shumën dhe adresën pranuese para se të dërgoni monedha.</translation>
+        <source>These are your SPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Këto janë SPACE adresat e juaja për të dërguar pagesa. Gjithmon kontrolloni shumën dhe adresën pranuese para se të dërgoni monedha.</translation>
     </message>
     <message>
-        <source>These are your tSPACE addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Këto janë tSPACE adresat e juaja për të pranuar pagesa. Rekomandohet që gjithmon të përdorni një adresë të re për çdo transaksion.</translation>
+        <source>These are your SPACE addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Këto janë SPACE adresat e juaja për të pranuar pagesa. Rekomandohet që gjithmon të përdorni një adresë të re për çdo transaksion.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -176,7 +176,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>tSPACEoceanGUI</name>
+    <name>SPACEoceanGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Duke u sinkronizuar me rrjetin...</translation>
@@ -214,8 +214,8 @@
         <translation>Ndrysho frazkalimin e përdorur per enkriptimin e portofolit</translation>
     </message>
     <message>
-        <source>tSPACE</source>
-        <translation>tSPACE</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -778,14 +778,14 @@
     </message>
     </context>
 <context>
-    <name>tSPACE-core</name>
+    <name>SPACE-core</name>
     <message>
         <source>Options:</source>
         <translation>Opsionet:</translation>
     </message>
     <message>
-        <source>tSPACE Core</source>
-        <translation>Berthama tSPACE</translation>
+        <source>SPACE Core</source>
+        <translation>Berthama SPACE</translation>
     </message>
     <message>
         <source>Information</source>

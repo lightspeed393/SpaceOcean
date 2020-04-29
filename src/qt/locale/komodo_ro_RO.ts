@@ -76,7 +76,7 @@
     </message>
 </context>
 <context>
-    <name>tSPACEoceanGUI</name>
+    <name>SPACEoceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Semnează &amp;mesaj...</translation>
@@ -154,8 +154,8 @@
         <translation>Se reindexează blocurile pe disc...</translation>
     </message>
     <message>
-        <source>Send coins to a tSPACE address</source>
-        <translation>Trimite monede către o adresă tSPACE</translation>
+        <source>Send coins to a SPACE address</source>
+        <translation>Trimite monede către o adresă SPACE</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -178,8 +178,8 @@
         <translation>&amp;Verifică mesaj...</translation>
     </message>
     <message>
-        <source>tSPACE</source>
-        <translation>tSPACE</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -206,12 +206,12 @@
         <translation>Criptează cheile private ale portofelului dvs.</translation>
     </message>
     <message>
-        <source>Sign messages with your tSPACE addresses to prove you own them</source>
-        <translation>Semnaţi mesaje cu adresa dvs. tSPACE pentru a dovedi că vă aparţin</translation>
+        <source>Sign messages with your SPACE addresses to prove you own them</source>
+        <translation>Semnaţi mesaje cu adresa dvs. SPACE pentru a dovedi că vă aparţin</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified tSPACE addresses</source>
-        <translation>Verificaţi mesaje pentru a vă asigura că au fost semnate cu adresa tSPACE specificată</translation>
+        <source>Verify messages to ensure they were signed with specified SPACE addresses</source>
+        <translation>Verificaţi mesaje pentru a vă asigura că au fost semnate cu adresa SPACE specificată</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -230,8 +230,8 @@
         <translation>Bara de unelte</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and tSPACE: URIs)</source>
-        <translation>Cereţi plăţi (generează coduri QR şi tSPACE-uri: URls)</translation>
+        <source>Request payments (generates QR codes and SPACE: URIs)</source>
+        <translation>Cereţi plăţi (generează coduri QR şi SPACE-uri: URls)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -242,16 +242,16 @@
         <translation>Arată lista de adrese pentru primire şi etichetele</translation>
     </message>
     <message>
-        <source>Open a tSPACE: URI or payment request</source>
-        <translation>Deschidere tSPACE: o adresa URI sau o cerere de plată</translation>
+        <source>Open a SPACE: URI or payment request</source>
+        <translation>Deschidere SPACE: o adresa URI sau o cerere de plată</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>Opţiuni linie de &amp;comandă</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to tSPACE network</source>
-        <translation><numerusform>%n conexiune activă către reţeaua tSPACE</numerusform><numerusform>%n conexiuni active către reţeaua tSPACE</numerusform><numerusform>%n de conexiuni active către reţeaua tSPACE</numerusform></translation>
+        <source>%n active connection(s) to SPACE network</source>
+        <translation><numerusform>%n conexiune activă către reţeaua SPACE</numerusform><numerusform>%n conexiuni active către reţeaua SPACE</numerusform><numerusform>%n de conexiuni active către reţeaua SPACE</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
@@ -656,16 +656,16 @@
         <translation>Cheltuire rest neconfirmat</translation>
     </message>
     <message>
-        <source>Automatically open the tSPACE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Deschide automat în router portul aferent clientului tSPACE. Funcţionează doar dacă routerul duportă UPnP şi e activat.</translation>
+        <source>Automatically open the SPACE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Deschide automat în router portul aferent clientului SPACE. Funcţionează doar dacă routerul duportă UPnP şi e activat.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Mapare port folosind &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the tSPACE network through a SOCKS5 proxy.</source>
-        <translation>Conectare la reţeaua tSPACE printr-un proxy SOCKS.</translation>
+        <source>Connect to the SPACE network through a SOCKS5 proxy.</source>
+        <translation>Conectare la reţeaua SPACE printr-un proxy SOCKS.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -725,7 +725,7 @@
     </message>
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Alegeţi subdiviziunea folosită la afişarea interfeţei şi la trimiterea de tSPACE.</translation>
+        <translation>Alegeţi subdiviziunea folosită la afişarea interfeţei şi la trimiterea de SPACE.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -765,7 +765,7 @@
     </message>
     <message>
         <source>The supplied proxy address is invalid.</source>
-        <translation>Adresa tSPACE pe care aţi specificat-o nu este validă.</translation>
+        <translation>Adresa SPACE pe care aţi specificat-o nu este validă.</translation>
     </message>
 </context>
 <context>
@@ -775,8 +775,8 @@
         <translation>Form</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the tSPACE network after a connection is established, but this process has not completed yet.</source>
-        <translation>Informaţiile afişate pot fi neactualizate. Portofelul dvs. se sincronizează automat cu reţeaua tSPACE după ce o conexiune este stabilită, dar acest proces nu a fost finalizat încă.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the SPACE network after a connection is established, but this process has not completed yet.</source>
+        <translation>Informaţiile afişate pot fi neactualizate. Portofelul dvs. se sincronizează automat cu reţeaua SPACE după ce o conexiune este stabilită, dar acest proces nu a fost finalizat încă.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -864,8 +864,8 @@
         <translation>Cantitate</translation>
     </message>
     <message>
-        <source>Enter a tSPACE address (e.g. %1)</source>
-        <translation>Introduceţi o adresă tSPACE (de exemplu %1)</translation>
+        <source>Enter a SPACE address (e.g. %1)</source>
+        <translation>Introduceţi o adresă SPACE (de exemplu %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1164,8 +1164,8 @@
         <translation>R&amp;efoloseşte o adresă de primire (nu este recomandat)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the tSPACE network.</source>
-        <translation>Un mesaj opţional de ataşat la cererea de plată, care va fi afişat cînd cererea este deschisă. Notă: Acest mesaj nu va fi trimis cu plata către reţeaua tSPACE.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the SPACE network.</source>
+        <translation>Un mesaj opţional de ataşat la cererea de plată, care va fi afişat cînd cererea este deschisă. Notă: Acest mesaj nu va fi trimis cu plata către reţeaua SPACE.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1384,8 +1384,8 @@
         <translation>Aceasta este o tranzacţie normală.</translation>
     </message>
     <message>
-        <source>The tSPACE address to send the payment to</source>
-        <translation>Adresa tSPACE către care se face plata</translation>
+        <source>The SPACE address to send the payment to</source>
+        <translation>Adresa SPACE către care se face plata</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1412,8 +1412,8 @@
         <translation>Introduceţi eticheta pentru ca această adresa să fie introdusă în lista de adrese folosite</translation>
     </message>
     <message>
-        <source>A message that was attached to the tSPACE: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the tSPACE network.</source>
-        <translation>un mesaj a fost ataşat la tSPACE: URI care va fi stocat cu tranzacţia pentru referinţa dvs. Notă: Acest mesaj nu va fi trimis către reţeaua tSPACE.</translation>
+        <source>A message that was attached to the SPACE: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the SPACE network.</source>
+        <translation>un mesaj a fost ataşat la SPACE: URI care va fi stocat cu tranzacţia pentru referinţa dvs. Notă: Acest mesaj nu va fi trimis către reţeaua SPACE.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -1449,7 +1449,7 @@
         <translation>&amp;Semnează mesaj</translation>
     </message>
     <message>
-        <source>The tSPACE address to sign the message with</source>
+        <source>The SPACE address to sign the message with</source>
         <translation>Adresa cu care semnaţi mesajul</translation>
     </message>
     <message>
@@ -1481,8 +1481,8 @@
         <translation>Copiază semnatura curentă în clipboard-ul sistemului</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this tSPACE address</source>
-        <translation>Semnează mesajul pentru a dovedi ca deţineţi acestă adresă tSPACE</translation>
+        <source>Sign the message to prove you own this SPACE address</source>
+        <translation>Semnează mesajul pentru a dovedi ca deţineţi acestă adresă SPACE</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1501,12 +1501,12 @@
         <translation>&amp;Verifică mesaj</translation>
     </message>
     <message>
-        <source>The tSPACE address the message was signed with</source>
-        <translation>Introduceţi o adresă tSPACE</translation>
+        <source>The SPACE address the message was signed with</source>
+        <translation>Introduceţi o adresă SPACE</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified tSPACE address</source>
-        <translation>Verificaţi mesajul pentru a vă asigura că a fost semnat cu adresa tSPACE specificată</translation>
+        <source>Verify the message to ensure it was signed with the specified SPACE address</source>
+        <translation>Verificaţi mesajul pentru a vă asigura că a fost semnat cu adresa SPACE specificată</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1568,7 +1568,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>tSPACE-core</name>
+    <name>SPACE-core</name>
     <message>
         <source>Options:</source>
         <translation>Opţiuni:</translation>
@@ -1594,8 +1594,8 @@
         <translation>Rulează în fundal ca un demon şi acceptă comenzi</translation>
     </message>
     <message>
-        <source>tSPACE Core</source>
-        <translation>Nucleul tSPACE</translation>
+        <source>SPACE Core</source>
+        <translation>Nucleul SPACE</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

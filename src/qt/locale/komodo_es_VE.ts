@@ -68,7 +68,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>tSPACEoceanGUI</name>
+    <name>SPACEoceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Firmar &amp;mensaje...</translation>
@@ -114,8 +114,8 @@
         <translation>Reindexando bloques en el disco...</translation>
     </message>
     <message>
-        <source>Send coins to a tSPACE address</source>
-        <translation>Enviar monedas a una dirección tSPACE</translation>
+        <source>Send coins to a SPACE address</source>
+        <translation>Enviar monedas a una dirección SPACE</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -130,8 +130,8 @@
         <translation>Abre la consola de depuración y diágnostico</translation>
     </message>
     <message>
-        <source>tSPACE</source>
-        <translation>tSPACE</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -158,12 +158,12 @@
         <translation>Encriptar las llaves privadas que pertenecen a tu billetera</translation>
     </message>
     <message>
-        <source>Sign messages with your tSPACE addresses to prove you own them</source>
-        <translation>Firma mensajes con tus direcciones tSPACE para probar que eres dueño de ellas</translation>
+        <source>Sign messages with your SPACE addresses to prove you own them</source>
+        <translation>Firma mensajes con tus direcciones SPACE para probar que eres dueño de ellas</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified tSPACE addresses</source>
-        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones tSPACE especificas</translation>
+        <source>Verify messages to ensure they were signed with specified SPACE addresses</source>
+        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones SPACE especificas</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -582,7 +582,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>tSPACE-core</name>
+    <name>SPACE-core</name>
     <message>
         <source>Options:</source>
         <translation>Opciones:</translation>
@@ -608,8 +608,8 @@
         <translation>Correr en segundo plano como daemon y aceptar comandos</translation>
     </message>
     <message>
-        <source>tSPACE Core</source>
-        <translation>tSPACE Core</translation>
+        <source>SPACE Core</source>
+        <translation>SPACE Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

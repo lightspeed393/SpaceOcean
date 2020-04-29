@@ -62,12 +62,12 @@
         <translation>Ontvanger adresse</translation>
     </message>
     <message>
-        <source>These are your tSPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Hierdie is die adresse vanwaar u tSPACE betalings stuur. U moet altyd die bedrag en die adres van die ontvanger nagaan voordat u enige munte stuur.</translation>
+        <source>These are your SPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Hierdie is die adresse vanwaar u SPACE betalings stuur. U moet altyd die bedrag en die adres van die ontvanger nagaan voordat u enige munte stuur.</translation>
     </message>
     <message>
-        <source>These are your tSPACE addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Hierdie is die adresse waar u tSPACEs sal ontvang. Ons beveel aan dat u 'n nuwe adres kies vir elke transaksie</translation>
+        <source>These are your SPACE addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Hierdie is die adresse waar u SPACEs sal ontvang. Ons beveel aan dat u 'n nuwe adres kies vir elke transaksie</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -228,7 +228,7 @@
     </message>
 </context>
 <context>
-    <name>tSPACEoceanGUI</name>
+    <name>SPACEoceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Teken &amp;boodskap...</translation>
@@ -330,8 +330,8 @@
         <translation>Besig met herindeksering van blokke op hardeskyf...</translation>
     </message>
     <message>
-        <source>Send coins to a tSPACE address</source>
-        <translation>Stuur munte na 'n tSPACE adres</translation>
+        <source>Send coins to a SPACE address</source>
+        <translation>Stuur munte na 'n SPACE adres</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -350,8 +350,8 @@
         <translation>Maak ontfouting en diagnostiese konsole oop</translation>
     </message>
     <message>
-        <source>tSPACE</source>
-        <translation>tSPACE</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -378,12 +378,12 @@
         <translation>Kodifiseer die private sleutes wat aan jou beursie gekoppel is.</translation>
     </message>
     <message>
-        <source>Sign messages with your tSPACE addresses to prove you own them</source>
-        <translation>Onderteken boodskappe met u tSPACE adresse om u eienaarskap te bewys</translation>
+        <source>Sign messages with your SPACE addresses to prove you own them</source>
+        <translation>Onderteken boodskappe met u SPACE adresse om u eienaarskap te bewys</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified tSPACE addresses</source>
-        <translation>Verifieër boodskappe om seker te maak dat dit met die gespesifiseerde tSPACE adresse</translation>
+        <source>Verify messages to ensure they were signed with specified SPACE addresses</source>
+        <translation>Verifieër boodskappe om seker te maak dat dit met die gespesifiseerde SPACE adresse</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -398,8 +398,8 @@
         <translation>Orebalk</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and tSPACE: URIs)</source>
-        <translation>Versoek betalings (genereer QR-kodes en tSPACE: URI's)</translation>
+        <source>Request payments (generates QR codes and SPACE: URIs)</source>
+        <translation>Versoek betalings (genereer QR-kodes en SPACE: URI's)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -410,8 +410,8 @@
         <translation>Vertoon die lys van gebruikte ontvangers-adresse en etikette</translation>
     </message>
     <message>
-        <source>Open a tSPACE: URI or payment request</source>
-        <translation>Skep 'n tSPACE: URI of betalingsversoek</translation>
+        <source>Open a SPACE: URI or payment request</source>
+        <translation>Skep 'n SPACE: URI of betalingsversoek</translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -1010,10 +1010,10 @@
     </message>
     </context>
 <context>
-    <name>tSPACE-core</name>
+    <name>SPACE-core</name>
     <message>
-        <source>tSPACE Core</source>
-        <translation>tSPACE Kern</translation>
+        <source>SPACE Core</source>
+        <translation>SPACE Kern</translation>
     </message>
     <message>
         <source>Information</source>

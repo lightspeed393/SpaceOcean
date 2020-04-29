@@ -68,7 +68,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>tSPACEoceanGUI</name>
+    <name>SPACEoceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;Хабар ёзиш...</translation>
@@ -146,8 +146,8 @@
         <translation>Дискдаги блоклар қайта индексланмоқда...</translation>
     </message>
     <message>
-        <source>Send coins to a tSPACE address</source>
-        <translation>Тангаларни tSPACE манзилига жўнатиш</translation>
+        <source>Send coins to a SPACE address</source>
+        <translation>Тангаларни SPACE манзилига жўнатиш</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -170,8 +170,8 @@
         <translation>Хабарни &amp;тасдиқлаш...</translation>
     </message>
     <message>
-        <source>tSPACE</source>
-        <translation>tSPACE</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -198,12 +198,12 @@
         <translation>Ҳамёнингизга тегишли махфий калитларни кодлаш</translation>
     </message>
     <message>
-        <source>Sign messages with your tSPACE addresses to prove you own them</source>
-        <translation>tSPACE манзилидан унинг эгаси эканлигингизни исботлаш учун хабарлар ёзинг</translation>
+        <source>Sign messages with your SPACE addresses to prove you own them</source>
+        <translation>SPACE манзилидан унинг эгаси эканлигингизни исботлаш учун хабарлар ёзинг</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified tSPACE addresses</source>
-        <translation>Хабарларни махсус tSPACE манзилларингиз билан ёзилганлигига ишонч ҳосил қилиш учун уларни тасдиқланг</translation>
+        <source>Verify messages to ensure they were signed with specified SPACE addresses</source>
+        <translation>Хабарларни махсус SPACE манзилларингиз билан ёзилганлигига ишонч ҳосил қилиш учун уларни тасдиқланг</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -222,8 +222,8 @@
         <translation>Ички ойналар асбоблар панели</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and tSPACE: URIs)</source>
-        <translation>Тўловлар (QR кодлари ва tSPACE ёрдамида яратишлар: URI’лар) сўраш</translation>
+        <source>Request payments (generates QR codes and SPACE: URIs)</source>
+        <translation>Тўловлар (QR кодлари ва SPACE ёрдамида яратишлар: URI’лар) сўраш</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -234,16 +234,16 @@
         <translation>Фойдаланилган қабул қилинган манзиллар ва ёрлиқлар рўйхатини кўрсатиш</translation>
     </message>
     <message>
-        <source>Open a tSPACE: URI or payment request</source>
-        <translation>tSPACE’ни очиш: URI ёки тўлов сўрови</translation>
+        <source>Open a SPACE: URI or payment request</source>
+        <translation>SPACE’ни очиш: URI ёки тўлов сўрови</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;Буйруқлар сатри мосламалари</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to tSPACE network</source>
-        <translation><numerusform>%n та tSPACE тармоғига фаол уланиш мавжуд</numerusform></translation>
+        <source>%n active connection(s) to SPACE network</source>
+        <translation><numerusform>%n та SPACE тармоғига фаол уланиш мавжуд</numerusform></translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -601,8 +601,8 @@
         <translation>Шакл</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the tSPACE network after a connection is established, but this process has not completed yet.</source>
-        <translation>Кўрсатилган маълумот эскирган бўлиши мумкин. Ҳамёнингиз алоқа ўрнатилгандан сўнг tSPACE тармоқ билан автоматик тарзда синхронланади, аммо жараён ҳалигача тугалланмади.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the SPACE network after a connection is established, but this process has not completed yet.</source>
+        <translation>Кўрсатилган маълумот эскирган бўлиши мумкин. Ҳамёнингиз алоқа ўрнатилгандан сўнг SPACE тармоқ билан автоматик тарзда синхронланади, аммо жараён ҳалигача тугалланмади.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -682,8 +682,8 @@
         <translation>Миқдори</translation>
     </message>
     <message>
-        <source>Enter a tSPACE address (e.g. %1)</source>
-        <translation>tSPACE манзилини киритинг (масалан.  %1)</translation>
+        <source>Enter a SPACE address (e.g. %1)</source>
+        <translation>SPACE манзилини киритинг (масалан.  %1)</translation>
     </message>
     <message>
         <source>%1 m</source>
@@ -1190,7 +1190,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>tSPACE-core</name>
+    <name>SPACE-core</name>
     <message>
         <source>Options:</source>
         <translation>Танламалар:</translation>
@@ -1208,8 +1208,8 @@
         <translation>Демон сифатида орқа фонда ишга туширинг ва буйруқларга рози бўлинг</translation>
     </message>
     <message>
-        <source>tSPACE Core</source>
-        <translation>tSPACE Core</translation>
+        <source>SPACE Core</source>
+        <translation>SPACE Core</translation>
     </message>
     <message>
         <source>Connection options:</source>

@@ -62,12 +62,12 @@
         <translation>Alamat-alamat penerima</translation>
     </message>
     <message>
-        <source>These are your tSPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Ini adalah alamat- alamat tSPACE Anda untuk mengirimkan pembayaran. Selalu periksa jumlah dan alamat penerima sebelum mengirimkan koin.</translation>
+        <source>These are your SPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Ini adalah alamat- alamat SPACE Anda untuk mengirimkan pembayaran. Selalu periksa jumlah dan alamat penerima sebelum mengirimkan koin.</translation>
     </message>
     <message>
-        <source>These are your tSPACE addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Ini adalah alamat- alamat tSPACE Anda untuk menerima pembayaran. Dianjurkan untuk menggunakan alamat penerima yang baru setiap melakukan transaksi.</translation>
+        <source>These are your SPACE addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Ini adalah alamat- alamat SPACE Anda untuk menerima pembayaran. Dianjurkan untuk menggunakan alamat penerima yang baru setiap melakukan transaksi.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR COINS&lt;/b&gt;!</source>
-        <translation>Peringatan: Jika Anda enkripsi dompet Anda dan lupa kata sandi anda, Anda akan &lt;b&gt;KEHILANGAN SEMUA tSPACE ANDA&lt;/b&gt;!</translation>
+        <translation>Peringatan: Jika Anda enkripsi dompet Anda dan lupa kata sandi anda, Anda akan &lt;b&gt;KEHILANGAN SEMUA SPACE ANDA&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -228,7 +228,7 @@
     </message>
 </context>
 <context>
-    <name>tSPACEoceanGUI</name>
+    <name>SPACEoceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Pesan &amp;penanda...</translation>
@@ -334,8 +334,8 @@
         <translation>Mengindex ulang blok di dalam disk...</translation>
     </message>
     <message>
-        <source>Send coins to a tSPACE address</source>
-        <translation>Kirim koin ke alamat tSPACE</translation>
+        <source>Send coins to a SPACE address</source>
+        <translation>Kirim koin ke alamat SPACE</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -358,8 +358,8 @@
         <translation>&amp;Verifikasi pesan...</translation>
     </message>
     <message>
-        <source>tSPACE</source>
-        <translation>tSPACE</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -386,12 +386,12 @@
         <translation>Enkripsi private key yang dimiliki dompet Anda</translation>
     </message>
     <message>
-        <source>Sign messages with your tSPACE addresses to prove you own them</source>
-        <translation>Tanda tangani sebuah pesan menggunakan alamat tSPACE Anda untuk membuktikan bahwa Anda adalah pemilik alamat tersebut</translation>
+        <source>Sign messages with your SPACE addresses to prove you own them</source>
+        <translation>Tanda tangani sebuah pesan menggunakan alamat SPACE Anda untuk membuktikan bahwa Anda adalah pemilik alamat tersebut</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified tSPACE addresses</source>
-        <translation>Verifikasi pesan untuk memastikan bahwa pesan tersebut ditanda tangani oleh suatu alamat tSPACE tertentu</translation>
+        <source>Verify messages to ensure they were signed with specified SPACE addresses</source>
+        <translation>Verifikasi pesan untuk memastikan bahwa pesan tersebut ditanda tangani oleh suatu alamat SPACE tertentu</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -410,8 +410,8 @@
         <translation>Baris tab</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and tSPACE: URIs)</source>
-        <translation>Permintaan pembayaran (membuat kode QR dan tSPACE: URIs)</translation>
+        <source>Request payments (generates QR codes and SPACE: URIs)</source>
+        <translation>Permintaan pembayaran (membuat kode QR dan SPACE: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -422,16 +422,16 @@
         <translation>Tampilkan daftar alamat dan label yang diterima</translation>
     </message>
     <message>
-        <source>Open a tSPACE: URI or payment request</source>
-        <translation>Buka URI tSPACE: atau permintaan pembayaran</translation>
+        <source>Open a SPACE: URI or payment request</source>
+        <translation>Buka URI SPACE: atau permintaan pembayaran</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;pilihan Command-line</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to tSPACE network</source>
-        <translation><numerusform>%n koneksi aktif ke jaringan tSPACE</numerusform></translation>
+        <source>%n active connection(s) to SPACE network</source>
+        <translation><numerusform>%n koneksi aktif ke jaringan SPACE</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -474,8 +474,8 @@
         <translation>Terbaru</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible tSPACE command-line options</source>
-        <translation>Tampilkan %1 pesan bantuan untuk mendapatkan daftar opsi baris perintah tSPACE yang memungkinkan</translation>
+        <source>Show the %1 help message to get a list with possible SPACE command-line options</source>
+        <translation>Tampilkan %1 pesan bantuan untuk mendapatkan daftar opsi baris perintah SPACE yang memungkinkan</translation>
     </message>
     <message>
         <source>%1 client</source>
@@ -544,8 +544,8 @@
         <translation>Dompet saat ini &lt;b&gt;terenkripsi&lt;/b&gt; dan &lt;b&gt;terkunci&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. tSPACE can no longer continue safely and will quit.</source>
-        <translation>Terjadi Kesalahan Fatal. tSPACE Tidak Dapat Melanjutkan Dengan Aman Dan Akan Keluar</translation>
+        <source>A fatal error occurred. SPACE can no longer continue safely and will quit.</source>
+        <translation>Terjadi Kesalahan Fatal. SPACE Tidak Dapat Melanjutkan Dengan Aman Dan Akan Keluar</translation>
     </message>
 </context>
 <context>
@@ -722,8 +722,8 @@
         <translation>Ubah alamat pengirim</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid tSPACE address.</source>
-        <translation>Alamat yang dimasukkan "%1" bukanlah alamat tSPACE yang valid.</translation>
+        <source>The entered address "%1" is not a valid SPACE address.</source>
+        <translation>Alamat yang dimasukkan "%1" bukanlah alamat SPACE yang valid.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -972,16 +972,16 @@
         <translation>&amp;Perubahan saldo untuk transaksi yang belum dikonfirmasi</translation>
     </message>
     <message>
-        <source>Automatically open the tSPACE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Otomatis membuka port client tSPACE di router. Hanya berjalan apabila router anda mendukung UPnP dan di-enable.</translation>
+        <source>Automatically open the SPACE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Otomatis membuka port client SPACE di router. Hanya berjalan apabila router anda mendukung UPnP dan di-enable.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Petakan port dengan &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the tSPACE network through a SOCKS5 proxy.</source>
-        <translation>Hubungkan ke jaringan tSPACE melalui SOCKS5 proxy.</translation>
+        <source>Connect to the SPACE network through a SOCKS5 proxy.</source>
+        <translation>Hubungkan ke jaringan SPACE melalui SOCKS5 proxy.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1087,8 +1087,8 @@
         <translation>Formulir</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the tSPACE network after a connection is established, but this process has not completed yet.</source>
-        <translation>Informasi terlampir mungkin sudah kedaluwarsa. Dompet Anda secara otomatis mensinkronisasi dengan jaringan tSPACE ketika sebuah hubungan terbentuk, namun proses ini belum selesai.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the SPACE network after a connection is established, but this process has not completed yet.</source>
+        <translation>Informasi terlampir mungkin sudah kedaluwarsa. Dompet Anda secara otomatis mensinkronisasi dengan jaringan SPACE ketika sebuah hubungan terbentuk, namun proses ini belum selesai.</translation>
     </message>
     <message>
         <source>Transparent:</source>
@@ -1144,8 +1144,8 @@
         <translation>Nilai</translation>
     </message>
     <message>
-        <source>Enter a tSPACE address (e.g. %1)</source>
-        <translation>Masukkan alamat tSPACE (contoh %1)</translation>
+        <source>Enter a SPACE address (e.g. %1)</source>
+        <translation>Masukkan alamat SPACE (contoh %1)</translation>
     </message>
     <message>
         <source>%1 h</source>
@@ -1679,8 +1679,8 @@
         <translation>Salin tanda tangan terpilih ke sistem klipboard</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this tSPACE address</source>
-        <translation>Tandai pesan untuk menyetujui kamu pemiliki alamat tSPACE ini</translation>
+        <source>Sign the message to prove you own this SPACE address</source>
+        <translation>Tandai pesan untuk menyetujui kamu pemiliki alamat SPACE ini</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1794,7 +1794,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>tSPACE-core</name>
+    <name>SPACE-core</name>
     <message>
         <source>Options:</source>
         <translation>Pilihan:</translation>
@@ -1820,8 +1820,8 @@
         <translation>Berjalan dibelakang sebagai daemin dan menerima perintah</translation>
     </message>
     <message>
-        <source>tSPACE Core</source>
-        <translation>tSPACE Core</translation>
+        <source>SPACE Core</source>
+        <translation>SPACE Core</translation>
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>

@@ -70,7 +70,7 @@ void OptionsModel::Init(bool resetSettings)
 
     // Display
     if (!settings.contains("nDisplayUnit"))
-        settings.setValue("nDisplayUnit", KomodoUnits::tSPACE);
+        settings.setValue("nDisplayUnit", KomodoUnits::SPACE);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
 
     if (!settings.contains("strThirdPartyTxUrls"))

@@ -54,8 +54,8 @@
         <translation>&amp;Odaberi</translation>
     </message>
     <message>
-        <source>These are your tSPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Ovo su vaše tSPACE adrese za slanje novca. Uvijek provjerite iznos i adresu primatelja prije slanja novca.</translation>
+        <source>These are your SPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Ovo su vaše SPACE adrese za slanje novca. Uvijek provjerite iznos i adresu primatelja prije slanja novca.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -92,7 +92,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>tSPACEoceanGUI</name>
+    <name>SPACEoceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>P&amp;otpišite poruku...</translation>
@@ -174,8 +174,8 @@
         <translation>Re-indeksiranje blokova na disku...</translation>
     </message>
     <message>
-        <source>Send coins to a tSPACE address</source>
-        <translation>Slanje novca na tSPACE adresu</translation>
+        <source>Send coins to a SPACE address</source>
+        <translation>Slanje novca na SPACE adresu</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -198,8 +198,8 @@
         <translation>&amp;Potvrdite poruku...</translation>
     </message>
     <message>
-        <source>tSPACE</source>
-        <translation>tSPACE</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -226,12 +226,12 @@
         <translation>Šifriranje privatnih ključeva koji u novčaniku</translation>
     </message>
     <message>
-        <source>Sign messages with your tSPACE addresses to prove you own them</source>
-        <translation>Poruku potpišemo s tSPACE adresom, kako bi dokazali vlasništvo nad tom adresom</translation>
+        <source>Sign messages with your SPACE addresses to prove you own them</source>
+        <translation>Poruku potpišemo s SPACE adresom, kako bi dokazali vlasništvo nad tom adresom</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified tSPACE addresses</source>
-        <translation>Provjeravanje poruke, kao dokaz, da je potpisana navedenom tSPACE adresom</translation>
+        <source>Verify messages to ensure they were signed with specified SPACE addresses</source>
+        <translation>Provjeravanje poruke, kao dokaz, da je potpisana navedenom SPACE adresom</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -250,8 +250,8 @@
         <translation>Traka kartica</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and tSPACE: URIs)</source>
-        <translation>Zatraži uplatu (stvara QR kod i tSPACE: URI adresu)</translation>
+        <source>Request payments (generates QR codes and SPACE: URIs)</source>
+        <translation>Zatraži uplatu (stvara QR kod i SPACE: URI adresu)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -262,16 +262,16 @@
         <translation>Prikaži popis korištenih adresa i oznaka za primanje novca</translation>
     </message>
     <message>
-        <source>Open a tSPACE: URI or payment request</source>
-        <translation>Otvori tSPACE: URI adresu ili zahtjev za uplatu</translation>
+        <source>Open a SPACE: URI or payment request</source>
+        <translation>Otvori SPACE: URI adresu ili zahtjev za uplatu</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>Opcije &amp;naredbene linije</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to tSPACE network</source>
-        <translation><numerusform>%n aktivna veza na tSPACE mrežu</numerusform><numerusform>%n aktivnih veza na tSPACE mrežu</numerusform><numerusform>%n aktivnih veza na tSPACE mrežu</numerusform></translation>
+        <source>%n active connection(s) to SPACE network</source>
+        <translation><numerusform>%n aktivna veza na SPACE mrežu</numerusform><numerusform>%n aktivnih veza na SPACE mrežu</numerusform><numerusform>%n aktivnih veza na SPACE mrežu</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
@@ -423,11 +423,11 @@
     </message>
     <message>
         <source>The label associated with this address list entry</source>
-        <translation>Oznaka tSPACE adrese</translation>
+        <translation>Oznaka SPACE adrese</translation>
     </message>
     <message>
         <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
-        <translation>tSPACE adresa. Izmjene adrese su moguće samo za adrese za slanje.</translation>
+        <translation>SPACE adresa. Izmjene adrese su moguće samo za adrese za slanje.</translation>
     </message>
     <message>
         <source>&amp;Address</source>
@@ -568,8 +568,8 @@
         <translation>&amp;Trošenje nepotvrđenih vraćenih iznosa</translation>
     </message>
     <message>
-        <source>Automatically open the tSPACE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatski otvori port tSPACE klijenta na ruteru. To radi samo ako ruter podržava UPnP i ako je omogućen.</translation>
+        <source>Automatically open the SPACE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatski otvori port SPACE klijenta na ruteru. To radi samo ako ruter podržava UPnP i ako je omogućen.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -617,7 +617,7 @@
     </message>
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Izaberite željeni najmanji dio tSPACEa koji će biti prikazan u sučelju i koji će se koristiti za plaćanje.</translation>
+        <translation>Izaberite željeni najmanji dio SPACEa koji će biti prikazan u sučelju i koji će se koristiti za plaćanje.</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -643,8 +643,8 @@
         <translation>Oblik</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the tSPACE network after a connection is established, but this process has not completed yet.</source>
-        <translation>Prikazani podatci mogu biti zastarjeli. Vaš novčanik se automatski sinkronizira s tSPACE mrežom kada je veza uspostavljena, ali taj proces još nije završen.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the SPACE network after a connection is established, but this process has not completed yet.</source>
+        <translation>Prikazani podatci mogu biti zastarjeli. Vaš novčanik se automatski sinkronizira s SPACE mrežom kada je veza uspostavljena, ali taj proces još nije završen.</translation>
     </message>
     <message>
         <source>Total:</source>
@@ -1012,7 +1012,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>tSPACE-core</name>
+    <name>SPACE-core</name>
     <message>
         <source>Options:</source>
         <translation>Postavke:</translation>
@@ -1034,8 +1034,8 @@
         <translation>Izvršavaj u pozadini kao uslužnik i prihvaćaj komande</translation>
     </message>
     <message>
-        <source>tSPACE Core</source>
-        <translation>tSPACE Core</translation>
+        <source>SPACE Core</source>
+        <translation>SPACE Core</translation>
     </message>
     <message>
         <source>Block creation options:</source>

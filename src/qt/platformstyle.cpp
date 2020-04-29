@@ -86,7 +86,7 @@ PlatformStyle::PlatformStyle(const QString &_name, bool _imagesOnButtons, bool _
         const QColor colorHighlightFg(QApplication::palette().color(QPalette::HighlightedText));
         const QColor colorText(QApplication::palette().color(QPalette::WindowText));
         const int colorTextLightness = colorText.lightness();
-        QColor colorbase = QColor(228, 76, 101); // tSPACE Color
+        QColor colorbase = QColor(228, 76, 101); // SPACE Color
 
         /*if (abs(colorHighlightBg.lightness() - colorTextLightness) < abs(colorHighlightFg.lightness() - colorTextLightness))
             colorbase = colorHighlightBg;

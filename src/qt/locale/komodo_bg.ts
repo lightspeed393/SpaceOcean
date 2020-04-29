@@ -62,12 +62,12 @@
         <translation>Адреси за получаване</translation>
     </message>
     <message>
-        <source>These are your tSPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your SPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Това са адресите на получателите на плащания. Винаги проверявайте размера на сумата и адреса на получателя, преди да изпратите монети.</translation>
     </message>
     <message>
-        <source>These are your tSPACE addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Това са Вашите tSPACE адреси,благодарение на които ще получавате плащания.Препоръчително е да използвате нови адреси за получаване на всяка транзакция.</translation>
+        <source>These are your SPACE addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Това са Вашите SPACE адреси,благодарение на които ще получавате плащания.Препоръчително е да използвате нови адреси за получаване на всяка транзакция.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -228,7 +228,7 @@
     </message>
 </context>
 <context>
-    <name>tSPACEoceanGUI</name>
+    <name>SPACEoceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Подписване на &amp;съобщение...</translation>
@@ -330,8 +330,8 @@
         <translation>Повторно индексиране на блоковете на диска...</translation>
     </message>
     <message>
-        <source>Send coins to a tSPACE address</source>
-        <translation>Изпращане към tSPACE адрес</translation>
+        <source>Send coins to a SPACE address</source>
+        <translation>Изпращане към SPACE адрес</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -354,8 +354,8 @@
         <translation>&amp;Проверка на съобщение...</translation>
     </message>
     <message>
-        <source>tSPACE</source>
-        <translation>tSPACE</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -382,12 +382,12 @@
         <translation>Шифроване на личните ключове,които принадлежат на портфейла Ви.</translation>
     </message>
     <message>
-        <source>Sign messages with your tSPACE addresses to prove you own them</source>
-        <translation>Пишете съобщения със своя tSPACE адрес за да докажете,че е ваш.</translation>
+        <source>Sign messages with your SPACE addresses to prove you own them</source>
+        <translation>Пишете съобщения със своя SPACE адрес за да докажете,че е ваш.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified tSPACE addresses</source>
-        <translation>Потвърждаване на съобщения  за да се знае,че са написани с дадените tSPACE адреси.</translation>
+        <source>Verify messages to ensure they were signed with specified SPACE addresses</source>
+        <translation>Потвърждаване на съобщения  за да се знае,че са написани с дадените SPACE адреси.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -406,8 +406,8 @@
         <translation>Раздели</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and tSPACE: URIs)</source>
-        <translation>Изискване на плащания(генерира QR кодове и tSPACE: URIs)</translation>
+        <source>Request payments (generates QR codes and SPACE: URIs)</source>
+        <translation>Изискване на плащания(генерира QR кодове и SPACE: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -418,8 +418,8 @@
         <translation>Покажи списък с използваните адреси и имена.</translation>
     </message>
     <message>
-        <source>Open a tSPACE: URI or payment request</source>
-        <translation>Отворете tSPACE: URI  или заявка за плащане</translation>
+        <source>Open a SPACE: URI or payment request</source>
+        <translation>Отворете SPACE: URI  или заявка за плащане</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -462,8 +462,8 @@
         <translation>Синхронизиран</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible tSPACE command-line options</source>
-        <translation>Покажи %1 помощно съобщение за да получиш лист с възможни tSPACE команди</translation>
+        <source>Show the %1 help message to get a list with possible SPACE command-line options</source>
+        <translation>Покажи %1 помощно съобщение за да получиш лист с възможни SPACE команди</translation>
     </message>
     <message>
         <source>%1 client</source>
@@ -706,8 +706,8 @@
         <translation>Редактиране на адрес за изпращане</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid tSPACE address.</source>
-        <translation>"%1" не е валиден tSPACE адрес.</translation>
+        <source>The entered address "%1" is not a valid SPACE address.</source>
+        <translation>"%1" не е валиден SPACE адрес.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -928,16 +928,16 @@
         <translation>&amp;Похарчете непотвърденото ресто</translation>
     </message>
     <message>
-        <source>Automatically open the tSPACE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматично отваряне на входящия tSPACE порт. Работи само с рутери поддържащи UPnP.</translation>
+        <source>Automatically open the SPACE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматично отваряне на входящия SPACE порт. Работи само с рутери поддържащи UPnP.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Отваряне на входящия порт чрез &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the tSPACE network through a SOCKS5 proxy.</source>
-        <translation>Свързване с tSPACE мрежата чрез SOCKS5  прокси.</translation>
+        <source>Connect to the SPACE network through a SOCKS5 proxy.</source>
+        <translation>Свързване с SPACE мрежата чрез SOCKS5  прокси.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1031,8 +1031,8 @@
         <translation>Формуляр</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the tSPACE network after a connection is established, but this process has not completed yet.</source>
-        <translation>Текущата информация на екрана може да не е актуална. Вашият портфейл ще се синхронизира автоматично с мрежата на tSPACE, щом поне една връзката с нея се установи; този процес все още не е приключил.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the SPACE network after a connection is established, but this process has not completed yet.</source>
+        <translation>Текущата информация на екрана може да не е актуална. Вашият портфейл ще се синхронизира автоматично с мрежата на SPACE, щом поне една връзката с нея се установи; този процес все още не е приключил.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1086,8 +1086,8 @@
         <translation>Възникна грешка по време назаявката за плащане</translation>
     </message>
     <message>
-        <source>Cannot start tSPACE: click-to-pay handler</source>
-        <translation>tSPACE не можe да се стартира: click-to-pay handler</translation>
+        <source>Cannot start SPACE: click-to-pay handler</source>
+        <translation>SPACE не можe да се стартира: click-to-pay handler</translation>
     </message>
     <message>
         <source>URI handling</source>
@@ -1160,8 +1160,8 @@
         <translation>Сума</translation>
     </message>
     <message>
-        <source>Enter a tSPACE address (e.g. %1)</source>
-        <translation>Въведете tSPACE адрес (например: %1)</translation>
+        <source>Enter a SPACE address (e.g. %1)</source>
+        <translation>Въведете SPACE адрес (например: %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1713,8 +1713,8 @@
         <translation>Заявката за плащане е изтекла.</translation>
     </message>
     <message>
-        <source>Warning: Invalid tSPACE address</source>
-        <translation>Внимание: Невалиден tSPACE адрес</translation>
+        <source>Warning: Invalid SPACE address</source>
+        <translation>Внимание: Невалиден SPACE адрес</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -1833,7 +1833,7 @@
         <translation>Копиране на текущия подпис</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this tSPACE address</source>
+        <source>Sign the message to prove you own this SPACE address</source>
         <translation>Подпишете съобщение като доказателство, че притежавате определен адрес</translation>
     </message>
     <message>
@@ -1849,8 +1849,8 @@
         <translation>&amp;Провери</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified tSPACE address</source>
-        <translation>Проверете съобщение, за да сте сигурни че е подписано с определен tSPACE адрес</translation>
+        <source>Verify the message to ensure it was signed with the specified SPACE address</source>
+        <translation>Проверете съобщение, за да сте сигурни че е подписано с определен SPACE адрес</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2352,7 +2352,7 @@
     </message>
 </context>
 <context>
-    <name>tSPACE-core</name>
+    <name>SPACE-core</name>
     <message>
         <source>Options:</source>
         <translation>Опции:</translation>
@@ -2370,8 +2370,8 @@
         <translation>Въведете Ваш публичен адрес</translation>
     </message>
     <message>
-        <source>tSPACE Core</source>
-        <translation>tSPACE ядро</translation>
+        <source>SPACE Core</source>
+        <translation>SPACE ядро</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>

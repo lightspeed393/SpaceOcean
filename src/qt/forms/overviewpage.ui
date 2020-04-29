@@ -73,7 +73,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the tSPACE network after a connection is established, but this process has not completed yet.</string>
+               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the SPACE network after a connection is established, but this process has not completed yet.</string>
               </property>
               <property name="text">
                <string/>
@@ -488,7 +488,7 @@
           <string notr="true">QPushButton { background-color: qlineargradient(spread:repeat, x1:1, y1:1, x2:0, y2:0, stop:0 rgba(25, 57, 94, 255), stop:1 rgba(255, 255, 255, 255));\nfont: 22pt &quot;Franklin Gothic Heavy&quot;; }</string>
          </property>
          <property name="text">
-          <string>Stake tSPACE</string>
+          <string>Stake SPACE</string>
          </property>
         </widget>
        </item>
@@ -545,7 +545,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the tSPACE network after a connection is established, but this process has not completed yet.</string>
+               <string>The displayed information may be out of date. Your wallet automatically synchronizes with the SPACE network after a connection is established, but this process has not completed yet.</string>
               </property>
               <property name="text">
                <string/>

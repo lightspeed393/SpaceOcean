@@ -113,4 +113,4 @@ HOST="$HOST" BUILD="$BUILD" "$MAKE" "$@" -C ./depends/ V=1
 
 "$MAKE" "$@" V=1
 
-cp src/qt/komodo-qt ./tSPACE-qt-linux
+cp src/qt/komodo-qt ./SPACE-qt-linux

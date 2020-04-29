@@ -52,7 +52,7 @@
     </message>
     </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
         <source>&amp;Overview</source>
         <translation>&amp;கண்ணோட்டம்</translation>
@@ -90,8 +90,8 @@
         <translation>&amp;செய்தியை சரிசெய்...</translation>
     </message>
     <message>
-        <source>Pirate</source>
-        <translation>Pirate</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -321,7 +321,7 @@
         <translation>படிவம்</translation>
     </message>
     <message>
-        <source>Available:</source>
+        <source>Transparent:</source>
         <translation>கிடைக்ககூடிய:</translation>
     </message>
     <message>
@@ -706,10 +706,10 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>SPACE-core</name>
     <message>
-        <source>Pirate Core</source>
-        <translation>Pirate மையம்</translation>
+        <source>SPACE Core</source>
+        <translation>SPACE மையம்</translation>
     </message>
     <message>
         <source>(default: %u)</source>

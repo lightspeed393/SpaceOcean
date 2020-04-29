@@ -63,12 +63,12 @@ Alihkan fail data ke dalam tab semasa</translation>
         <translation>alamat-alamat penerimaan</translation>
     </message>
     <message>
-        <source>These are your Pirate addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Ini adalah alamat Pirate anda untuk pembayaran. Periksa jumlah dan alamat penerima sebelum membuat penghantaran koin sentiasa.</translation>
+        <source>These are your SPACE addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Ini adalah alamat SPACE anda untuk pembayaran. Periksa jumlah dan alamat penerima sebelum membuat penghantaran koin sentiasa.</translation>
     </message>
     <message>
-        <source>These are your Pirate addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Ini adalah alamat Pirate anda untuk menerima pembayaraan.  Anda disyorkan untuk menguna alamat menerima untuk setiap transaksi.</translation>
+        <source>These are your SPACE addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Ini adalah alamat SPACE anda untuk menerima pembayaraan.  Anda disyorkan untuk menguna alamat menerima untuk setiap transaksi.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -170,7 +170,7 @@ Alihkan fail data ke dalam tab semasa</translation>
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR COINS&lt;/b&gt;!</source>
-        <translation>Amaran: Jika anda enkripkan dompet anda dan hilangkan frasa laluan, anda akan &lt;b&gt;ANDA AKAN HILANGKAN SEMUA Pirate ANDA&lt;/b&gt;!</translation>
+        <translation>Amaran: Jika anda enkripkan dompet anda dan hilangkan frasa laluan, anda akan &lt;b&gt;ANDA AKAN HILANGKAN SEMUA SPACE ANDA&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -182,7 +182,7 @@ Alihkan fail data ke dalam tab semasa</translation>
     </message>
     <message>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>%1 akan tutup untuk menyelesaikan proses enkripsi. Ingat bahawa enkripsi tidak boleh melidungi sepenuhnya Pirates anda daripada dicuri oleh malware yang menjangkiti komputer anda.</translation>
+        <translation>%1 akan tutup untuk menyelesaikan proses enkripsi. Ingat bahawa enkripsi tidak boleh melidungi sepenuhnya SPACEs anda daripada dicuri oleh malware yang menjangkiti komputer anda.</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
@@ -233,7 +233,7 @@ Alihkan fail data ke dalam tab semasa</translation>
     </message>
 </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Tandatangan &amp; mesej...</translation>
@@ -323,8 +323,8 @@ Alihkan fail data ke dalam tab semasa</translation>
         <translation>Reindexi blok pada cakera...</translation>
     </message>
     <message>
-        <source>Send coins to a Pirate address</source>
-        <translation>Menghantar koin kepada alamat Pirate</translation>
+        <source>Send coins to a SPACE address</source>
+        <translation>Menghantar koin kepada alamat SPACE</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -500,6 +500,6 @@ Alihkan fail data ke dalam tab semasa</translation>
     </message>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>SPACE-core</name>
     </context>
 </TS>

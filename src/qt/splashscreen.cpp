@@ -63,11 +63,11 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     // draw a slightly radial gradient
     QRadialGradient gradient(QPoint(0, 0), splashSize.width() / devicePixelRatio);
     gradient.setColorAt(0, Qt::white); //top left color
-    gradient.setColorAt(1, QColor(188, 172, 94)); //bottom right color
+    gradient.setColorAt(1, QColor(25, 57, 94)); //bottom right color
     QRect rGradient(QPoint(0, 0), splashSize);
     pixPaint.fillRect(rGradient, gradient);
 
-    // draw the Pirate icon, expected size of PNG: 1024x1024
+    // draw the SPACE icon, expected size of PNG: 1024x1024
     QRect rectIcon(QPoint(20,40), QSize(160,160));
 
     const QSize requiredSize(1024, 1024);

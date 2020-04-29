@@ -124,7 +124,7 @@
     </message>
 </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Usklađivanje sa mrežom...</translation>
@@ -158,16 +158,16 @@
         <translation>Otvori &amp;URI...</translation>
     </message>
     <message>
-        <source>Send coins to a Pirate address</source>
-        <translation>Pošalji novčiće na Pirate adresu</translation>
+        <source>Send coins to a SPACE address</source>
+        <translation>Pošalji novčiće na SPACE adresu</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
         <translation>&amp;Proveri poruku...</translation>
     </message>
     <message>
-        <source>Pirate</source>
-        <translation>Pirate</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -404,10 +404,10 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>SPACE-core</name>
     <message>
-        <source>Pirate Core</source>
-        <translation>Pirate Core</translation>
+        <source>SPACE Core</source>
+        <translation>SPACE Core</translation>
     </message>
     <message>
         <source>Information</source>

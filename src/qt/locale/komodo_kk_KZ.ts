@@ -48,7 +48,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
         <source>&amp;Transactions</source>
         <translation>&amp;Транзакциялар</translation>
@@ -70,8 +70,8 @@
         <translation>Құпия сөзді өзгерту</translation>
     </message>
     <message>
-        <source>Pirate</source>
-        <translation>Pirate</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -298,7 +298,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>SPACE-core</name>
     <message>
         <source>Information</source>
         <translation>Информация</translation>

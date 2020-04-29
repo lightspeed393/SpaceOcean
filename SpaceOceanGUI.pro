@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = PirateOceanGUI
-VERSION = 0.1.1.0
+TARGET = SpaceOceanGUI
+VERSION = 0.1.2.0
 
 INCLUDEPATH += src src\qt src\libsnark src\protobuf src\secp256k1 src\secp256k1\include src\leveldb\include src\leveldb\helpers\memenv src\leveldb src\univalue\include src\libevent\include src\libevent\compat src\cryptoconditions\include src\cryptoconditions src\cryptoconditions\src\asn
 
@@ -630,7 +630,7 @@ macx:OBJECTIVE_SOURCES += macdockiconhandler.mm macnotificationhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
 macx:ICON = src/qt/res/icons/komodo.icns
-macx:TARGET = "PirateOceanGUI"
+macx:TARGET = "SpaceOceanGUI"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread

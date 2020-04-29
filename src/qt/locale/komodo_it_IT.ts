@@ -88,7 +88,7 @@
     </message>
 </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
         <source>&amp;Transactions</source>
         <translation>Transazioni</translation>
@@ -202,6 +202,6 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>SPACE-core</name>
     </context>
 </TS>

@@ -21,9 +21,9 @@ KomodoUnits::KomodoUnits(QObject *parent):
 QList<KomodoUnits::Unit> KomodoUnits::availableUnits()
 {
     QList<KomodoUnits::Unit> unitlist;
-    unitlist.append(ARRR);
-    unitlist.append(mARRR);
-    unitlist.append(uARRR);
+    unitlist.append(SPACE);
+    unitlist.append(mSPACE);
+    unitlist.append(uSPACE);
     return unitlist;
 }
 
@@ -31,9 +31,9 @@ bool KomodoUnits::valid(int unit)
 {
     switch(unit)
     {
-    case ARRR:
-    case mARRR:
-    case uARRR:
+    case SPACE:
+    case mSPACE:
+    case uSPACE:
         return true;
     default:
         return false;
@@ -44,9 +44,9 @@ QString KomodoUnits::name(int unit)
 {
     switch(unit)
     {
-    case ARRR: return QString("ARRR");
-    case mARRR: return QString("mARRR");
-    case uARRR: return QString::fromUtf8("μARRR");
+    case SPACE: return QString("SPACE");
+    case mSPACE: return QString("mSPACE");
+    case uSPACE: return QString::fromUtf8("μSPACE");
     default: return QString("???");
     }
 }
@@ -55,9 +55,9 @@ QString KomodoUnits::description(int unit)
 {
     switch(unit)
     {
-    case ARRR: return QString("Coins");
-    case mARRR: return QString("Milli-Coins (1 / 1" THIN_SP_UTF8 "000)");
-    case uARRR: return QString("Micro-Coins (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case SPACE: return QString("Coins");
+    case mSPACE: return QString("Milli-Coins (1 / 1" THIN_SP_UTF8 "000)");
+    case uSPACE: return QString("Micro-Coins (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }
@@ -66,9 +66,9 @@ qint64 KomodoUnits::factor(int unit)
 {
     switch(unit)
     {
-    case ARRR:  return 100000000;
-    case mARRR: return 100000;
-    case uARRR: return 100;
+    case SPACE:  return 100000000;
+    case mSPACE: return 100000;
+    case uSPACE: return 100;
     default:   return 100000000;
     }
 }
@@ -77,9 +77,9 @@ int KomodoUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case ARRR: return 8;
-    case mARRR: return 5;
-    case uARRR: return 2;
+    case SPACE: return 8;
+    case mSPACE: return 5;
+    case uSPACE: return 2;
     default: return 0;
     }
 }

@@ -64,7 +64,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PirateOceanGUI</name>
+    <name>SpaceOceanGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Потпиши &amp;порака...</translation>
@@ -138,16 +138,16 @@
         <translation>Повторно индексирање на блокови од дискот...</translation>
     </message>
     <message>
-        <source>Send coins to a Pirate address</source>
-        <translation>Испрати Pirate на Pirate адреса</translation>
+        <source>Send coins to a SPACE address</source>
+        <translation>Испрати SPACE на SPACE адреса</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
         <translation>&amp;Потврди порака...</translation>
     </message>
     <message>
-        <source>Pirate</source>
-        <translation>Pirate</translation>
+        <source>SPACE</source>
+        <translation>SPACE</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -572,14 +572,14 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>Pirate-core</name>
+    <name>SPACE-core</name>
     <message>
         <source>Options:</source>
         <translation>Опции:</translation>
     </message>
     <message>
-        <source>Pirate Core</source>
-        <translation>Pirate Core</translation>
+        <source>SPACE Core</source>
+        <translation>SPACE Core</translation>
     </message>
     <message>
         <source>Warning</source>

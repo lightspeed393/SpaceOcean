@@ -103,7 +103,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("pirate-core", psz).toStdString();
+    return QCoreApplication::translate("SPACE-core", psz).toStdString();
 }
 
 static QString GetLangTerritory()
@@ -572,7 +572,7 @@ void KomodoApplication::shutdownResult()
 
 void KomodoApplication::handleRunawayException(const QString &message)
 {
-    QMessageBox::critical(0, "Runaway exception", KomodoOceanGUI::tr("A fatal error occurred. Komodo can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", KomodoOceanGUI::tr("A fatal error occurred. SPACE can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(EXIT_FAILURE);
 }
 
